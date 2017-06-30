@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import Python
 
 class ViewController: NSViewController {
 
@@ -21,20 +20,26 @@ class ViewController: NSViewController {
     @IBAction func clickLoginButton(_ sender: Any) {
         let username = textFieldUsername.stringValue
         let password = textFieldPassword.stringValue
-        //self.login(user: username, passwd: password)
+        //self.copyPythonFile()
+        self.login(user: username, passwd: password)
         self.performSegue(withIdentifier: "logInSuccessSegue", sender: self)
     }
 
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
+    func copyPythonFile() {
+        let pyResourceURL = Bundle.main.url(forResource: "Drcom_CAUC.py", withExtension: "")
+        let manager:FileManager = FileManager.init()
+        do {
+            try manager.createDirectory(atPath: manager.homeDirectoryForCurrentUser.absoluteString+"/OpenDrcom", withIntermediateDirectories: true, attributes: nil)
+            let cur = URL.init(fileURLWithPath: manager.homeDirectoryForCurrentUser.absoluteString+"/OpenDrcom/Drcom_CAUC.py")
+            try manager.copyItem(at: pyResourceURL!, to:cur)
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
     func login(user:String,passwd:String) {
-        DispatchQueue.main.async {
-            let resourcePath = Bundle.main.resourcePath
-            let pyModulePath = "sys.path.append('" + resourcePath! + "/')"
+        DispatchQueue.global().async {
+            let pyModulePath = "sys.path.append('/Users/xiaolu/Library/Developer/Xcode/DerivedData/OpenDrcom-gaztozmtvnkijcfcohusjujshkkl/Build/Products/Debug/OpenDrcom.app/Contents/Resources')"
             let pyModuleObjCString:NSString = NSString.init(string: pyModulePath)
             startLogin(pyModuleObjCString.utf8String,pyModuleObjCString.utf8String)
         };

@@ -377,10 +377,10 @@ def drcomLogin():
       keep_alive1(SALT,package_tail,password,server)
       keep_alive2(SALT,package_tail,password,server)
   
-def start(param):
-  drcominit("wrlu_15","","10.5.24.128")
-  while True:
-#    drcomLogin()
+def start():
+  drcominit("wrlu_15","","10.5.68.15")
+      #while True:
+#drcomLogin()
     
 #if __name__ == "__main__":
 
