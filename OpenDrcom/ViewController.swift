@@ -16,6 +16,14 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "isSavePassword")==true {
+            textFieldUsername.stringValue = defaults.object(forKey: "savedUser") as! String
+            textFieldPassword.stringValue = defaults.object(forKey: "savedPassword") as! String
+        }
+        if defaults.bool(forKey: "isAutoLogin")==true {
+            self.clickLoginButton(self)
+        }
     }
     @IBAction func clickLoginButton(_ sender: Any) {
         let username = textFieldUsername.stringValue
@@ -33,9 +41,20 @@ class ViewController: NSViewController {
         };
     }
     @IBAction func savePasswordValueChanged(_ sender: NSButton) {
-//        sender.state
+        let defaults = UserDefaults.standard
+        defaults.set(sender.state, forKey: "isSavePassword")
+        if sender.state == 1 {
+            defaults.set(textFieldUsername.stringValue, forKey: "savedUser")
+            defaults.set(textFieldPassword.stringValue, forKey: "savedPassword")
+        }
+        else {
+            defaults.set("", forKey: "savedUser")
+            defaults.set("", forKey: "savedPassword")
+        }
     }
     @IBAction func autoLoginValueChanged(_ sender: NSButton) {
+        let defaults = UserDefaults.standard
+        defaults.set(sender.state, forKey: "isAutoLogin")
     }
     
 }
