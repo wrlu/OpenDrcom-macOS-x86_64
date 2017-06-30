@@ -1,0 +1,338 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		890F8A8D1F06423A002BEA9F /* DrcomPythonModuleCSolver.c in Sources */ = {isa = PBXBuildFile; fileRef = 890F8A8B1F06423A002BEA9F /* DrcomPythonModuleCSolver.c */; };
+		89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDA1F0608C400800255 /* AppDelegate.swift */; };
+		89145EDD1F0608C400800255 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDC1F0608C400800255 /* ViewController.swift */; };
+		89145EE01F0608C400800255 /* OpenDrcom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDE1F0608C400800255 /* OpenDrcom.xcdatamodeld */; };
+		89145EE21F0608C400800255 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE11F0608C400800255 /* Assets.xcassets */; };
+		89145EE51F0608C400800255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE31F0608C400800255 /* Main.storyboard */; };
+		89145EED1F06090B00800255 /* Drcom_CAUC.py in Resources */ = {isa = PBXBuildFile; fileRef = 89145EEC1F06090B00800255 /* Drcom_CAUC.py */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		890F8A871F063A30002BEA9F /* OpenDrcom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenDrcom-Bridging-Header.h"; sourceTree = "<group>"; };
+		890F8A8B1F06423A002BEA9F /* DrcomPythonModuleCSolver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DrcomPythonModuleCSolver.c; sourceTree = "<group>"; };
+		890F8A8C1F06423A002BEA9F /* DrcomPythonModuleCSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrcomPythonModuleCSolver.h; sourceTree = "<group>"; };
+		89145ED71F0608C400800255 /* OpenDrcom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenDrcom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89145EDA1F0608C400800255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		89145EDC1F0608C400800255 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		89145EDF1F0608C400800255 /* OpenDrcom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OpenDrcom.xcdatamodel; sourceTree = "<group>"; };
+		89145EE11F0608C400800255 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89145EE41F0608C400800255 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		89145EE61F0608C400800255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89145EEC1F06090B00800255 /* Drcom_CAUC.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Drcom_CAUC.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89145ED41F0608C400800255 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		89145ECE1F0608C400800255 = {
+			isa = PBXGroup;
+			children = (
+				89145ED91F0608C400800255 /* OpenDrcom */,
+				89145ED81F0608C400800255 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89145ED81F0608C400800255 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89145ED71F0608C400800255 /* OpenDrcom.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89145ED91F0608C400800255 /* OpenDrcom */ = {
+			isa = PBXGroup;
+			children = (
+				89145EDA1F0608C400800255 /* AppDelegate.swift */,
+				89145EDC1F0608C400800255 /* ViewController.swift */,
+				890F8A8C1F06423A002BEA9F /* DrcomPythonModuleCSolver.h */,
+				890F8A8B1F06423A002BEA9F /* DrcomPythonModuleCSolver.c */,
+				89145EE11F0608C400800255 /* Assets.xcassets */,
+				89145EE31F0608C400800255 /* Main.storyboard */,
+				89145EEC1F06090B00800255 /* Drcom_CAUC.py */,
+				89145EE61F0608C400800255 /* Info.plist */,
+				89145EDE1F0608C400800255 /* OpenDrcom.xcdatamodeld */,
+				890F8A871F063A30002BEA9F /* OpenDrcom-Bridging-Header.h */,
+			);
+			path = OpenDrcom;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89145ED61F0608C400800255 /* OpenDrcom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89145EE91F0608C400800255 /* Build configuration list for PBXNativeTarget "OpenDrcom" */;
+			buildPhases = (
+				89145ED31F0608C400800255 /* Sources */,
+				89145ED41F0608C400800255 /* Frameworks */,
+				89145ED51F0608C400800255 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenDrcom;
+			productName = OpenDrcom;
+			productReference = 89145ED71F0608C400800255 /* OpenDrcom.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89145ECF1F0608C400800255 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "路伟饶";
+				TargetAttributes = {
+					89145ED61F0608C400800255 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = QXA7GFP499;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 89145ED21F0608C400800255 /* Build configuration list for PBXProject "OpenDrcom" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89145ECE1F0608C400800255;
+			productRefGroup = 89145ED81F0608C400800255 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89145ED61F0608C400800255 /* OpenDrcom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89145ED51F0608C400800255 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89145EE21F0608C400800255 /* Assets.xcassets in Resources */,
+				89145EE51F0608C400800255 /* Main.storyboard in Resources */,
+				89145EED1F06090B00800255 /* Drcom_CAUC.py in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89145ED31F0608C400800255 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89145EDD1F0608C400800255 /* ViewController.swift in Sources */,
+				89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */,
+				890F8A8D1F06423A002BEA9F /* DrcomPythonModuleCSolver.c in Sources */,
+				89145EE01F0608C400800255 /* OpenDrcom.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		89145EE31F0608C400800255 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89145EE41F0608C400800255 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89145EE71F0608C400800255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		89145EE81F0608C400800255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		89145EEA1F0608C400800255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QXA7GFP499;
+				INFOPLIST_FILE = OpenDrcom/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xiaolulwr.OpenDrcom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenDrcom/OpenDrcom-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		89145EEB1F0608C400800255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QXA7GFP499;
+				INFOPLIST_FILE = OpenDrcom/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xiaolulwr.OpenDrcom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenDrcom/OpenDrcom-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89145ED21F0608C400800255 /* Build configuration list for PBXProject "OpenDrcom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89145EE71F0608C400800255 /* Debug */,
+				89145EE81F0608C400800255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89145EE91F0608C400800255 /* Build configuration list for PBXNativeTarget "OpenDrcom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89145EEA1F0608C400800255 /* Debug */,
+				89145EEB1F0608C400800255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		89145EDE1F0608C400800255 /* OpenDrcom.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				89145EDF1F0608C400800255 /* OpenDrcom.xcdatamodel */,
+			);
+			currentVersion = 89145EDF1F0608C400800255 /* OpenDrcom.xcdatamodel */;
+			path = OpenDrcom.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 89145ECF1F0608C400800255 /* Project object */;
+}
