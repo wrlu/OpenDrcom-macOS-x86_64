@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		890F8A8D1F06423A002BEA9F /* DrcomPythonModuleCSolver.c in Sources */ = {isa = PBXBuildFile; fileRef = 890F8A8B1F06423A002BEA9F /* DrcomPythonModuleCSolver.c */; };
+		890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */; };
 		89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDA1F0608C400800255 /* AppDelegate.swift */; };
 		89145EDD1F0608C400800255 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDC1F0608C400800255 /* ViewController.swift */; };
 		89145EE01F0608C400800255 /* OpenDrcom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDE1F0608C400800255 /* OpenDrcom.xcdatamodeld */; };
@@ -20,6 +21,7 @@
 		890F8A871F063A30002BEA9F /* OpenDrcom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenDrcom-Bridging-Header.h"; sourceTree = "<group>"; };
 		890F8A8B1F06423A002BEA9F /* DrcomPythonModuleCSolver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DrcomPythonModuleCSolver.c; sourceTree = "<group>"; };
 		890F8A8C1F06423A002BEA9F /* DrcomPythonModuleCSolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrcomPythonModuleCSolver.h; sourceTree = "<group>"; };
+		890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessInfoViewController.swift; sourceTree = "<group>"; };
 		89145ED71F0608C400800255 /* OpenDrcom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenDrcom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89145EDA1F0608C400800255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89145EDC1F0608C400800255 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				89145EDA1F0608C400800255 /* AppDelegate.swift */,
 				89145EDC1F0608C400800255 /* ViewController.swift */,
+				890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */,
 				890F8A8C1F06423A002BEA9F /* DrcomPythonModuleCSolver.h */,
 				890F8A8B1F06423A002BEA9F /* DrcomPythonModuleCSolver.c */,
 				89145EE11F0608C400800255 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 				89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */,
 				890F8A8D1F06423A002BEA9F /* DrcomPythonModuleCSolver.c in Sources */,
 				89145EE01F0608C400800255 /* OpenDrcom.xcdatamodeld in Sources */,
+				890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
