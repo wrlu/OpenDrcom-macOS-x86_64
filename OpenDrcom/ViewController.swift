@@ -20,21 +20,8 @@ class ViewController: NSViewController {
     @IBAction func clickLoginButton(_ sender: Any) {
         let username = textFieldUsername.stringValue
         let password = textFieldPassword.stringValue
-        //self.copyPythonFile()
         self.login(user: username, passwd: password)
         self.performSegue(withIdentifier: "logInSuccessSegue", sender: self)
-    }
-
-    func copyPythonFile() {
-        let pyResourceURL = Bundle.main.url(forResource: "Drcom_CAUC.py", withExtension: "")
-        let manager:FileManager = FileManager.init()
-        do {
-            try manager.createDirectory(atPath: manager.homeDirectoryForCurrentUser.absoluteString+"/OpenDrcom", withIntermediateDirectories: true, attributes: nil)
-            let cur = URL.init(fileURLWithPath: manager.homeDirectoryForCurrentUser.absoluteString+"/OpenDrcom/Drcom_CAUC.py")
-            try manager.copyItem(at: pyResourceURL!, to:cur)
-        } catch {
-            print(error.localizedDescription)
-        }
     }
     
     func login(user:String,passwd:String) {
