@@ -17,7 +17,7 @@ void startLogin(const char *pyModulePath,const char *param) {
     PyRun_SimpleString("import sys");
     PyRun_SimpleString("import os");
     PyRun_SimpleString("import random");
-    PyRun_SimpleString(param);
+    PyRun_SimpleString(pyModulePath);
     
     //引入模块
     pModule = PyImport_ImportModule("Drcom_CAUC");

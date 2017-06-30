@@ -26,9 +26,16 @@ class ViewController: NSViewController {
     
     func login(user:String,passwd:String) {
         DispatchQueue.global().async {
-            let pyModulePath = "sys.path.append('/Users/xiaolu/Library/Developer/Xcode/DerivedData/OpenDrcom-gaztozmtvnkijcfcohusjujshkkl/Build/Products/Debug/OpenDrcom.app/Contents/Resources')"
-            let pyModuleObjCString:NSString = NSString.init(string: pyModulePath)
-            startLogin(pyModuleObjCString.utf8String,pyModuleObjCString.utf8String)
+            let resourcePath = Bundle.main.resourcePath
+            let pyModulePath = "sys.path.append('"+resourcePath!+"')"
+            let param = user+"///"+passwd
+            startLogin(pyModulePath,param)
         };
     }
+    @IBAction func savePasswordValueChanged(_ sender: NSButton) {
+//        sender.state
+    }
+    @IBAction func autoLoginValueChanged(_ sender: NSButton) {
+    }
+    
 }

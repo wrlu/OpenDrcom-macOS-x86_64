@@ -742,6 +742,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="savePasswordValueChanged:" target="XfG-lQ-9wD" id="QcS-Ez-8pL"/>
+                                </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fk-re-odC">
                                 <rect key="frame" x="226" y="110" width="76" height="18"/>
@@ -750,6 +753,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="autoLoginValueChanged:" target="XfG-lQ-9wD" id="36V-8V-dQg"/>
+                                </connections>
                             </button>
                             <secureTextField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drk-ip-IQX">
                                 <rect key="frame" x="131" y="159" width="218" height="22"/>
