@@ -42,7 +42,7 @@ IS_TEST = True
 CONF = "/etc/drcom.conf"
 if IS_TEST:
     CONF = ''
-UNLIMITED_RETRY = True
+UNLIMITED_RETRY = False
 EXCEPTION = False
 DEBUG = False #log saves to file
 LOG_PATH = '/var/log/drcom_client.log'
@@ -298,6 +298,9 @@ def login(usr, pwd, svr):
             continue
         log('[login] recv',data.encode('hex'))
         log('[login] packet sent.')
+        i = i + 1
+        if i >= 5 and UNLIMITED_RETRY == False :
+          sys.exit(1)
         if address == (svr, 61440):
             if data[0] == '\x04':
               log('[login] loged in')
@@ -307,7 +310,7 @@ def login(usr, pwd, svr):
         else:
             if i >= 5 and UNLIMITED_RETRY == False :
               log('[login] exception occured.')
-              sys.exit(1)
+              sys.exit(0)
             else:
               continue
 
@@ -391,7 +394,7 @@ def drcomLogin():
       try:
         package_tail = login(username, password, server)
       except LoginException:
-        continue
+        return
       log('package_tail',package_tail.encode('hex'))
       #keep_alive1 is fucking bullshit!
       empty_socket_buffer()
