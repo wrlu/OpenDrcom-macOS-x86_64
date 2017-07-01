@@ -17,17 +17,24 @@ class SuccessInfoViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        self.refreshUsageAndIP()
+        let frequent:TimeInterval = 120
+        let schedule:Timer = Timer.scheduledTimer(timeInterval: frequent, target: self, selector: #selector(SuccessInfoViewController.refreshUsageAndIP), userInfo: nil, repeats: true)
+        print(schedule.isValid)
+    }
+    func refreshUsageAndIP() {
         let timeUsage = UsageProvider.timeUsage()
         let flowUsage = UsageProvider.flowUsage()
         if timeUsage != "" && flowUsage != "" {
-            labelUsageTime.stringValue = timeUsage + " 分钟"
-            labelUsageFlow.stringValue = flowUsage + " MB"
+            self.labelUsageTime.stringValue = timeUsage + " 分钟"
+            self.labelUsageFlow.stringValue = flowUsage + " MB"
         }
         else {
-            labelUsageTime.stringValue = "您还未登录"
-            labelUsageFlow.stringValue = "您还未登录"
+            self.labelUsageTime.stringValue = "您还未登录"
+            self.labelUsageFlow.stringValue = "您还未登录"
         }
-        labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
+        self.labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
+        self.view.needsDisplay = true
     }
     
 }
