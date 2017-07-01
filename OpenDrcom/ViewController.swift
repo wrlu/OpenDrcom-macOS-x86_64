@@ -52,7 +52,7 @@ class ViewController: NSViewController {
         };
     }
     func getParameter(user:String,passwd:String) -> String {
-        var resultParam = user + "///" + passwd + "///"
+        var resultParam = user + "/*DRCOM*/" + passwd + "/*DRCOM*/"
         resultParam += IPAddressProvider.currentIPAddresses().first!
         print(resultParam)
         return resultParam

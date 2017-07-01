@@ -50,6 +50,7 @@ if IS_TEST:
     DEBUG = True
     LOG_PATH = 'drcom_client.log'
 
+
 def log(*args, **kwargs):
     s = ' '.join(args)
     s = time.strftime("%Y-%m-%d %X", time.localtime()) + s
@@ -353,6 +354,23 @@ def daemon():
     with open('/var/run/jludrcom.pid','w') as f:
         f.write(str(os.getpid()))
 
+def randomMAC():
+  mac = [ 0xa4,0x5e,0x60,
+           random.randint(0x00, 0x7f),
+           random.randint(0x00, 0xff),
+           random.randint(0x00, 0xff) ]
+  i=11
+  j=0
+  macValue=0
+  while j < 6:
+    macValue += (mac[j]/16) * (pow(16, i)) + (mac[j]%16) * (pow(16, i-1))
+    i = i - 2
+    j = j + 1
+  print "Current MAC: %x" % (macValue)
+  return macValue
+
+
+
 def drcominit(user,passwd,ip):
     global username
     global password
@@ -361,6 +379,7 @@ def drcominit(user,passwd,ip):
     username = user
     password = passwd
     host_ip = ip
+    mac = randomMAC()
 
 
 def drcomLogin():
@@ -379,11 +398,17 @@ def drcomLogin():
       keep_alive1(SALT,package_tail,password,server)
       keep_alive2(SALT,package_tail,password,server)
   
-def start():
-  drcominit("wrlu_15","","10.5.68.15")
-      #while True:
-#drcomLogin()
-    
-#if __name__ == "__main__":
+def start(param):
+    print(param)
+    array = param.split("/*DRCOM*/")
+    print(array[0])
+    print(array[1])
+    print(array[2])
+    drcominit(array[0],array[1],array[2])
+    while True:
+      drcomLogin()
+
+
+
 
 
