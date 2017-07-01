@@ -17,9 +17,19 @@ class SuccessInfoViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        labelUsageTime.stringValue = UsageProvider.timeUsage()! + " 分钟"
-        labelUsageFlow.stringValue = UsageProvider.flowUsage()! + " MB"
-        labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
+        let timeUsage = UsageProvider.timeUsage()
+        let flowUsage = UsageProvider.flowUsage()
+        if timeUsage != "" && flowUsage != "" {
+            labelUsageTime.stringValue = timeUsage + " 分钟"
+            labelUsageFlow.stringValue = flowUsage + " MB"
+            labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
+        }
+        else {
+            labelUsageTime.stringValue = "无法获取分钟数"
+            labelUsageFlow.stringValue = "无法获取流量"
+            labelUserIP.stringValue = "无法获取IP"
+        }
+        
     }
     
 }
