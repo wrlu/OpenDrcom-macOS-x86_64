@@ -11,8 +11,8 @@ server = "192.168.100.251"
 username = ""
 password = ""
 host_ip = ""
-host_name = "xiaoludeMac"
-host_os = "macOS_10_12_5"
+host_name = "MacBook"
+host_os = "Apple_macOS"
 dhcp_server = "0.0.0.0"
 mac = 0xa45e60d64ff1
 CONTROLCHECKSTATUS = '\x20'
@@ -354,12 +354,14 @@ def daemon():
         f.write(str(os.getpid()))
 
 def drcominit(user,passwd,ip):
-  global username
-  global password
-  global host_ip
-  username = user
-  password = passwd
-  host_ip = ip
+    global username
+    global password
+    global host_ip
+    global mac
+    username = user
+    password = passwd
+    host_ip = ip
+
 
 def drcomLogin():
     if not IS_TEST:

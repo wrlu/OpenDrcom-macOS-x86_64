@@ -22,14 +22,12 @@ class SuccessInfoViewController: NSViewController {
         if timeUsage != "" && flowUsage != "" {
             labelUsageTime.stringValue = timeUsage + " 分钟"
             labelUsageFlow.stringValue = flowUsage + " MB"
-            labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
         }
         else {
-            labelUsageTime.stringValue = "无法获取分钟数"
-            labelUsageFlow.stringValue = "无法获取流量"
-            labelUserIP.stringValue = "无法获取IP"
+            labelUsageTime.stringValue = "您还未登录"
+            labelUsageFlow.stringValue = "您还未登录"
         }
-        
+        labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
     }
     
 }
