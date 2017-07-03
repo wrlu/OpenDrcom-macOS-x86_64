@@ -389,7 +389,7 @@ def drcomLogin():
     if not IS_TEST:
         daemon()
         execfile(CONF, globals())
-    log("auth svr:"+server+"\nusername:"+username+"\npassword:"+password+"\nmac:"+str(hex(mac)))
+    #log("auth svr:"+server+"\nusername:"+username+"\npassword:"+password+"\nmac:"+str(hex(mac)))
     while True:
       try:
         package_tail = login(username, password, server)

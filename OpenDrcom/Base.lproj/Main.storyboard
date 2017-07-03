@@ -106,9 +106,6 @@
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </textFieldCell>
-                                <connections>
-                                    <action selector="textFieldUsernameValueChanged:" target="XfG-lQ-9wD" id="UPQ-aY-ZZm"/>
-                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKa-m6-00F">
                                 <rect key="frame" x="72" y="222" width="31" height="17"/>
@@ -151,15 +148,12 @@
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fk-re-odC">
-                                <rect key="frame" x="275" y="72" width="76" height="18"/>
+                                <rect key="frame" x="275" y="72" width="105" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="自动登录" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="kVx-PZ-rlY">
+                                <buttonCell key="cell" type="check" title="Debug Mode" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="kVx-PZ-rlY">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <action selector="autoLoginValueChanged:" target="XfG-lQ-9wD" id="36V-8V-dQg"/>
-                                </connections>
                             </button>
                             <secureTextField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drk-ip-IQX">
                                 <rect key="frame" x="131" y="156" width="218" height="22"/>
@@ -201,7 +195,6 @@
                         </touchBarItems>
                     </touchBar>
                     <connections>
-                        <outlet property="buttonIsAutoLogin" destination="9fk-re-odC" id="q9w-2L-Upb"/>
                         <outlet property="buttonIsSavedPassword" destination="VKH-jr-dM6" id="jk8-Eo-fHX"/>
                         <outlet property="progress" destination="HZ1-V8-BLZ" id="dJc-7e-mnr"/>
                         <outlet property="textFieldPassword" destination="Drk-ip-IQX" id="dMA-wh-Q53"/>
@@ -332,6 +325,7 @@
                         <outlet property="labelUsageFlow" destination="Bzo-CR-cmv" id="ozB-r3-CX6"/>
                         <outlet property="labelUsageTime" destination="A0d-LP-1h8" id="AQq-dS-VjD"/>
                         <outlet property="labelUserIP" destination="eod-Dd-0sK" id="PLA-ZC-alc"/>
+                        <segue destination="B8D-0N-5wS" kind="show" identifier="logOutSegue" id="b5a-lx-FPZ"/>
                     </connections>
                 </viewController>
                 <customObject id="kyg-Ug-Uet" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -30,10 +30,10 @@ class ViewController: NSViewController,NSTextFieldDelegate {
             textFieldUsername.stringValue = defaults.object(forKey: "savedUser") as! String
             textFieldPassword.stringValue = defaults.object(forKey: "savedPassword") as! String
         }
-        if defaults.bool(forKey: "isAutoLogin")==true {
+//        if defaults.bool(forKey: "isAutoLogin")==true {
 //            buttonIsAutoLogin.state = 1
-            self.clickLoginButton(self)
-        }
+//            self.clickLoginButton(self)
+//        }
     }
     @IBAction func clickLoginButton(_ sender: Any) {
         let username = textFieldUsername.stringValue
@@ -44,18 +44,31 @@ class ViewController: NSViewController,NSTextFieldDelegate {
     
     func login(user:String,passwd:String) {
         if user == "" {
-            print("No Username input")
             let alert:NSAlert = NSAlert.init()
-            alert.messageText = "请输入用户名"
+            alert.messageText = "错误：请输入用户名"
             alert.addButton(withTitle: "好")
             alert.alertStyle = NSAlertStyle.warning
             alert.runModal()
             return
         }
         if passwd == "" {
-            print("No password input")
             let alert:NSAlert = NSAlert.init()
-            alert.messageText = "请输入密码"
+            alert.messageText = "错误：请输入密码"
+            alert.addButton(withTitle: "好")
+            alert.alertStyle = NSAlertStyle.warning
+            alert.runModal()
+            return
+        }
+        let gatewayURL = URL.init(string: "http://192.168.100.251")
+        let readData:Data
+        do {
+            try readData = Data.init(contentsOf: gatewayURL!)
+            print(readData.count)
+        }
+        catch {
+            print(error.localizedDescription)
+            let alert:NSAlert = NSAlert.init()
+            alert.messageText = "错误：网络连接失败"
             alert.addButton(withTitle: "好")
             alert.alertStyle = NSAlertStyle.warning
             alert.runModal()
@@ -77,9 +90,9 @@ class ViewController: NSViewController,NSTextFieldDelegate {
                 break
             }
             if isLoginFailed == true {
-                print("Failed!!!")
+                print("Login Failed!!!")
                 let alert:NSAlert = NSAlert.init()
-                alert.messageText = "用户名或密码错误"
+                alert.messageText = "错误：用户名或密码错误，或网络连接失败"
                 alert.addButton(withTitle: "好")
                 alert.alertStyle = NSAlertStyle.warning
                 alert.runModal()
@@ -106,21 +119,18 @@ class ViewController: NSViewController,NSTextFieldDelegate {
         else {
 //            buttonIsAutoLogin.isEnabled = false
 //            buttonIsAutoLogin.state = 0
-            defaults.set(false, forKey: "isAutoLogin")
+//            defaults.set(false, forKey: "isAutoLogin")
             defaults.set("", forKey: "savedUser")
             defaults.set("", forKey: "savedPassword")
         }
     }
-    @IBAction func autoLoginValueChanged(_ sender: NSButton) {
-        let defaults = UserDefaults.standard
-        defaults.set(sender.state, forKey: "isAutoLogin")
-    }
+//    @IBAction func autoLoginValueChanged(_ sender: NSButton) {
+//        let defaults = UserDefaults.standard
+//        defaults.set(sender.state, forKey: "isAutoLogin")
+//    }
     @IBAction func clickCanelButton(_ sender: Any) {
         self.performSegue(withIdentifier: "logInSuccessSegue", sender: self)
         self.view.window?.performClose(self)
-    }
-    @IBAction func textFieldUsernameValueChanged(_ sender: Any) {
-        
     }
     override func controlTextDidEndEditing(_ obj: Notification) {
         if buttonIsSavedPassword.state == 1 {

@@ -13,16 +13,36 @@ class SuccessInfoViewController: NSViewController {
     @IBOutlet weak var labelGatewayIP: NSTextField!
     @IBOutlet weak var labelUsageTime: NSTextField!
     @IBOutlet weak var labelUsageFlow: NSTextField!
+    var schedule:Timer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         self.refreshUsageAndIP()
-        let frequent:TimeInterval = 120
-        let schedule:Timer = Timer.scheduledTimer(timeInterval: frequent, target: self, selector: #selector(SuccessInfoViewController.refreshUsageAndIP), userInfo: nil, repeats: true)
-        print(schedule.isValid)
+        let frequent:TimeInterval = 15
+        schedule = Timer.scheduledTimer(timeInterval: frequent, target: self, selector: #selector(SuccessInfoViewController.refreshUsageAndIP), userInfo: nil, repeats: true)
     }
+    
     func refreshUsageAndIP() {
+        let gatewayURL = URL.init(string: "http://192.168.100.251")
+        let readData:Data
+        do {
+            try readData = Data.init(contentsOf: gatewayURL!)
+            print(readData.count)
+        }
+        catch {
+            print(error.localizedDescription)
+            schedule?.invalidate()
+            let alert:NSAlert = NSAlert.init()
+            alert.messageText = "错误：网络连接失败"
+            alert.addButton(withTitle: "好")
+            alert.alertStyle = NSAlertStyle.warning
+            if alert.runModal() == NSAlertFirstButtonReturn {
+                self.performSegue(withIdentifier: "logOutSegue", sender: self)
+                self.view.window?.performClose(self)
+            }
+            return
+        }
         let timeUsage = UsageProvider.timeUsage()
         let flowUsage = UsageProvider.flowUsage()
         if timeUsage != "" && flowUsage != "" {
