@@ -8,6 +8,13 @@
 
 #include "DrcomPythonModuleCSolver.h"
 
+
+/**
+ Python模块调用函数
+ 
+ @param pyModulePath Python脚本文件所在的路径
+ @param param 传入Python模块的字符串参数
+ */
 void startLogin(const char *pyModulePath,const char *param) {
 //    初始化python
     Py_Initialize();

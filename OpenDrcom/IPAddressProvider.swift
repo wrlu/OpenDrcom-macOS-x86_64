@@ -8,7 +8,12 @@
 
 import Cocoa
 
+/// 获得IP地址的类
 class IPAddressProvider: NSObject {
+    
+    /// 获得所有网卡的IP地址
+    ///
+    /// - Returns: 所有的IP地址，是一个字符串数组
     static func currentIPAddresses() -> [String] {
         var addresses = [String]()
         // Get list of all interfaces on the local machine:

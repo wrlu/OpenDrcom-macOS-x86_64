@@ -17,6 +17,12 @@
 		8968294E1F076E810073D535 /* IPAddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294A1F076E810073D535 /* IPAddressProvider.swift */; };
 		8968294F1F076E810073D535 /* OpenDrcom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8968294B1F076E810073D535 /* OpenDrcom.xcdatamodeld */; };
 		896829501F076E810073D535 /* UsageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294D1F076E810073D535 /* UsageProvider.swift */; };
+		89EFFD511F0CB52A00B76820 /* DrcomIcon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */; };
+		89EFFD521F0CB52A00B76820 /* DrcomIcon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */; };
+		89EFFD531F0CB52A00B76820 /* DrcomIcon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */; };
+		89EFFD541F0CB52A00B76820 /* DrcomIcon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */; };
+		89EFFD551F0CB52A00B76820 /* DrcomIcon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */; };
+		89EFFD561F0CB52A00B76820 /* DrcomIcon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +40,12 @@
 		8968294A1F076E810073D535 /* IPAddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressProvider.swift; sourceTree = "<group>"; };
 		8968294C1F076E810073D535 /* OpenDrcom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OpenDrcom.xcdatamodel; sourceTree = "<group>"; };
 		8968294D1F076E810073D535 /* UsageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageProvider.swift; sourceTree = "<group>"; };
+		89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_128x128.png; sourceTree = "<group>"; };
+		89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_16x16.png; sourceTree = "<group>"; };
+		89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_256x256.png; sourceTree = "<group>"; };
+		89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_32x32.png; sourceTree = "<group>"; };
+		89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_512x512.png; sourceTree = "<group>"; };
+		89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_64x64.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +91,22 @@
 				89145EE61F0608C400800255 /* Info.plist */,
 				8968294B1F076E810073D535 /* OpenDrcom.xcdatamodeld */,
 				890F8A871F063A30002BEA9F /* OpenDrcom-Bridging-Header.h */,
+				89EFFD4A1F0CB52A00B76820 /* Images */,
 			);
 			path = OpenDrcom;
+			sourceTree = "<group>";
+		};
+		89EFFD4A1F0CB52A00B76820 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */,
+				89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */,
+				89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */,
+				89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */,
+				89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */,
+				89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +172,13 @@
 			files = (
 				89145EE21F0608C400800255 /* Assets.xcassets in Resources */,
 				89145EE51F0608C400800255 /* Main.storyboard in Resources */,
+				89EFFD541F0CB52A00B76820 /* DrcomIcon_32x32.png in Resources */,
 				89145EED1F06090B00800255 /* Drcom_CAUC.py in Resources */,
+				89EFFD531F0CB52A00B76820 /* DrcomIcon_256x256.png in Resources */,
+				89EFFD551F0CB52A00B76820 /* DrcomIcon_512x512.png in Resources */,
+				89EFFD561F0CB52A00B76820 /* DrcomIcon_64x64.png in Resources */,
+				89EFFD511F0CB52A00B76820 /* DrcomIcon_128x128.png in Resources */,
+				89EFFD521F0CB52A00B76820 /* DrcomIcon_16x16.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
