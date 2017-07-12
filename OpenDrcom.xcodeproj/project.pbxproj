@@ -15,7 +15,6 @@
 		89145EE51F0608C400800255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE31F0608C400800255 /* Main.storyboard */; };
 		89145EED1F06090B00800255 /* Drcom_CAUC.py in Resources */ = {isa = PBXBuildFile; fileRef = 89145EEC1F06090B00800255 /* Drcom_CAUC.py */; };
 		8968294E1F076E810073D535 /* IPAddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294A1F076E810073D535 /* IPAddressProvider.swift */; };
-		8968294F1F076E810073D535 /* OpenDrcom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8968294B1F076E810073D535 /* OpenDrcom.xcdatamodeld */; };
 		896829501F076E810073D535 /* UsageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294D1F076E810073D535 /* UsageProvider.swift */; };
 		89EFFD511F0CB52A00B76820 /* DrcomIcon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */; };
 		89EFFD521F0CB52A00B76820 /* DrcomIcon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */; };
@@ -38,7 +37,6 @@
 		89145EE61F0608C400800255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89145EEC1F06090B00800255 /* Drcom_CAUC.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Drcom_CAUC.py; sourceTree = "<group>"; };
 		8968294A1F076E810073D535 /* IPAddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressProvider.swift; sourceTree = "<group>"; };
-		8968294C1F076E810073D535 /* OpenDrcom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OpenDrcom.xcdatamodel; sourceTree = "<group>"; };
 		8968294D1F076E810073D535 /* UsageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageProvider.swift; sourceTree = "<group>"; };
 		89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_128x128.png; sourceTree = "<group>"; };
 		89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_16x16.png; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 				89145EE31F0608C400800255 /* Main.storyboard */,
 				89145EEC1F06090B00800255 /* Drcom_CAUC.py */,
 				89145EE61F0608C400800255 /* Info.plist */,
-				8968294B1F076E810073D535 /* OpenDrcom.xcdatamodeld */,
 				890F8A871F063A30002BEA9F /* OpenDrcom-Bridging-Header.h */,
 				89EFFD4A1F0CB52A00B76820 /* Images */,
 			);
@@ -192,7 +189,6 @@
 				89145EDD1F0608C400800255 /* ViewController.swift in Sources */,
 				89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */,
 				890F8A8D1F06423A002BEA9F /* DrcomPythonModuleCSolver.c in Sources */,
-				8968294F1F076E810073D535 /* OpenDrcom.xcdatamodeld in Sources */,
 				8968294E1F076E810073D535 /* IPAddressProvider.swift in Sources */,
 				896829501F076E810073D535 /* UsageProvider.swift in Sources */,
 				890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */,
@@ -314,6 +310,7 @@
 				DEVELOPMENT_TEAM = QXA7GFP499;
 				INFOPLIST_FILE = OpenDrcom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.xiaolulwr.OpenDrcom;
@@ -333,6 +330,7 @@
 				DEVELOPMENT_TEAM = QXA7GFP499;
 				INFOPLIST_FILE = OpenDrcom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.xiaolulwr.OpenDrcom;
@@ -364,19 +362,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8968294B1F076E810073D535 /* OpenDrcom.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8968294C1F076E810073D535 /* OpenDrcom.xcdatamodel */,
-			);
-			currentVersion = 8968294C1F076E810073D535 /* OpenDrcom.xcdatamodel */;
-			path = OpenDrcom.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 89145ECF1F0608C400800255 /* Project object */;
 }

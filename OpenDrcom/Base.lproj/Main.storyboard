@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="12062"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -136,25 +135,6 @@
                                     <action selector="clickLoginButton:" target="XfG-lQ-9wD" id="ewt-Nw-gVj"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKH-jr-dM6">
-                                <rect key="frame" x="275" y="107" width="76" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="保存密码" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9De-bM-D7o">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="savePasswordValueChanged:" target="XfG-lQ-9wD" id="QcS-Ez-8pL"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fk-re-odC">
-                                <rect key="frame" x="275" y="72" width="105" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Debug Mode" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="kVx-PZ-rlY">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <secureTextField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drk-ip-IQX">
                                 <rect key="frame" x="131" y="156" width="218" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -171,6 +151,17 @@
                                 <rect key="frame" x="0.0" y="40" width="427" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKH-jr-dM6">
+                                <rect key="frame" x="275" y="90" width="76" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="保存密码" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9De-bM-D7o">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="savePasswordValueChanged:" target="XfG-lQ-9wD" id="QcS-Ez-8pL"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <touchBar key="touchBar" id="Yb9-9F-GhA">
@@ -180,6 +171,7 @@
                                 <viewController key="viewController" id="kJT-6n-JZO">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zik-nh-bj2">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Acm-WQ-8vT">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -190,6 +182,22 @@
                                     </button>
                                 </viewController>
                                 <size key="designTimeSize" width="150" height="30"/>
+                            </touchBarItem>
+                            <touchBarItem id="1a4-tt-dX1">
+                                <viewController key="viewController" id="Qka-3f-bPf">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHE-bp-OR7">
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="退出" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aJM-sH-ICb">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="exitApplication:" target="XfG-lQ-9wD" id="kdh-zl-2Yk"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                                <size key="designTimeSize" width="138" height="30"/>
                             </touchBarItem>
                             <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="JNv-VZ-AWJ"/>
                         </touchBarItems>
@@ -318,19 +326,94 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="i8a-kc-yvJ"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="inE-Uy-DSV">
+                                <rect key="frame" x="64" y="38" width="140" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="重新登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="up7-Q9-3H7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="reLogin:" target="icQ-mI-ctr" id="Vf8-IA-zIz"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
+                    <touchBar key="touchBar" id="hmJ-BT-IQm">
+                        <touchBarItems>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="mWF-FP-w6d"/>
+                            <touchBarItem id="BD5-sn-0aV">
+                                <viewController key="viewController" id="5jZ-6E-cfo">
+                                    <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSF-Mj-OuM">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="24"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="10.5.255.255" drawsBackground="YES" id="FEN-1c-700">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </viewController>
+                                <size key="designTimeSize" width="98" height="24"/>
+                            </touchBarItem>
+                            <touchBarItem id="gcl-py-LXY">
+                                <viewController key="viewController" id="7co-zc-mxD">
+                                    <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7m-7L-H0A">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="24"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="000000分钟" drawsBackground="YES" id="Nhb-gA-6tJ">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </viewController>
+                                <size key="designTimeSize" width="90" height="24"/>
+                            </touchBarItem>
+                            <touchBarItem id="Kfg-QV-VkX">
+                                <viewController key="viewController" id="E9L-be-ale">
+                                    <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xt1-MJ-MP8">
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="24"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="00000000MB" drawsBackground="YES" id="Df7-ol-I8F">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </viewController>
+                                <size key="designTimeSize" width="104" height="24"/>
+                            </touchBarItem>
+                            <touchBarItem id="vEX-Xl-vpV">
+                                <viewController key="viewController" id="gge-RT-tBx">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LNq-oY-PWg">
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="重新登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r4b-1S-gu9">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="clickLoginButton:" target="XfG-lQ-9wD" id="hwV-FF-8U7"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                                <size key="designTimeSize" width="138" height="30"/>
+                            </touchBarItem>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="IV2-8k-uIB"/>
+                        </touchBarItems>
+                    </touchBar>
                     <connections>
                         <outlet property="labelGatewayIP" destination="VYn-2n-p9Y" id="P6r-J8-sVk"/>
-                        <outlet property="labelUsageFlow" destination="Bzo-CR-cmv" id="ozB-r3-CX6"/>
-                        <outlet property="labelUsageTime" destination="A0d-LP-1h8" id="AQq-dS-VjD"/>
-                        <outlet property="labelUserIP" destination="eod-Dd-0sK" id="PLA-ZC-alc"/>
+                        <outlet property="labelUsageFlow" destination="xt1-MJ-MP8" id="22g-qk-wEG"/>
+                        <outlet property="labelUsageTime" destination="m7m-7L-H0A" id="F5o-Vr-Hi1"/>
+                        <outlet property="labelUserIP" destination="nSF-Mj-OuM" id="Ccc-gN-mCO"/>
                         <segue destination="B8D-0N-5wS" kind="show" identifier="logOutSegue" id="b5a-lx-FPZ"/>
                     </connections>
                 </viewController>
                 <customObject id="kyg-Ug-Uet" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656" y="833"/>
+            <point key="canvasLocation" x="655.5" y="833"/>
         </scene>
     </scenes>
     <resources>

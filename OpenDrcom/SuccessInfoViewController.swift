@@ -43,20 +43,7 @@ class SuccessInfoViewController: NSViewController {
         catch {
 //            网关连接失败，证明已经断网
             print(error.localizedDescription)
-//            取消计时器
-            schedule?.invalidate()
-//            弹窗提示用户断网
-            let alert:NSAlert = NSAlert.init()
-            alert.messageText = "错误：网络连接失败"
-            alert.addButton(withTitle: "好")
-            alert.alertStyle = NSAlertStyle.warning
-//            点按确定按钮之后进入if
-            if alert.runModal() == NSAlertFirstButtonReturn {
-//                跳转回到登录页面
-                self.performSegue(withIdentifier: "logOutSegue", sender: self)
-//                关闭当前窗口
-                self.view.window?.performClose(self)
-            }
+            self.didLogout()
             return
         }
 //        获取用量
@@ -70,11 +57,41 @@ class SuccessInfoViewController: NSViewController {
         else {
             self.labelUsageTime.stringValue = "您还未登录"
             self.labelUsageFlow.stringValue = "您还未登录"
+            self.didLogout()
         }
 //        获取IP地址
         self.labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
 //        强制界面刷新
         self.view.needsDisplay = true
     }
+    
+    
+    /// 执行注销操作并返回登录界面
+    func didLogout() {
+//        取消计时器
+        schedule?.invalidate()
+//        弹窗提示用户断网
+        let alert:NSAlert = NSAlert.init()
+        alert.messageText = "错误：网络连接失败"
+        alert.addButton(withTitle: "好")
+        alert.alertStyle = NSAlertStyle.warning
+//        点按确定按钮之后进入if
+        if alert.runModal() == NSAlertFirstButtonReturn {
+//            跳转重新登录
+            self.reLogin(self)
+//            关闭当前窗口
+            self.view.window?.performClose(self)
+        }
+    }
+    
+    
+    /// 回到登录界面
+    ///
+    /// - Parameter sender: 消息发送者
+    @IBAction func reLogin(_ sender: Any) {
+//        跳转回到登录页面
+        self.performSegue(withIdentifier: "logOutSegue", sender: self)
+    }
+    
     
 }

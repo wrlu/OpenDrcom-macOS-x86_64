@@ -13,7 +13,6 @@ class ViewController: NSViewController,NSTextFieldDelegate {
     
     /// 开关变量
     @IBOutlet weak var buttonIsSavedPassword: NSButton!
-    @IBOutlet weak var buttonIsAutoLogin: NSButton!
     @IBOutlet weak var textFieldUsername: NSTextField!
     @IBOutlet weak var textFieldPassword: NSSecureTextField!
     @IBOutlet weak var progress: NSProgressIndicator!
@@ -113,30 +112,32 @@ class ViewController: NSViewController,NSTextFieldDelegate {
 //        在主线程中继续操作
 //        加载条动画开始
         self.progress.startAnimation(self)
-//        在主线程检查登录状态
-        while true {
-//            尝试从网关获取使用量，如果获取到了证明登录成功
-            if UsageProvider.timeUsage() != "" && UsageProvider.flowUsage() != "" {
-//                跳转到登录成功页面
-                self.performSegue(withIdentifier: "logInSuccessSegue", sender: self)
-//                关闭登录窗口
-                self.view.window?.performClose(self)
-                break
+//        异步检查登录状态
+        DispatchQueue.global().async {
+            while true {
+//              尝试从网关获取使用量，如果获取到了证明登录成功
+                if UsageProvider.timeUsage() != "" && UsageProvider.flowUsage() != "" {
+//                  跳转到登录成功页面
+                    self.performSegue(withIdentifier: "logInSuccessSegue", sender: self)
+//                  关闭登录窗口
+                    self.view.window?.performClose(self)
+                    break
+                }
+//              如果登录线程的C语言函数返回，则证明登录失败
+                if self.isLoginFailed == true {
+                    print("Login Failed!!!")
+//                  弹窗提示，一般情况下都是用户名或密码错误，也不排除是忽然断网，学校的网总这样，呵呵
+                    let alert:NSAlert = NSAlert.init()
+                    alert.messageText = "错误：用户名或密码错误，或网络连接失败"
+                    alert.addButton(withTitle: "好")
+                    alert.alertStyle = NSAlertStyle.warning
+                    alert.runModal()
+                    break
+                }
             }
-//            如果登录线程的C语言函数返回，则证明登录失败
-            if isLoginFailed == true {
-                print("Login Failed!!!")
-//                弹窗提示，一般情况下都是用户名或密码错误，也不排除是忽然断网，学校的网总这样，呵呵
-                let alert:NSAlert = NSAlert.init()
-                alert.messageText = "错误：用户名或密码错误，或网络连接失败"
-                alert.addButton(withTitle: "好")
-                alert.alertStyle = NSAlertStyle.warning
-                alert.runModal()
-                break
-            }
+//          加载条动画停止
+            self.progress.stopAnimation(self)
         }
-//        加载条动画停止
-        self.progress.stopAnimation(self)
     }
     
     /// 生成Python参数的方法
@@ -177,5 +178,12 @@ class ViewController: NSViewController,NSTextFieldDelegate {
             defaults.set(textFieldUsername.stringValue, forKey: "savedUser")
             defaults.set(textFieldPassword.stringValue, forKey: "savedPassword")
         }
+    }
+    
+    /// 退出应用
+    ///
+    /// - Parameter sender: 消息发送者
+    @IBAction func exitApplication(_ sender: Any) {
+        self.view.window?.performClose(self)
     }
 }
