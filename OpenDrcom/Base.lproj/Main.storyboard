@@ -171,7 +171,6 @@
                                 <viewController key="viewController" id="kJT-6n-JZO">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zik-nh-bj2">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Acm-WQ-8vT">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -187,7 +186,6 @@
                                 <viewController key="viewController" id="Qka-3f-bPf">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHE-bp-OR7">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="退出" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aJM-sH-ICb">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -342,53 +340,10 @@
                     <touchBar key="touchBar" id="hmJ-BT-IQm">
                         <touchBarItems>
                             <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="mWF-FP-w6d"/>
-                            <touchBarItem id="BD5-sn-0aV">
-                                <viewController key="viewController" id="5jZ-6E-cfo">
-                                    <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSF-Mj-OuM">
-                                        <rect key="frame" x="0.0" y="0.0" width="98" height="24"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="10.5.255.255" drawsBackground="YES" id="FEN-1c-700">
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </viewController>
-                                <size key="designTimeSize" width="98" height="24"/>
-                            </touchBarItem>
-                            <touchBarItem id="gcl-py-LXY">
-                                <viewController key="viewController" id="7co-zc-mxD">
-                                    <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7m-7L-H0A">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="24"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="000000分钟" drawsBackground="YES" id="Nhb-gA-6tJ">
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </viewController>
-                                <size key="designTimeSize" width="90" height="24"/>
-                            </touchBarItem>
-                            <touchBarItem id="Kfg-QV-VkX">
-                                <viewController key="viewController" id="E9L-be-ale">
-                                    <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xt1-MJ-MP8">
-                                        <rect key="frame" x="0.0" y="0.0" width="104" height="24"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="00000000MB" drawsBackground="YES" id="Df7-ol-I8F">
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </viewController>
-                                <size key="designTimeSize" width="104" height="24"/>
-                            </touchBarItem>
                             <touchBarItem id="vEX-Xl-vpV">
                                 <viewController key="viewController" id="gge-RT-tBx">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LNq-oY-PWg">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="重新登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r4b-1S-gu9">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -405,9 +360,9 @@
                     </touchBar>
                     <connections>
                         <outlet property="labelGatewayIP" destination="VYn-2n-p9Y" id="P6r-J8-sVk"/>
-                        <outlet property="labelUsageFlow" destination="xt1-MJ-MP8" id="22g-qk-wEG"/>
-                        <outlet property="labelUsageTime" destination="m7m-7L-H0A" id="F5o-Vr-Hi1"/>
-                        <outlet property="labelUserIP" destination="nSF-Mj-OuM" id="Ccc-gN-mCO"/>
+                        <outlet property="labelUsageFlow" destination="Bzo-CR-cmv" id="LtS-6d-atT"/>
+                        <outlet property="labelUsageTime" destination="A0d-LP-1h8" id="J9Q-74-s9B"/>
+                        <outlet property="labelUserIP" destination="eod-Dd-0sK" id="Wmj-09-vHI"/>
                         <segue destination="B8D-0N-5wS" kind="show" identifier="logOutSegue" id="b5a-lx-FPZ"/>
                     </connections>
                 </viewController>
