@@ -113,7 +113,6 @@ class ViewController: NSViewController,NSTextFieldDelegate {
 //        加载条动画开始
         self.progress.startAnimation(self)
 //        异步检查登录状态
-        DispatchQueue.global().async {
             while true {
 //              尝试从网关获取使用量，如果获取到了证明登录成功
                 if UsageProvider.timeUsage() != "" && UsageProvider.flowUsage() != "" {
@@ -137,7 +136,6 @@ class ViewController: NSViewController,NSTextFieldDelegate {
             }
 //          加载条动画停止
             self.progress.stopAnimation(self)
-        }
     }
     
     /// 生成Python参数的方法

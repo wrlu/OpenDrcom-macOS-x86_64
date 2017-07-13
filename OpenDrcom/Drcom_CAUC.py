@@ -60,6 +60,7 @@ def log(*args, **kwargs):
           f.write(s + '\n')
 
 def challenge(svr,ran):
+    i = 0
     while True:
       t = struct.pack("<H", int(ran)%(0xFFFF))
       s.sendto("\x01\x02"+t+"\x09"+"\x00"*15, (svr, 61440))
@@ -68,6 +69,9 @@ def challenge(svr,ran):
         # log('[challenge] recv',data.encode('hex'))
       except:
         log('[challenge] timeout, retrying...')
+        i = i + 1
+        if i >= 5 and UNLIMITED_RETRY == False :
+          sys.exit(1)
         continue
 
       if address == (svr, 61440):
