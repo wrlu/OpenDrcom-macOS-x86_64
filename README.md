@@ -1,7 +1,7 @@
-# OpenDrcom-macOS-x86_64
-### 此程序是Drcom的第三方客户端，macOS 64位版本主要使用Swift语言编写，认证模块使用的是此前Python命令行认证模块。如果有能力的话我会使用C语言重写一下。
+# OpenDrcom-macOS-x86_64（哆点开放平台 macOS 64位版）
+### 简介：此程序是Drcom的第三方客户端，macOS 64位版本主要使用Swift语言编写，认证模块使用的是开源的Python命令行认证模块。如果有能力的话我会使用C语言重写一下。
 
-### 此程序使用的开源组件
+#### 特别感谢：此程序使用的开源组件
 1. drcoms/drcom-generic
  - Source Code：[drcoms/drcom-generic on Github](https://github.com/drcoms/drcom-generic)
  - License：[AGPLv3](https://github.com/drcoms/drcom-generic/blob/master/LICENSE)
