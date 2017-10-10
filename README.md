@@ -1,10 +1,22 @@
 # OpenDrcom-macOS-x86_64（哆点开放平台 macOS 64位版）
 ### 简介：此程序是Drcom的第三方客户端，macOS 64位版本主要使用Swift语言编写，认证模块使用的是开源的Python命令行认证模块。如果有能力的话我会使用C语言重写一下。
 
+#### 使用说明
+- macOS 10.12或更高版本开启“任何来源”后才可以运行本程序（因为我没注册苹果付费帐号，一年688大洋，穷）
+- 在“终端”中执行以下指令，执行后输入管理员密码即可。
+
+~~~
+sudo spctl --master-disable
+~~~
+
 #### 特别感谢：此程序使用的开源组件
 1. drcoms/drcom-generic
  - Source Code：[drcoms/drcom-generic on Github](https://github.com/drcoms/drcom-generic)
  - License：[AGPLv3](https://github.com/drcoms/drcom-generic/blob/master/LICENSE)
+
+#### 最新版本（1.0.4）的已知问题
+1. 掉线后请您退出本应用之后再打开重新登录，否则的话会闪退。（原因不明，正在修复，抱歉）
+2. 在IPv6网络上小概率工作不稳定，重新打开应用即可。
 
 #### 版本1.0.4更新：关于信息和开源许可
 1. 新增关于页面；
