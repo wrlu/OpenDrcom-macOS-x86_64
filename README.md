@@ -14,9 +14,11 @@ sudo spctl --master-disable
  - Source Code：[drcoms/drcom-generic on Github](https://github.com/drcoms/drcom-generic)
  - License：[AGPLv3](https://github.com/drcoms/drcom-generic/blob/master/LICENSE)
 
-#### 最新版本（1.0.4）的已知问题
+#### 最新版本（1.0.5）的已知问题
 1. 掉线后请您退出本应用之后再打开重新登录，否则的话会闪退。（原因不明，正在修复，抱歉）
-2. 在IPv6网络上小概率工作不稳定，重新打开应用即可。
+
+#### 版本1.0.5更新：停止维护
+1. 因学校升级为网页认证，本项目停止维护。
 
 #### 版本1.0.4更新：关于信息和开源许可
 1. 新增关于页面；
