@@ -32,7 +32,7 @@ class SuccessInfoViewController: NSViewController {
     }
     
     /// 刷新使用时长、使用流量和IP地址的方法
-    func refreshUsageAndIP() {
+    @objc func refreshUsageAndIP() {
         let gatewayURL = URL.init(string: "http://192.168.100.251")
         let readData:Data
         do {
@@ -74,9 +74,9 @@ class SuccessInfoViewController: NSViewController {
         let alert:NSAlert = NSAlert.init()
         alert.messageText = "错误：网络连接失败"
         alert.addButton(withTitle: "好")
-        alert.alertStyle = NSAlertStyle.warning
+        alert.alertStyle = NSAlert.Style.warning
 //        点按确定按钮之后进入if
-        if alert.runModal() == NSAlertFirstButtonReturn {
+        if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
 //            跳转重新登录
             self.reLogin(self)
 //            关闭当前窗口
@@ -90,7 +90,7 @@ class SuccessInfoViewController: NSViewController {
     /// - Parameter sender: 消息发送者
     @IBAction func reLogin(_ sender: Any) {
 //        跳转回到登录页面
-        self.performSegue(withIdentifier: "logOutSegue", sender: self)
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
     }
     
     

@@ -14,8 +14,11 @@
 		89145EE21F0608C400800255 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE11F0608C400800255 /* Assets.xcassets */; };
 		89145EE51F0608C400800255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE31F0608C400800255 /* Main.storyboard */; };
 		89145EED1F06090B00800255 /* Drcom_CAUC.py in Resources */ = {isa = PBXBuildFile; fileRef = 89145EEC1F06090B00800255 /* Drcom_CAUC.py */; };
+		894B7A4E1F7BD88F001A390E /* LoginServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */; };
+		894B7A501F7BD99E001A390E /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */; };
 		8968294E1F076E810073D535 /* IPAddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294A1F076E810073D535 /* IPAddressProvider.swift */; };
 		896829501F076E810073D535 /* UsageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294D1F076E810073D535 /* UsageProvider.swift */; };
+		89CF92801F7EABC100D56DC6 /* Drcom_CAUC.c in Sources */ = {isa = PBXBuildFile; fileRef = 89CF927F1F7EABC100D56DC6 /* Drcom_CAUC.c */; };
 		89EFFD511F0CB52A00B76820 /* DrcomIcon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */; };
 		89EFFD521F0CB52A00B76820 /* DrcomIcon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */; };
 		89EFFD531F0CB52A00B76820 /* DrcomIcon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */; };
@@ -36,8 +39,12 @@
 		89145EE41F0608C400800255 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89145EE61F0608C400800255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89145EEC1F06090B00800255 /* Drcom_CAUC.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Drcom_CAUC.py; sourceTree = "<group>"; };
+		894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProvider.swift; sourceTree = "<group>"; };
+		894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		8968294A1F076E810073D535 /* IPAddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressProvider.swift; sourceTree = "<group>"; };
 		8968294D1F076E810073D535 /* UsageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageProvider.swift; sourceTree = "<group>"; };
+		89CF927E1F7EABC100D56DC6 /* Drcom_CAUC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drcom_CAUC.h; sourceTree = "<group>"; };
+		89CF927F1F7EABC100D56DC6 /* Drcom_CAUC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Drcom_CAUC.c; sourceTree = "<group>"; };
 		89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_128x128.png; sourceTree = "<group>"; };
 		89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_16x16.png; sourceTree = "<group>"; };
 		89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_256x256.png; sourceTree = "<group>"; };
@@ -78,11 +85,15 @@
 			children = (
 				89145EDA1F0608C400800255 /* AppDelegate.swift */,
 				89145EDC1F0608C400800255 /* ViewController.swift */,
+				894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */,
+				894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */,
 				890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */,
 				8968294A1F076E810073D535 /* IPAddressProvider.swift */,
 				8968294D1F076E810073D535 /* UsageProvider.swift */,
 				890F8A8C1F06423A002BEA9F /* DrcomPythonModuleCSolver.h */,
 				890F8A8B1F06423A002BEA9F /* DrcomPythonModuleCSolver.c */,
+				89CF927E1F7EABC100D56DC6 /* Drcom_CAUC.h */,
+				89CF927F1F7EABC100D56DC6 /* Drcom_CAUC.c */,
 				89145EE11F0608C400800255 /* Assets.xcassets */,
 				89145EE31F0608C400800255 /* Main.storyboard */,
 				89145EEC1F06090B00800255 /* Drcom_CAUC.py */,
@@ -133,13 +144,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "路伟饶";
 				TargetAttributes = {
 					89145ED61F0608C400800255 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = QXA7GFP499;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -188,8 +199,11 @@
 			files = (
 				89145EDD1F0608C400800255 /* ViewController.swift in Sources */,
 				89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */,
+				894B7A501F7BD99E001A390E /* LoginDelegate.swift in Sources */,
+				89CF92801F7EABC100D56DC6 /* Drcom_CAUC.c in Sources */,
 				890F8A8D1F06423A002BEA9F /* DrcomPythonModuleCSolver.c in Sources */,
 				8968294E1F076E810073D535 /* IPAddressProvider.swift in Sources */,
+				894B7A4E1F7BD88F001A390E /* LoginServiceProvider.swift in Sources */,
 				896829501F076E810073D535 /* UsageProvider.swift in Sources */,
 				890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */,
 			);
@@ -219,7 +233,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -227,7 +243,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -269,7 +289,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -277,7 +299,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -317,7 +343,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpenDrcom/OpenDrcom-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -336,7 +363,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.xiaolulwr.OpenDrcom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OpenDrcom/OpenDrcom-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
