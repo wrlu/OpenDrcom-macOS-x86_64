@@ -1,4 +1,4 @@
-# OpenAutoDr-macOS-x86_64（哆点自动拨号 macOS 64位版）
+# OpenAutoDrcom-macOS-x86_64（哆点自动拨号 macOS 64位版）
 ### 简介：此程序是Drcom的第三方自动拨号器，主要用于解决自动重连的问题。
 
 #### 使用说明
