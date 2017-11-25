@@ -33,7 +33,7 @@ class LoginServiceProvider: NSObject{
         DispatchQueue.global().async {
             Thread.current.name = "pylogin"
             do {
-                let gatewayURL = URL.init(string: "http://192.168.100.251")
+                let gatewayURL = URL.init(string: "http://192.168.100.200")
                 let readData:Data
                 try readData = Data.init(contentsOf: gatewayURL!)
                 print(readData.count)

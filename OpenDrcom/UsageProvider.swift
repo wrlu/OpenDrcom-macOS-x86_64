@@ -15,7 +15,7 @@ class UsageProvider: NSObject {
     ///
     /// - Returns: 帐号使用时长，单位是分钟
     static func timeUsage() -> String {
-        let usageURL = URL.init(string: "http://192.168.100.251")
+        let usageURL = URL.init(string: "http://192.168.100.200")
         let readData:Data
         do {
 //            尝试连接网关
@@ -53,7 +53,7 @@ class UsageProvider: NSObject {
     ///
     /// - Returns: 帐号使用的流量，单位是MB
     static func flowUsage() -> String {
-        let usageURL = URL.init(string: "http://192.168.100.251")
+        let usageURL = URL.init(string: "http://192.168.100.200")
         let readData:Data
         do {
 //            尝试连接网关
