@@ -29,10 +29,13 @@ class UsageProvider: NSObject {
                 return ""
             }
 //            获取时间用量
-            let timeSubstring = htmlCode?.substring(from: (timeRange?.upperBound)!)
+//            Swift 4 Usage
+            let timeSubstring = htmlCode?[(timeRange?.upperBound)!...]
+//            Swfit 3 Usage (deprecated)
+//            let timeSubstring = htmlCode?.substring(from: (timeRange?.upperBound)!)
 //            截取有效数字，转化为字符串
             var usageTimeString:String=""
-            for perChar in (timeSubstring?.characters)! {
+            for perChar in timeSubstring! {
                 if perChar >= "0" && perChar <= "9" {
                     usageTimeString.append(perChar)
                 }
@@ -70,10 +73,13 @@ class UsageProvider: NSObject {
                 return ""
             }
 //            获取流量用量
-            let flowSubstring = htmlCode?.substring(from: (flowRange?.upperBound)!)
+//            Swift 4 Usage
+            let flowSubstring = htmlCode?[(flowRange?.upperBound)!...]
+//            Swfit 3 Usage (deprecated)
+//            let flowSubstring = htmlCode?.substring(from: (flowRange?.upperBound)!)
             var usageFlowString:String=""
 //            截取有效数字，转化为字符串
-            for perChar in (flowSubstring?.characters)! {
+            for perChar in flowSubstring! {
                 if perChar >= "0" && perChar <= "9" {
                     usageFlowString.append(perChar)
                 }
