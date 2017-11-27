@@ -33,7 +33,7 @@ class SuccessInfoViewController: NSViewController {
     
     /// 刷新使用时长、使用流量和IP地址的方法
     @objc func refreshUsageAndIP() {
-        let gatewayURL = URL.init(string: "http://192.168.100.251")
+        let gatewayURL = URL.init(string: "http://192.168.100.200")
         let readData:Data
         do {
 //            尝试连接网关
