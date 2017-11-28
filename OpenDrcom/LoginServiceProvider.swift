@@ -36,7 +36,8 @@ class LoginServiceProvider: NSObject{
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             let parameter = "DDDDD=\(user)&upass=\(passwd)&R1=0&R3=0&R6=0&MKKey=123456"
-            request.httpBody = parameter.data(using: .ascii)
+            let encodePara = parameter.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            request.httpBody = encodePara.data(using: .ascii)
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if let error = error {
                     self.delegate.didLoginFailed(errorCode: -3)
