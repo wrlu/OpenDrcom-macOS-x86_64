@@ -22,7 +22,7 @@ class LoginServiceProvider: NSObject{
     /// - Parameters:
     ///   - user: 用户名
     ///   - passwd: 密码
-    func login(user:String,passwd:String) {
+    func login(user:String, passwd:String) {
         if user == "" {
             self.delegate.didLoginFailed(errorCode: -1)
         }
@@ -31,67 +31,36 @@ class LoginServiceProvider: NSObject{
         }
         //        异步进行登录
         DispatchQueue.global().async {
-            Thread.current.name = "pylogin"
-            do {
-                let gatewayURL = URL.init(string: "http://192.168.100.251")
-                let readData:Data
-                try readData = Data.init(contentsOf: gatewayURL!)
-                print(readData.count)
-                let resourcePath = Bundle.main.resourcePath
-//              设置Python模块路径
-                let pyModulePath = "sys.path.append('"+resourcePath!+"')"
-//              获得Python参数
-                let param = self.getParameter(user: user, passwd: passwd)
-//              开始尝试登录
-
-                startLogin(pyModulePath,param)
-
-//              Python模块在登录成功之后会不断发送Keep-alive包
-//              因此上面的C函数不会返回
-//              所以一旦上面的函数返回，则证明登录失败
-                self.delegate.didLoginFailed(errorCode: -4)
-            }
-            catch {
-                print(error.localizedDescription)
-                self.delegate.didLoginFailed(errorCode: -3)
-            }
-        };
-        
-        DispatchQueue.global().async {
-            let frequent:TimeInterval = 1
-            let schedule = Timer.scheduledTimer(timeInterval: frequent, target: self, selector: #selector(self.timerCallback), userInfo: nil, repeats: true)
-            while true {
-//         试从网关获取使用量，如果获取到了证明登录成功
-                if UsageProvider.timeUsage() != "" && UsageProvider.flowUsage() != "" {
-                    schedule.invalidate()
-                    self.timeout = 0
-                    self.delegate.didLoginSuccess()
-                    break
+            Thread.current.name = "WebLogin"
+            let url = URL.init(string: "http://192.168.100.200/a70.htm")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            let parameter = "DDDDD=\(user)&upass=\(passwd)&R1=0&R3=0&R6=0&MKKey=123456"
+            request.httpBody = parameter.data(using: .ascii)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                if let error = error {
+                    self.delegate.didLoginFailed(errorCode: -3)
+                    print(error.localizedDescription)
+                    return
                 }
-                else if self.timeout >= 30 {
-                    schedule.invalidate()
-                    self.timeout = 0
+                let data = data!
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     self.delegate.didLoginFailed(errorCode: -5)
-                    break
+                    return
                 }
-            }
+                let responseHtml = String (data: data, encoding: .ascii)!
+                if responseHtml.contains("v46ip=") == true {
+                    self.delegate.didLoginSuccess()
+                }
+                else {
+                    self.delegate.didLoginFailed(errorCode: -6)
+                }
+            })
+            task.resume()
         }
     }
     
-    @objc func timerCallback() {
-        timeout = timeout + 1
-    }
-    
-    /// 生成Python参数的方法
-    ///
-    /// - Parameters:
-    ///   - user: 用户名
-    ///   - passwd: 密码
-    /// - Returns: Python参数，格式为：用户名/*DRCOM*/密码/*DRCOM*/IP地址
-    private func getParameter(user:String,passwd:String) -> String {
-        var resultParam = user + "/*DRCOM*/" + passwd + "/*DRCOM*/"
-        resultParam += IPAddressProvider.currentIPAddresses().first!
-        print(resultParam)
-        return resultParam
-    }
 }
+
+
+
