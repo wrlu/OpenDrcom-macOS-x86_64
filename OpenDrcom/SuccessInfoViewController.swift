@@ -79,8 +79,6 @@ class SuccessInfoViewController: NSViewController {
         if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
 //            跳转重新登录
             self.reLogin(self)
-//            关闭当前窗口
-            self.view.window?.performClose(self)
         }
     }
     
@@ -91,6 +89,7 @@ class SuccessInfoViewController: NSViewController {
     @IBAction func reLogin(_ sender: Any) {
 //        跳转回到登录页面
         self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
+        self.view.window?.performClose(self)
     }
     
     
