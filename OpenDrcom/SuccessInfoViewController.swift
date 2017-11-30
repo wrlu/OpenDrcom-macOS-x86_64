@@ -12,8 +12,9 @@ import Cocoa
 class SuccessInfoViewController: NSViewController {
     
     /// 开关变量
+    @IBOutlet weak var labelUserAccount: NSTextField!
     @IBOutlet weak var labelUserIP: NSTextField!
-    @IBOutlet weak var labelGatewayIP: NSTextField!
+    @IBOutlet weak var labelBalance: NSTextField!
     @IBOutlet weak var labelUsageTime: NSTextField!
     @IBOutlet weak var labelUsageFlow: NSTextField!
     
@@ -29,6 +30,10 @@ class SuccessInfoViewController: NSViewController {
         let frequent:TimeInterval = 15
 //        每隔计时器时间，就会刷新一次用量和IP地址
         schedule = Timer.scheduledTimer(timeInterval: frequent, target: self, selector: #selector(SuccessInfoViewController.refreshUsageAndIP), userInfo: nil, repeats: true)
+    }
+    
+    func getLoginParameter(account: String) {
+        self.labelUserAccount.stringValue = account;
     }
     
     /// 刷新使用时长、使用流量和IP地址的方法
@@ -47,20 +52,24 @@ class SuccessInfoViewController: NSViewController {
             return
         }
 //        获取用量
-        let timeUsage = UsageProvider.timeUsage()
-        let flowUsage = UsageProvider.flowUsage()
+        let timeUsage = DrInfoProvider.timeUsage()
+        let flowUsage = DrInfoProvider.flowUsage()
+        let balanceUsage = DrInfoProvider.balanceUsage()
+        let ipUsage = DrInfoProvider.inetAddress()
 //        获取成功后设置界面文本
-        if timeUsage != "" && flowUsage != "" {
+        if timeUsage != "" && flowUsage != "" && balanceUsage != "" && ipUsage != "" {
             self.labelUsageTime.stringValue = timeUsage + " 分钟"
             self.labelUsageFlow.stringValue = flowUsage + " MB"
+            self.labelBalance.stringValue = balanceUsage + " 元"
+            self.labelUserIP.stringValue = ipUsage
         }
         else {
             self.labelUsageTime.stringValue = "您还未登录"
             self.labelUsageFlow.stringValue = "您还未登录"
+            self.labelBalance.stringValue = "您还未登录"
+            self.labelUserIP.stringValue = "127.0.0.1"
             self.didLogout()
         }
-//        获取IP地址
-        self.labelUserIP.stringValue = IPAddressProvider.currentIPAddresses().first!
 //        强制界面刷新
         self.view.needsDisplay = true
     }

@@ -66,6 +66,14 @@ class ViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         }
     }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.identifier?._rawValue == "logInSuccessSegue" {
+            let destWindow = segue.destinationController as! NSWindowController;
+            let viewController = destWindow.contentViewController as! SuccessInfoViewController
+            viewController.getLoginParameter(account: self.textFieldUsername.stringValue)
+        }
+    }
+    
     func didLoginFailed(errorCode: Int) {
 //        回到主线程继续操作
         if Thread.isMainThread == true {

@@ -9,7 +9,7 @@
 import Cocoa
 
 /// 获得使用量的类
-class UsageProvider: NSObject {
+class DrInfoProvider: NSObject {
     
     /// 从网关获取使用时长
     ///
@@ -104,6 +104,83 @@ class UsageProvider: NSObject {
             return ""
         }
         
+    }
+    
+    static func balanceUsage() -> String {
+        let usageURL = URL.init(string: "http://192.168.100.200")
+        let readData:Data
+        do {
+//            尝试连接网关
+            try readData = Data.init(contentsOf: usageURL!)
+//            获取页面HTML代码，居然都不是UTF-8的，还得用ASCII，差评
+            let htmlCode = String.init(data: readData, encoding: String.Encoding.ascii)
+//            页面的余额信息是在JS代码，在一个<script>中，寻找指定位置
+            let balanceRange = htmlCode?.range(of: "fee='")
+//            如果找不到，说明已经跳转到互联网访问管理系统，证明网络未认证
+            if balanceRange == nil {
+                return ""
+            }
+//            获取余额
+//            Swift 4 Usage
+            let balanceSubstring = htmlCode?[(balanceRange?.upperBound)!...]
+//            截取有效数字，转化为字符串
+            var usageBalanceString:String=""
+            
+            for perChar in balanceSubstring! {
+                if perChar >= "0" && perChar <= "9" {
+                    usageBalanceString.append(perChar)
+                }
+                else {
+                    break;
+                }
+            }
+            var usageBalanceDouble = Double.init(usageBalanceString)!
+            usageBalanceDouble = usageBalanceDouble / 10000
+            usageBalanceString = String.init(format: "%.2f", usageBalanceDouble);
+            return usageBalanceString
+        }
+//        无法连接到网关
+        catch {
+            print(error.localizedDescription)
+            return ""
+        }
+    }
+    
+    static func inetAddress() -> String {
+        let usageURL = URL.init(string: "http://192.168.100.200")
+        let readData:Data
+        do {
+//            尝试连接网关
+            try readData = Data.init(contentsOf: usageURL!)
+//            获取页面HTML代码，居然都不是UTF-8的，还得用ASCII，差评
+            let htmlCode = String.init(data: readData, encoding: String.Encoding.ascii)
+//            页面的余额信息是在JS代码，在一个<script>中，寻找指定位置
+            let ipRange = htmlCode?.range(of: "v4ip='")
+//            如果找不到，说明已经跳转到互联网访问管理系统，证明网络未认证
+            if ipRange == nil {
+                return ""
+            }
+//            获取IP地址
+//            Swift 4 Usage
+            let ipSubstring = htmlCode?[(ipRange?.upperBound)!...]
+//            截取有效数字，转化为字符串
+            var usageIPString:String=""
+            
+            for perChar in ipSubstring! {
+                if (perChar >= "0" && perChar <= "9") || perChar == "." {
+                    usageIPString.append(perChar)
+                }
+                else {
+                    break;
+                }
+            }
+            return usageIPString
+        }
+            //        无法连接到网关
+        catch {
+            print(error.localizedDescription)
+            return ""
+        }
     }
 
 }

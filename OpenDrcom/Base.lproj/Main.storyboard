@@ -200,9 +200,9 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pjj-gt-2KV">
-                                <rect key="frame" x="158" y="179" width="114" height="17"/>
+                                <rect key="frame" x="150" y="179" width="130" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="版本：2.0（1711）" id="qn2-Qu-KpB">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="版本：2.0.1（1712）" id="qn2-Qu-KpB">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -216,7 +216,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="ZbO-a9-rRP">
-                                            <rect key="frame" x="0.0" y="0.0" width="388" height="8260"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="7798"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="388" height="123"/>
@@ -1050,7 +1050,7 @@ Public License instead of this License.  But first, please read
                             <touchBarItem id="rL5-Uq-bPP">
                                 <viewController key="viewController" id="kJT-6n-JZO">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zik-nh-bj2">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Acm-WQ-8vT">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1066,7 +1066,7 @@ Public License instead of this License.  But first, please read
                             <touchBarItem id="1a4-tt-dX1">
                                 <viewController key="viewController" id="Qka-3f-bPf">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHE-bp-OR7">
-                                        <rect key="frame" x="0.0" y="0.0" width="138" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="退出" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aJM-sH-ICb">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1254,7 +1254,7 @@ Public License instead of this License.  But first, please read
                             <touchBarItem id="vEX-Xl-vpV">
                                 <viewController key="viewController" id="gge-RT-tBx">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LNq-oY-PWg">
-                                        <rect key="frame" x="0.0" y="0.0" width="138" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="重新登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r4b-1S-gu9">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1271,9 +1271,10 @@ Public License instead of this License.  But first, please read
                         </touchBarItems>
                     </touchBar>
                     <connections>
-                        <outlet property="labelGatewayIP" destination="VYn-2n-p9Y" id="P6r-J8-sVk"/>
+                        <outlet property="labelBalance" destination="VYn-2n-p9Y" id="kGj-TZ-prI"/>
                         <outlet property="labelUsageFlow" destination="Bzo-CR-cmv" id="LtS-6d-atT"/>
                         <outlet property="labelUsageTime" destination="A0d-LP-1h8" id="J9Q-74-s9B"/>
+                        <outlet property="labelUserAccount" destination="PCm-z7-D8G" id="lb7-c3-pFH"/>
                         <outlet property="labelUserIP" destination="eod-Dd-0sK" id="Wmj-09-vHI"/>
                         <segue destination="B8D-0N-5wS" kind="show" identifier="logOutSegue" id="b5a-lx-FPZ"/>
                     </connections>

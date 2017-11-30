@@ -14,8 +14,7 @@
 		89145EE51F0608C400800255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE31F0608C400800255 /* Main.storyboard */; };
 		894B7A4E1F7BD88F001A390E /* LoginServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */; };
 		894B7A501F7BD99E001A390E /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */; };
-		8968294E1F076E810073D535 /* IPAddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294A1F076E810073D535 /* IPAddressProvider.swift */; };
-		896829501F076E810073D535 /* UsageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294D1F076E810073D535 /* UsageProvider.swift */; };
+		896829501F076E810073D535 /* DrInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294D1F076E810073D535 /* DrInfoProvider.swift */; };
 		89EFFD511F0CB52A00B76820 /* DrcomIcon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */; };
 		89EFFD521F0CB52A00B76820 /* DrcomIcon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */; };
 		89EFFD531F0CB52A00B76820 /* DrcomIcon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */; };
@@ -35,8 +34,7 @@
 		89145EE61F0608C400800255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProvider.swift; sourceTree = "<group>"; };
 		894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
-		8968294A1F076E810073D535 /* IPAddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressProvider.swift; sourceTree = "<group>"; };
-		8968294D1F076E810073D535 /* UsageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsageProvider.swift; sourceTree = "<group>"; };
+		8968294D1F076E810073D535 /* DrInfoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrInfoProvider.swift; sourceTree = "<group>"; };
 		89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_128x128.png; sourceTree = "<group>"; };
 		89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_16x16.png; sourceTree = "<group>"; };
 		89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_256x256.png; sourceTree = "<group>"; };
@@ -80,8 +78,7 @@
 				894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */,
 				894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */,
 				890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */,
-				8968294A1F076E810073D535 /* IPAddressProvider.swift */,
-				8968294D1F076E810073D535 /* UsageProvider.swift */,
+				8968294D1F076E810073D535 /* DrInfoProvider.swift */,
 				89145EE11F0608C400800255 /* Assets.xcassets */,
 				89145EE31F0608C400800255 /* Main.storyboard */,
 				89145EE61F0608C400800255 /* Info.plist */,
@@ -186,9 +183,8 @@
 				89145EDD1F0608C400800255 /* ViewController.swift in Sources */,
 				89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */,
 				894B7A501F7BD99E001A390E /* LoginDelegate.swift in Sources */,
-				8968294E1F076E810073D535 /* IPAddressProvider.swift in Sources */,
 				894B7A4E1F7BD88F001A390E /* LoginServiceProvider.swift in Sources */,
-				896829501F076E810073D535 /* UsageProvider.swift in Sources */,
+				896829501F076E810073D535 /* DrInfoProvider.swift in Sources */,
 				890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
