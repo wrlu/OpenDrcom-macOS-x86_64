@@ -94,7 +94,7 @@ class ViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             return
         }
         DispatchQueue.main.sync {
-            //          加载条动画停止
+//          加载条动画停止
             self.progress.stopAnimation(self)
             let alert:NSAlert = NSAlert.init()
             alert.addButton(withTitle: "好")
