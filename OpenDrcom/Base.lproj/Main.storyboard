@@ -216,7 +216,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="ZbO-a9-rRP">
-                                            <rect key="frame" x="0.0" y="0.0" width="388" height="7798"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="7728"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="388" height="123"/>
@@ -1026,10 +1026,13 @@ Public License instead of this License.  But first, please read
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1P-Dy-DvQ">
                                 <rect key="frame" x="275" y="73" width="76" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="自动登录" bezelStyle="regularSquare" imagePosition="left" inset="2" id="lbu-TH-tj8">
+                                <buttonCell key="cell" type="check" title="自动登录" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="lbu-TH-tj8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="autoLoginValueChanged:" target="XfG-lQ-9wD" id="5U0-2V-qbT"/>
+                                </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VKH-jr-dM6">
                                 <rect key="frame" x="275" y="112" width="76" height="18"/>
@@ -1083,6 +1086,7 @@ Public License instead of this License.  But first, please read
                         </touchBarItems>
                     </touchBar>
                     <connections>
+                        <outlet property="buttonIsAutoLogin" destination="e1P-Dy-DvQ" id="ANl-cn-n9i"/>
                         <outlet property="buttonIsSavedPassword" destination="VKH-jr-dM6" id="jk8-Eo-fHX"/>
                         <outlet property="progress" destination="HZ1-V8-BLZ" id="dJc-7e-mnr"/>
                         <outlet property="textFieldPassword" destination="Drk-ip-IQX" id="dMA-wh-Q53"/>
@@ -1120,11 +1124,11 @@ Public License instead of this License.  But first, please read
             <objects>
                 <viewController title="成功- 哆点工具箱" id="icQ-mI-ctr" customClass="SuccessInfoViewController" customModule="OpenDrcom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Qbc-OU-y15">
-                        <rect key="frame" x="0.0" y="0.0" width="269" height="437"/>
+                        <rect key="frame" x="0.0" y="0.0" width="269" height="410"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HE4-4v-Czx">
-                                <rect key="frame" x="26" y="195" width="111" height="17"/>
+                                <rect key="frame" x="26" y="168" width="111" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="帐号已使用时间：" id="sWJ-cF-S1r">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -1133,7 +1137,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcM-hg-gOJ">
-                                <rect key="frame" x="26" y="152" width="111" height="17"/>
+                                <rect key="frame" x="26" y="125" width="111" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="帐号已使用流量：" id="V9E-rl-tQC">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -1142,7 +1146,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9GI-pn-RxL">
-                                <rect key="frame" x="26" y="278" width="83" height="17"/>
+                                <rect key="frame" x="26" y="251" width="83" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="您的IP地址：" id="iru-oi-6ab">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -1151,7 +1155,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KFh-Wl-fHB">
-                                <rect key="frame" x="26" y="235" width="71" height="17"/>
+                                <rect key="frame" x="26" y="208" width="71" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="帐号余额：" id="pYk-ZN-nqD">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -1160,7 +1164,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bzo-CR-cmv">
-                                <rect key="frame" x="142" y="151" width="105" height="17"/>
+                                <rect key="frame" x="142" y="124" width="105" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0000000000MB" id="2eZ-Oi-g00">
                                     <font key="font" metaFont="system"/>
@@ -1169,7 +1173,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYn-2n-p9Y">
-                                <rect key="frame" x="147" y="234" width="104" height="17"/>
+                                <rect key="frame" x="147" y="207" width="104" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="000.00元" id="M0G-3z-77Y">
                                     <font key="font" metaFont="system"/>
@@ -1178,7 +1182,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eod-Dd-0sK">
-                                <rect key="frame" x="140" y="277" width="109" height="17"/>
+                                <rect key="frame" x="140" y="250" width="109" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="255.255.255.255" id="SS9-o0-FLP">
                                     <font key="font" metaFont="system"/>
@@ -1187,7 +1191,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A0d-LP-1h8">
-                                <rect key="frame" x="154" y="194" width="80" height="17"/>
+                                <rect key="frame" x="154" y="167" width="80" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="000000分钟" id="2E2-Wv-VIu">
                                     <font key="font" metaFont="system"/>
@@ -1196,7 +1200,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I8a-3k-DfW">
-                                <rect key="frame" x="117" y="377" width="58" height="17"/>
+                                <rect key="frame" x="117" y="350" width="58" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="登录成功" id="DUs-gE-sjX">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -1205,20 +1209,12 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ak1-hE-ZBa">
-                                <rect key="frame" x="97" y="373" width="21" height="21"/>
+                                <rect key="frame" x="97" y="346" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="i8a-kc-yvJ"/>
                             </imageView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWX-UU-Ojf">
-                                <rect key="frame" x="83" y="97" width="102" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="断线自动重连" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zAW-fc-Nfz">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                </buttonCell>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkX-mX-57x">
-                                <rect key="frame" x="26" y="321" width="71" height="17"/>
+                                <rect key="frame" x="26" y="294" width="71" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="登入帐号：" id="zjb-9C-uvR">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -1227,7 +1223,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCm-z7-D8G">
-                                <rect key="frame" x="140" y="321" width="109" height="17"/>
+                                <rect key="frame" x="140" y="294" width="109" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="wrlu_15_41221" id="I4c-2g-Bbo">
                                     <font key="font" metaFont="system"/>
@@ -1236,7 +1232,7 @@ Public License instead of this License.  But first, please read
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="inE-Uy-DSV">
-                                <rect key="frame" x="64" y="38" width="140" height="32"/>
+                                <rect key="frame" x="64" y="13" width="140" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="重新登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="up7-Q9-3H7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1244,6 +1240,17 @@ Public License instead of this License.  But first, please read
                                 </buttonCell>
                                 <connections>
                                     <action selector="reLogin:" target="icQ-mI-ctr" id="Vf8-IA-zIz"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWX-UU-Ojf">
+                                <rect key="frame" x="83" y="74" width="102" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="断线自动重连" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zAW-fc-Nfz">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="autoReconnectValueChanged:" target="icQ-mI-ctr" id="X1s-uo-Vtk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1271,6 +1278,7 @@ Public License instead of this License.  But first, please read
                         </touchBarItems>
                     </touchBar>
                     <connections>
+                        <outlet property="buttonIsAutoReconnect" destination="AWX-UU-Ojf" id="3my-SV-HFa"/>
                         <outlet property="labelBalance" destination="VYn-2n-p9Y" id="kGj-TZ-prI"/>
                         <outlet property="labelUsageFlow" destination="Bzo-CR-cmv" id="LtS-6d-atT"/>
                         <outlet property="labelUsageTime" destination="A0d-LP-1h8" id="J9Q-74-s9B"/>
@@ -1281,7 +1289,7 @@ Public License instead of this License.  But first, please read
                 </viewController>
                 <customObject id="kyg-Ug-Uet" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="1067"/>
+            <point key="canvasLocation" x="668.5" y="1053"/>
         </scene>
     </scenes>
     <resources>

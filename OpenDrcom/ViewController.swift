@@ -11,28 +11,35 @@ import Cocoa
 /// 登录界面
 class ViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
     
-    /// 开关变量
+    /// 保存密码选项
     @IBOutlet weak var buttonIsSavedPassword: NSButton!
+    /// 自动登录选项
+    @IBOutlet weak var buttonIsAutoLogin: NSButton!
+    /// 用户名输入框
     @IBOutlet weak var textFieldUsername: NSTextField!
+    /// 密码输入框
     @IBOutlet weak var textFieldPassword: NSSecureTextField!
+    /// 加载进度条
     @IBOutlet weak var progress: NSProgressIndicator!
-    
-    /// 登录失败的状态
-    private var isLoginFailed:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 //        设置文本框委托对象
         self.textFieldUsername.delegate = self
-        self.textFieldPassword.delegate = self as NSTextFieldDelegate
+        self.textFieldPassword.delegate = self
 //        获得本地存储对象
         let defaults = UserDefaults.standard
 //        还原保存的用户名和密码
         if defaults.bool(forKey: "isSavePassword")==true {
-            buttonIsSavedPassword.state = NSControl.StateValue(rawValue: 1)
+            buttonIsSavedPassword.state = NSControl.StateValue.on
             textFieldUsername.stringValue = defaults.object(forKey: "savedUser") as! String
             textFieldPassword.stringValue = defaults.object(forKey: "savedPassword") as! String
+            buttonIsAutoLogin.isEnabled = true
+        }
+        if defaults.bool(forKey: "isAutoLogin")==true {
+            buttonIsAutoLogin.state = NSControl.StateValue.on
+            clickLoginButton(self)
         }
     }
     
@@ -70,7 +77,7 @@ class ViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         if segue.identifier?._rawValue == "logInSuccessSegue" {
             let destWindow = segue.destinationController as! NSWindowController;
             let viewController = destWindow.contentViewController as! SuccessInfoViewController
-            viewController.getLoginParameter(account: self.textFieldUsername.stringValue)
+            viewController.getLoginParameter(account: self.textFieldUsername.stringValue, password: self.textFieldPassword.stringValue)
         }
     }
     
@@ -127,11 +134,22 @@ class ViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         if sender.state.rawValue == 1 {
             defaults.set(textFieldUsername.stringValue, forKey: "savedUser")
             defaults.set(textFieldPassword.stringValue, forKey: "savedPassword")
+            buttonIsAutoLogin.isEnabled = true
         }
         else {
             defaults.set("", forKey: "savedUser")
             defaults.set("", forKey: "savedPassword")
+            buttonIsAutoLogin.state = NSControl.StateValue.off
+            buttonIsAutoLogin.isEnabled = false
         }
+    }
+    
+    /// 自动登录按钮状态变化的方法
+    ///
+    /// - Parameter sender: 消息发送者
+    @IBAction func autoLoginValueChanged(_ sender: NSButton) {
+        let defaults = UserDefaults.standard
+        defaults.set(sender.state, forKey: "isAutoLogin")
     }
     
     /// 监听输入内容变化的回调方法

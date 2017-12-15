@@ -9,21 +9,28 @@
 import Cocoa
 
 /// 登录成功之后的界面
-class SuccessInfoViewController: NSViewController {
+class SuccessInfoViewController: NSViewController,LoginDelegate {
     
-    /// 开关变量
     @IBOutlet weak var labelUserAccount: NSTextField!
     @IBOutlet weak var labelUserIP: NSTextField!
     @IBOutlet weak var labelBalance: NSTextField!
     @IBOutlet weak var labelUsageTime: NSTextField!
     @IBOutlet weak var labelUsageFlow: NSTextField!
-    
+    /// 总的重试次数
+    @IBOutlet weak var labelTotalRetryTimes: NSTextField!
+    /// 是否启用自动重连
+    @IBOutlet weak var buttonIsAutoReconnect: NSButton!
     /// 计时器任务对象
     var schedule:Timer? = nil
+    var password:String? = nil
+    var retry = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "isAutoReconnect")==true {
+            buttonIsAutoReconnect.state = NSControl.StateValue.on
+        }
 //        首先获取用量和IP地址
         self.refreshUsageAndIP()
 //        计时器时间
@@ -32,8 +39,9 @@ class SuccessInfoViewController: NSViewController {
         schedule = Timer.scheduledTimer(timeInterval: frequent, target: self, selector: #selector(SuccessInfoViewController.refreshUsageAndIP), userInfo: nil, repeats: true)
     }
     
-    func getLoginParameter(account: String) {
-        self.labelUserAccount.stringValue = account;
+    func getLoginParameter(account: String, password: String) {
+        self.labelUserAccount.stringValue = account
+        self.password = password
     }
     
     /// 刷新使用时长、使用流量和IP地址的方法
@@ -67,13 +75,27 @@ class SuccessInfoViewController: NSViewController {
             self.labelUsageTime.stringValue = "您还未登录"
             self.labelUsageFlow.stringValue = "您还未登录"
             self.labelBalance.stringValue = "您还未登录"
-            self.labelUserIP.stringValue = "127.0.0.1"
-            self.didLogout()
+            self.labelUserIP.stringValue = "您还未登录"
+            self.didLostConnection()
         }
 //        强制界面刷新
         self.view.needsDisplay = true
     }
     
+    @IBAction func autoReconnectValueChanged(_ sender: NSButton) {
+        let defaults = UserDefaults.standard
+        defaults.set(sender.state, forKey: "isAutoReconnect")
+    }
+    
+    func didLostConnection() {
+        if buttonIsAutoReconnect.state == NSControl.StateValue.on {
+            let provider:LoginServiceProvider = LoginServiceProvider.init(delegate: self)
+            provider.login(user: labelUserAccount.stringValue, passwd: password!)
+        }
+        else {
+            self.didLogout()
+        }
+    }
     
     /// 执行注销操作并返回登录界面
     func didLogout() {
@@ -97,8 +119,30 @@ class SuccessInfoViewController: NSViewController {
     /// - Parameter sender: 消息发送者
     @IBAction func reLogin(_ sender: Any) {
 //        跳转回到登录页面
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "isAutoLogin")
+        
         self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
         self.view.window?.performClose(self)
+    }
+    
+    func didLoginSuccess() {
+        DispatchQueue.main.sync {
+            labelTotalRetryTimes.integerValue = labelTotalRetryTimes.integerValue + 1
+            self.view.needsDisplay = true
+            retry = 0
+        }
+    }
+    
+    func didLoginFailed(errorCode: Int) {
+        DispatchQueue.main.sync {
+            labelTotalRetryTimes.integerValue = labelTotalRetryTimes.integerValue + 1
+            self.view.needsDisplay = true
+            retry = retry + 1
+            if retry == 5 {
+                self.didLogout()
+            }
+        }
     }
     
     
