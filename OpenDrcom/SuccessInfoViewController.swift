@@ -10,14 +10,16 @@ import Cocoa
 
 /// 登录成功之后的界面
 class SuccessInfoViewController: NSViewController,LoginDelegate {
-    
+    /// 登入用户名文本
     @IBOutlet weak var labelUserAccount: NSTextField!
+    /// 用户IP文本
     @IBOutlet weak var labelUserIP: NSTextField!
+    /// 用户余额文本
     @IBOutlet weak var labelBalance: NSTextField!
+    /// 用户使用时长文本
     @IBOutlet weak var labelUsageTime: NSTextField!
+    /// 用户使用流量文本
     @IBOutlet weak var labelUsageFlow: NSTextField!
-    /// 总的重试次数
-    @IBOutlet weak var labelTotalRetryTimes: NSTextField!
     /// 是否启用自动重连
     @IBOutlet weak var buttonIsAutoReconnect: NSButton!
     /// 计时器任务对象
@@ -128,7 +130,6 @@ class SuccessInfoViewController: NSViewController,LoginDelegate {
     
     func didLoginSuccess() {
         DispatchQueue.main.sync {
-            labelTotalRetryTimes.integerValue = labelTotalRetryTimes.integerValue + 1
             self.view.needsDisplay = true
             retry = 0
         }
@@ -136,7 +137,6 @@ class SuccessInfoViewController: NSViewController,LoginDelegate {
     
     func didLoginFailed(errorCode: Int) {
         DispatchQueue.main.sync {
-            labelTotalRetryTimes.integerValue = labelTotalRetryTimes.integerValue + 1
             self.view.needsDisplay = true
             retry = retry + 1
             if retry == 5 {

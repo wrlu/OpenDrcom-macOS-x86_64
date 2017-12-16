@@ -9,7 +9,7 @@
 import Cocoa
 
 /// 登录界面
-class ViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
+class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
     
     /// 保存密码选项
     @IBOutlet weak var buttonIsSavedPassword: NSButton!
