@@ -18,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "isLoadFromLogout")
     }
     
     /// 关闭最后一个窗口之后退出程序

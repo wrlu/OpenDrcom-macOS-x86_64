@@ -9,7 +9,10 @@
 import Cocoa
 
 /// 登录成功之后的界面
-class SuccessInfoViewController: NSViewController,LoginDelegate {
+class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
+    
+    var provider:LoginServiceProvider? = nil
+    
     /// 登入用户名文本
     @IBOutlet weak var labelUserAccount: NSTextField!
     /// 用户IP文本
@@ -29,6 +32,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        provider = LoginServiceProvider.init(loginDelegate: self, logoutDelegate: self)
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "isAutoReconnect")==true {
             buttonIsAutoReconnect.state = NSControl.StateValue.on
@@ -58,7 +62,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate {
         catch {
 //            网关连接失败，证明已经断网
             print(error.localizedDescription)
-            self.didLogout()
+            self.didRelogin()
             return
         }
 //        获取用量
@@ -91,16 +95,15 @@ class SuccessInfoViewController: NSViewController,LoginDelegate {
     
     func didLostConnection() {
         if buttonIsAutoReconnect.state == NSControl.StateValue.on {
-            let provider:LoginServiceProvider = LoginServiceProvider.init(delegate: self)
-            provider.login(user: labelUserAccount.stringValue, passwd: password!)
+            provider?.login(user: labelUserAccount.stringValue, passwd: password!)
         }
         else {
-            self.didLogout()
+            self.didRelogin()
         }
     }
     
-    /// 执行注销操作并返回登录界面
-    func didLogout() {
+    /// 返回登录界面
+    func didRelogin() {
 //        取消计时器
         schedule?.invalidate()
 //        弹窗提示用户断网
@@ -111,22 +114,25 @@ class SuccessInfoViewController: NSViewController,LoginDelegate {
 //        点按确定按钮之后进入if
         if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
 //            跳转重新登录
-            self.reLogin(self)
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "isLoadFromLogout")
+            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
+            self.view.window?.performClose(self)
         }
     }
     
-    
-    /// 回到登录界面
-    ///
-    /// - Parameter sender: 消息发送者
-    @IBAction func reLogin(_ sender: Any) {
-//        跳转回到登录页面
-        let defaults = UserDefaults.standard
-        defaults.set(false, forKey: "isAutoLogin")
-        
-        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
-        self.view.window?.performClose(self)
+    @IBAction func clickLogoutButton(_ sender: NSButton) {
+        let alert:NSAlert = NSAlert.init()
+        alert.messageText = "是否注销登录？注销后将无法访问互联网。"
+        alert.addButton(withTitle: "好")
+        alert.addButton(withTitle: "取消")
+        alert.alertStyle = NSAlert.Style.warning
+//        执行注销操作
+        if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
+            provider?.logout()
+        }
     }
+    
     
     func didLoginSuccess() {
         DispatchQueue.main.sync {
@@ -135,15 +141,46 @@ class SuccessInfoViewController: NSViewController,LoginDelegate {
         }
     }
     
-    func didLoginFailed(errorCode: Int) {
+    func didLoginFailed(errorCode: Int, reason: String?) {
         DispatchQueue.main.sync {
             self.view.needsDisplay = true
             retry = retry + 1
             if retry == 5 {
-                self.didLogout()
+                self.didRelogin()
             }
         }
     }
     
+    func didLogoutSuccess() {
+        DispatchQueue.main.sync {
+//        取消计时器
+            schedule?.invalidate()
+//        跳转登录页面
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "isLoadFromLogout")
+            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
+            self.view.window?.performClose(self)
+        }
+    }
     
+    func didLogoutFailed(errorCode: Int, reason: String?) {
+        DispatchQueue.main.sync {
+            let alert:NSAlert = NSAlert.init()
+            alert.addButton(withTitle: "好")
+            alert.alertStyle = NSAlert.Style.warning
+            if errorCode == -3 {
+                alert.messageText = "错误代码(-3)：请求注销错误"
+            }
+            else if errorCode == -5 {
+                alert.messageText = "错误代码(-5)：服务器错误"
+            }
+            else if errorCode == 0 {
+                alert.messageText = "错误代码(0)：未知错误"
+            }
+            if reason != nil {
+                alert.messageText.append(reason!)
+            }
+            alert.runModal()
+        }
+    }
 }

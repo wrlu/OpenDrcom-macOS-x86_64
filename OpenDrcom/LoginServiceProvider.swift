@@ -10,11 +10,12 @@ import Cocoa
 
 class LoginServiceProvider: NSObject{
     
-    private var delegate:LoginDelegate
-    private var timeout:Int = 0
+    private var loginDelegate:LoginDelegate?
+    private var logoutDelegate:LogoutDelegate?
     
-    init(delegate:LoginDelegate) {
-        self.delegate = delegate
+    init(loginDelegate:LoginDelegate?, logoutDelegate:LogoutDelegate?) {
+        self.loginDelegate = loginDelegate
+        self.logoutDelegate = logoutDelegate
         super.init()
     }
     /// 登录方法
@@ -24,10 +25,12 @@ class LoginServiceProvider: NSObject{
     ///   - passwd: 密码
     func login(user:String, passwd:String) {
         if user == "" {
-            self.delegate.didLoginFailed(errorCode: -1)
+            self.loginDelegate?.didLoginFailed(errorCode: -1, reason: nil)
+            return
         }
         if passwd == "" {
-            self.delegate.didLoginFailed(errorCode: -2)
+            self.loginDelegate?.didLoginFailed(errorCode: -2, reason: nil)
+            return
         }
 //        异步进行登录
         DispatchQueue.global().async {
@@ -48,26 +51,50 @@ class LoginServiceProvider: NSObject{
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
 //                网络相关错误，回调返回错误代码
                 if let error = error {
-                    self.delegate.didLoginFailed(errorCode: -3)
-                    print(error.localizedDescription)
+                    self.loginDelegate?.didLoginFailed(errorCode: -3, reason: error.localizedDescription)
                     return
                 }
 //                服务器错误，回调返回错误代码
                 let data = data!
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    self.delegate.didLoginFailed(errorCode: -5)
+                    self.loginDelegate?.didLoginFailed(errorCode: -5,reason: "HTTP Status:")
                     return
                 }
 //                无HTTP错误，获得响应HTML
                 let responseHtml = String (data: data, encoding: .ascii)!
 //                查找登录成功标志，查找到回调返回成功状态
                 if responseHtml.contains("v46ip=") == true {
-                    self.delegate.didLoginSuccess()
+                    self.loginDelegate?.didLoginSuccess()
                 }
 //                登录失败，用户名或密码错误
                 else {
-                    self.delegate.didLoginFailed(errorCode: -6)
+                    self.loginDelegate?.didLoginFailed(errorCode: -6, reason: nil)
                 }
+            })
+            task.resume()
+        }
+    }
+    
+    func logout() {
+        DispatchQueue.global().async {
+//            创建注销URL
+            let url = URL.init(string: "http://192.168.100.200/F.htm")!
+//            创建URL请求
+            let request = URLRequest(url: url)
+//            创建任务
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                网络相关错误，回调返回错误代码
+                if let error = error {
+                    self.logoutDelegate?.didLogoutFailed(errorCode: -3, reason: error.localizedDescription)
+                    return
+                }
+//                服务器错误，回调返回错误代码
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    self.logoutDelegate?.didLogoutFailed(errorCode: -5, reason: nil)
+                    return
+                }
+//                注销成功
+                self.logoutDelegate?.didLogoutSuccess()
             })
             task.resume()
         }

@@ -11,6 +11,7 @@ import Cocoa
 /// 登录界面
 class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
     
+    var provider:LoginServiceProvider? = nil
     /// 保存密码选项
     @IBOutlet weak var buttonIsSavedPassword: NSButton!
     /// 自动登录选项
@@ -28,6 +29,7 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
 //        设置文本框委托对象
         self.textFieldUsername.delegate = self
         self.textFieldPassword.delegate = self
+        provider = LoginServiceProvider.init(loginDelegate: self, logoutDelegate: nil)
 //        获得本地存储对象
         let defaults = UserDefaults.standard
 //        还原保存的用户名和密码
@@ -39,7 +41,9 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         }
         if defaults.bool(forKey: "isAutoLogin")==true {
             buttonIsAutoLogin.state = NSControl.StateValue.on
-            clickLoginButton(self)
+            if defaults.bool(forKey: "isLoadFromLogout")==false {
+                clickLoginButton(self)
+            }
         }
     }
     
@@ -55,15 +59,16 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
 //        所以在这里为了保存的用户名和密码的正确，手动调用了回调方法
         self.controlTextDidEndEditing(Notification.init(name: Notification.Name.init(rawValue: "Login")))
 //        开始登录操作
-        let provider:LoginServiceProvider = LoginServiceProvider.init(delegate: self)
         self.progress.startAnimation(self)
-        provider.login(user: username, passwd: password)
+        provider?.login(user: username, passwd: password)
     }
     
     /// 登录成功的回调方法
     func didLoginSuccess() {
 //        回到主线程继续操作
         DispatchQueue.main.sync {
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "isLoadFromLogout")
 //          加载条动画停止
             self.progress.stopAnimation(self)
 //          跳转到登录成功页面
@@ -81,7 +86,7 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         }
     }
     
-    func didLoginFailed(errorCode: Int) {
+    func didLoginFailed(errorCode: Int, reason:String?) {
 //        回到主线程继续操作
         if Thread.isMainThread == true {
             self.progress.stopAnimation(self)
@@ -96,6 +101,9 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             }
             else if errorCode == 0 {
                 alert.messageText = "错误代码(0)：未知错误"
+            }
+            if reason != nil {
+                alert.messageText.append(reason!)
             }
             alert.runModal()
             return
@@ -121,6 +129,9 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             else if errorCode == 0 {
                 alert.messageText = "错误代码(0)：未知错误"
             }
+            if reason != nil {
+                alert.messageText.append(reason!)
+            }
             alert.runModal()
         }
     }
@@ -140,6 +151,9 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             defaults.set("", forKey: "savedUser")
             defaults.set("", forKey: "savedPassword")
             buttonIsAutoLogin.state = NSControl.StateValue.off
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "isAutoLogin")
+            defaults.set(false, forKey: "isLoadFromLogout")
             buttonIsAutoLogin.isEnabled = false
         }
     }
@@ -150,6 +164,9 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
     @IBAction func autoLoginValueChanged(_ sender: NSButton) {
         let defaults = UserDefaults.standard
         defaults.set(sender.state, forKey: "isAutoLogin")
+        if sender.state == NSControl.StateValue.on {
+            defaults.set(false, forKey: "isLoadFromLogout")
+        }
     }
     
     /// 监听输入内容变化的回调方法
@@ -161,6 +178,11 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             defaults.set(textFieldUsername.stringValue, forKey: "savedUser")
             defaults.set(textFieldPassword.stringValue, forKey: "savedPassword")
         }
+    }
+    
+    func getLogoutParameter() {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "isLoadFromLogout")
     }
     
     /// 退出应用
