@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13506"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13752"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -140,18 +140,93 @@
             </objects>
             <point key="canvasLocation" x="303" y="-586"/>
         </scene>
-        <!--View Controller-->
+        <!--Software Update View Controller-->
         <scene sceneID="9Am-TX-TCG">
             <objects>
-                <viewController id="z9T-8f-YcU" sceneMemberID="viewController">
+                <viewController id="z9T-8f-YcU" customClass="SoftwareUpdateViewController" customModule="OpenDrcom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="0sF-lP-MyB">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="338"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-LK-3P9">
+                                <rect key="frame" x="57" y="57" width="315" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V03-W8-jOd">
+                                <rect key="frame" x="43" y="290" width="97" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="软件更新信息：" id="f6N-Rv-t9n">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
+                    <connections>
+                        <segue destination="OR4-d6-WfK" kind="modal" identifier="CheckUpdateSegue" id="8n5-Mi-SgT"/>
+                    </connections>
                 </viewController>
                 <customObject id="x1J-lI-eHM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="-139"/>
+            <point key="canvasLocation" x="-117" y="-139"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="pgf-IS-iI3">
+            <objects>
+                <windowController id="OR4-d6-WfK" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="s4D-CK-tGO">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="199" width="188" height="71"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                        <connections>
+                            <outlet property="delegate" destination="OR4-d6-WfK" id="ZI9-61-rXv"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="S3q-AD-p80" kind="relationship" relationship="window.shadowedContentViewController" id="zFK-oa-JQ5"/>
+                    </connections>
+                </windowController>
+                <customObject id="qLT-9M-fau" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="453" y="-404"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Tnb-gk-yA4">
+            <objects>
+                <viewController id="S3q-AD-p80" sceneMemberID="viewController">
+                    <view key="view" id="QTE-vU-t9z">
+                        <rect key="frame" x="0.0" y="0.0" width="234" height="135"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="6Vc-oO-sqb">
+                                <rect key="frame" x="20" y="52" width="194" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xfe-8W-sQG">
+                                <rect key="frame" x="62" y="85" width="111" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在检查软件更新" id="b8f-sv-1fL">
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eny-mt-dK8">
+                                <rect key="frame" x="71" y="13" width="93" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ehv-73-5WX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="SDf-ED-LFn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="331" y="-139"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="RI0-uU-2Eo">
@@ -172,7 +247,7 @@
                     </connections>
                 </windowController>
             </objects>
-            <point key="canvasLocation" x="757" y="-579"/>
+            <point key="canvasLocation" x="840" y="-579"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="Fyp-26-JDL">
@@ -193,7 +268,7 @@
                 </windowController>
                 <customObject id="uc6-MG-RYU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087.5" y="-578.5"/>
+            <point key="canvasLocation" x="1134" y="-579"/>
         </scene>
         <!--日志信息 - 哆点工具箱-->
         <scene sceneID="2Ie-Is-lTv">
@@ -215,7 +290,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="593" height="368"/>
-                                            <size key="maxSize" width="593" height="10000000"/>
+                                            <size key="maxSize" width="595" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </textView>
                                     </subviews>
@@ -278,7 +353,7 @@
                 </tabViewController>
                 <customObject id="pt0-lH-xOg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="-210.5"/>
+            <point key="canvasLocation" x="840" y="-207"/>
         </scene>
         <!--常规-->
         <scene sceneID="aqu-Kj-3c8">
@@ -336,7 +411,7 @@
                 </viewController>
                 <customObject id="5XH-ni-asW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="-185"/>
+            <point key="canvasLocation" x="1408" y="-208"/>
         </scene>
         <!--高级-->
         <scene sceneID="M9I-7i-I62">
@@ -420,7 +495,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="ZbO-a9-rRP">
-                                            <rect key="frame" x="0.0" y="0.0" width="388" height="8260"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="7728"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="388" height="123"/>
@@ -1139,7 +1214,7 @@ Public License instead of this License.  But first, please read
                 </viewController>
                 <customObject id="qWJ-3m-jJv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-360" y="-139"/>
+            <point key="canvasLocation" x="-574" y="-139"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -1206,6 +1281,9 @@ Public License instead of this License.  But first, please read
                                 <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VrH-4L-euL">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clickLoginButton:" target="XfG-lQ-9wD" id="ewt-Nw-gVj"/>
@@ -1264,8 +1342,8 @@ Public License instead of this License.  But first, please read
                             <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="qJR-03-h5e"/>
                             <touchBarItem id="rL5-Uq-bPP">
                                 <viewController key="viewController" id="kJT-6n-JZO">
-                                    <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zik-nh-bj2">
-                                        <rect key="frame" x="6" y="-4" width="150" height="30"/>
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zik-nh-bj2">
+                                        <rect key="frame" x="6" y="-4" width="150" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Acm-WQ-8vT">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1280,8 +1358,8 @@ Public License instead of this License.  But first, please read
                             </touchBarItem>
                             <touchBarItem id="1a4-tt-dX1">
                                 <viewController key="viewController" id="Qka-3f-bPf">
-                                    <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHE-bp-OR7">
-                                        <rect key="frame" x="6" y="-4" width="138" height="30"/>
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHE-bp-OR7">
+                                        <rect key="frame" x="6" y="-4" width="138" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="退出" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aJM-sH-ICb">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1472,8 +1550,8 @@ Public License instead of this License.  But first, please read
                             <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="mWF-FP-w6d"/>
                             <touchBarItem id="vEX-Xl-vpV">
                                 <viewController key="viewController" id="gge-RT-tBx">
-                                    <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNq-oY-PWg">
-                                        <rect key="frame" x="6" y="-4" width="138" height="30"/>
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LNq-oY-PWg">
+                                        <rect key="frame" x="6" y="-4" width="138" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="注销登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r4b-1S-gu9">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

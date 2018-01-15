@@ -15,6 +15,7 @@
 		894B7A4E1F7BD88F001A390E /* LoginServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */; };
 		894B7A501F7BD99E001A390E /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */; };
 		896829501F076E810073D535 /* DrInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294D1F076E810073D535 /* DrInfoProvider.swift */; };
+		897D01821FF75BE4002916D5 /* SoftwareUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D01811FF75BE4002916D5 /* SoftwareUpdateViewController.swift */; };
 		89B0FB131FE6351F000C2E88 /* LogoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B0FB121FE6351F000C2E88 /* LogoutDelegate.swift */; };
 		89EFFD511F0CB52A00B76820 /* DrcomIcon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */; };
 		89EFFD521F0CB52A00B76820 /* DrcomIcon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */; };
@@ -36,6 +37,7 @@
 		894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProvider.swift; sourceTree = "<group>"; };
 		894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		8968294D1F076E810073D535 /* DrInfoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrInfoProvider.swift; sourceTree = "<group>"; };
+		897D01811FF75BE4002916D5 /* SoftwareUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareUpdateViewController.swift; sourceTree = "<group>"; };
 		89B0FB121FE6351F000C2E88 /* LogoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutDelegate.swift; sourceTree = "<group>"; };
 		89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_128x128.png; sourceTree = "<group>"; };
 		89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_16x16.png; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				89B0FB121FE6351F000C2E88 /* LogoutDelegate.swift */,
 				894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */,
 				8968294D1F076E810073D535 /* DrInfoProvider.swift */,
+				897D01811FF75BE4002916D5 /* SoftwareUpdateViewController.swift */,
 				89145EE11F0608C400800255 /* Assets.xcassets */,
 				89145EE31F0608C400800255 /* Main.storyboard */,
 				89145EE61F0608C400800255 /* Info.plist */,
@@ -185,6 +188,7 @@
 			files = (
 				89145EDD1F0608C400800255 /* LoginViewController.swift in Sources */,
 				89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */,
+				897D01821FF75BE4002916D5 /* SoftwareUpdateViewController.swift in Sources */,
 				894B7A501F7BD99E001A390E /* LoginDelegate.swift in Sources */,
 				894B7A4E1F7BD88F001A390E /* LoginServiceProvider.swift in Sources */,
 				896829501F076E810073D535 /* DrInfoProvider.swift in Sources */,
@@ -319,7 +323,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QXA7GFP499;
 				INFOPLIST_FILE = OpenDrcom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -343,7 +347,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QXA7GFP499;
 				INFOPLIST_FILE = OpenDrcom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
