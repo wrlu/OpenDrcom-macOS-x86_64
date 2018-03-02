@@ -110,12 +110,19 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
         let alert:NSAlert = NSAlert.init()
         alert.messageText = "错误：网络连接失败"
         alert.addButton(withTitle: "好")
+        alert.addButton(withTitle: "重试")
         alert.alertStyle = NSAlert.Style.warning
+        let response = alert.runModal()
 //        点按确定按钮之后进入if
-        if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
+        if response == NSApplication.ModalResponse.alertFirstButtonReturn {
 //            跳转重新登录
             let defaults = UserDefaults.standard
             defaults.set(true, forKey: "isLoadFromLogout")
+            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
+            self.view.window?.performClose(self)
+        } else if response == NSApplication.ModalResponse.alertSecondButtonReturn {
+            let defaults = UserDefaults.standard
+            defaults.set(false, forKey: "isLoadFromLogout")
             self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
             self.view.window?.performClose(self)
         }

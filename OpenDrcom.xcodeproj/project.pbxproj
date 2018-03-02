@@ -23,12 +23,28 @@
 		89EFFD541F0CB52A00B76820 /* DrcomIcon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */; };
 		89EFFD551F0CB52A00B76820 /* DrcomIcon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */; };
 		89EFFD561F0CB52A00B76820 /* DrcomIcon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */; };
+		EA2D07D0204919D500CEE891 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDC1F0608C400800255 /* LoginViewController.swift */; };
+		EA2D07D1204919D500CEE891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDA1F0608C400800255 /* AppDelegate.swift */; };
+		EA2D07D2204919D500CEE891 /* SoftwareUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D01811FF75BE4002916D5 /* SoftwareUpdateViewController.swift */; };
+		EA2D07D3204919D500CEE891 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */; };
+		EA2D07D4204919D500CEE891 /* LoginServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */; };
+		EA2D07D5204919D500CEE891 /* DrInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8968294D1F076E810073D535 /* DrInfoProvider.swift */; };
+		EA2D07D6204919D500CEE891 /* LogoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B0FB121FE6351F000C2E88 /* LogoutDelegate.swift */; };
+		EA2D07D7204919D500CEE891 /* SuccessInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */; };
+		EA2D07DA204919D500CEE891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE11F0608C400800255 /* Assets.xcassets */; };
+		EA2D07DB204919D500CEE891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89145EE31F0608C400800255 /* Main.storyboard */; };
+		EA2D07DC204919D500CEE891 /* DrcomIcon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */; };
+		EA2D07DD204919D500CEE891 /* DrcomIcon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4D1F0CB52A00B76820 /* DrcomIcon_256x256.png */; };
+		EA2D07DE204919D500CEE891 /* DrcomIcon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */; };
+		EA2D07DF204919D500CEE891 /* DrcomIcon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */; };
+		EA2D07E0204919D500CEE891 /* DrcomIcon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4B1F0CB52A00B76820 /* DrcomIcon_128x128.png */; };
+		EA2D07E1204919D500CEE891 /* DrcomIcon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4C1F0CB52A00B76820 /* DrcomIcon_16x16.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		890F8A871F063A30002BEA9F /* OpenDrcom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenDrcom-Bridging-Header.h"; sourceTree = "<group>"; };
 		890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessInfoViewController.swift; sourceTree = "<group>"; };
-		89145ED71F0608C400800255 /* OpenDrcom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenDrcom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89145ED71F0608C400800255 /* OpenDrcom Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenDrcom Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89145EDA1F0608C400800255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89145EDC1F0608C400800255 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		89145EE11F0608C400800255 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,10 +61,19 @@
 		89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_32x32.png; sourceTree = "<group>"; };
 		89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_512x512.png; sourceTree = "<group>"; };
 		89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_64x64.png; sourceTree = "<group>"; };
+		EA2D07E5204919D500CEE891 /* OpenDrcom Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenDrcom Release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA2D07E6204919D600CEE891 /* OpenDrcom copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OpenDrcom copy-Info.plist"; path = "/Users/xiaolulwr/Documents/CAUC-Tec-Project/OpenDrcom/OpenDrcom-macOS-x86_64/OpenDrcom copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		89145ED41F0608C400800255 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA2D07D8204919D500CEE891 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,13 +88,15 @@
 			children = (
 				89145ED91F0608C400800255 /* OpenDrcom */,
 				89145ED81F0608C400800255 /* Products */,
+				EA2D07E6204919D600CEE891 /* OpenDrcom copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		89145ED81F0608C400800255 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				89145ED71F0608C400800255 /* OpenDrcom.app */,
+				89145ED71F0608C400800255 /* OpenDrcom Debug.app */,
+				EA2D07E5204919D500CEE891 /* OpenDrcom Release.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,9 +137,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		89145ED61F0608C400800255 /* OpenDrcom */ = {
+		89145ED61F0608C400800255 /* OpenDrcom Debug */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 89145EE91F0608C400800255 /* Build configuration list for PBXNativeTarget "OpenDrcom" */;
+			buildConfigurationList = 89145EE91F0608C400800255 /* Build configuration list for PBXNativeTarget "OpenDrcom Debug" */;
 			buildPhases = (
 				89145ED31F0608C400800255 /* Sources */,
 				89145ED41F0608C400800255 /* Frameworks */,
@@ -122,9 +149,26 @@
 			);
 			dependencies = (
 			);
+			name = "OpenDrcom Debug";
+			productName = OpenDrcom;
+			productReference = 89145ED71F0608C400800255 /* OpenDrcom Debug.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA2D07CE204919D500CEE891 /* OpenDrcom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA2D07E2204919D500CEE891 /* Build configuration list for PBXNativeTarget "OpenDrcom" */;
+			buildPhases = (
+				EA2D07CF204919D500CEE891 /* Sources */,
+				EA2D07D8204919D500CEE891 /* Frameworks */,
+				EA2D07D9204919D500CEE891 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
 			name = OpenDrcom;
 			productName = OpenDrcom;
-			productReference = 89145ED71F0608C400800255 /* OpenDrcom.app */;
+			productReference = EA2D07E5204919D500CEE891 /* OpenDrcom Release.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -143,6 +187,10 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
+					EA2D07CE204919D500CEE891 = {
+						DevelopmentTeam = QXA7GFP499;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 89145ED21F0608C400800255 /* Build configuration list for PBXProject "OpenDrcom" */;
@@ -158,7 +206,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				89145ED61F0608C400800255 /* OpenDrcom */,
+				89145ED61F0608C400800255 /* OpenDrcom Debug */,
+				EA2D07CE204919D500CEE891 /* OpenDrcom */,
 			);
 		};
 /* End PBXProject section */
@@ -179,6 +228,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA2D07D9204919D500CEE891 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA2D07DA204919D500CEE891 /* Assets.xcassets in Resources */,
+				EA2D07DB204919D500CEE891 /* Main.storyboard in Resources */,
+				EA2D07DC204919D500CEE891 /* DrcomIcon_32x32.png in Resources */,
+				EA2D07DD204919D500CEE891 /* DrcomIcon_256x256.png in Resources */,
+				EA2D07DE204919D500CEE891 /* DrcomIcon_512x512.png in Resources */,
+				EA2D07DF204919D500CEE891 /* DrcomIcon_64x64.png in Resources */,
+				EA2D07E0204919D500CEE891 /* DrcomIcon_128x128.png in Resources */,
+				EA2D07E1204919D500CEE891 /* DrcomIcon_16x16.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -194,6 +258,21 @@
 				896829501F076E810073D535 /* DrInfoProvider.swift in Sources */,
 				89B0FB131FE6351F000C2E88 /* LogoutDelegate.swift in Sources */,
 				890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA2D07CF204919D500CEE891 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA2D07D0204919D500CEE891 /* LoginViewController.swift in Sources */,
+				EA2D07D1204919D500CEE891 /* AppDelegate.swift in Sources */,
+				EA2D07D2204919D500CEE891 /* SoftwareUpdateViewController.swift in Sources */,
+				EA2D07D3204919D500CEE891 /* LoginDelegate.swift in Sources */,
+				EA2D07D4204919D500CEE891 /* LoginServiceProvider.swift in Sources */,
+				EA2D07D5204919D500CEE891 /* DrInfoProvider.swift in Sources */,
+				EA2D07D6204919D500CEE891 /* LogoutDelegate.swift in Sources */,
+				EA2D07D7204919D500CEE891 /* SuccessInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +441,53 @@
 			};
 			name = Release;
 		};
+		EA2D07E3204919D500CEE891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QXA7GFP499;
+				INFOPLIST_FILE = "OpenDrcom copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xiaolus.OpenDrcom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenDrcom/OpenDrcom-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		EA2D07E4204919D500CEE891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QXA7GFP499;
+				INFOPLIST_FILE = "OpenDrcom copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xiaolus.OpenDrcom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenDrcom/OpenDrcom-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -374,11 +500,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		89145EE91F0608C400800255 /* Build configuration list for PBXNativeTarget "OpenDrcom" */ = {
+		89145EE91F0608C400800255 /* Build configuration list for PBXNativeTarget "OpenDrcom Debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				89145EEA1F0608C400800255 /* Debug */,
 				89145EEB1F0608C400800255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA2D07E2204919D500CEE891 /* Build configuration list for PBXNativeTarget "OpenDrcom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA2D07E3204919D500CEE891 /* Debug */,
+				EA2D07E4204919D500CEE891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
