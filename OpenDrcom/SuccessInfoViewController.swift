@@ -58,8 +58,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
 //            尝试连接网关
             try readData = Data.init(contentsOf: gatewayURL!)
             print(readData.count)
-        }
-        catch {
+        } catch {
 //            网关连接失败，证明已经断网
             print(error.localizedDescription)
             self.didRelogin()
@@ -76,8 +75,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
             self.labelUsageFlow.stringValue = flowUsage + " MB"
             self.labelBalance.stringValue = balanceUsage + " 元"
             self.labelUserIP.stringValue = ipUsage
-        }
-        else {
+        } else {
             self.labelUsageTime.stringValue = "您还未登录"
             self.labelUsageFlow.stringValue = "您还未登录"
             self.labelBalance.stringValue = "您还未登录"
@@ -96,30 +94,36 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
     func didLostConnection() {
         if buttonIsAutoReconnect.state == NSControl.StateValue.on {
             provider?.login(user: labelUserAccount.stringValue, passwd: password!)
-        }
-        else {
+        } else {
             self.didRelogin()
         }
     }
     
     /// 返回登录界面
     func didRelogin() {
+//        获得本地存储对象
+        let defaults = UserDefaults.standard
 //        取消计时器
         schedule?.invalidate()
 //        弹窗提示用户断网
         let alert:NSAlert = NSAlert.init()
         alert.messageText = "错误：网络连接失败"
         alert.addButton(withTitle: "好")
-        alert.addButton(withTitle: "重试")
+//        如果开启了自动登录选项，才会显示重试按钮
+//        否则回到登录页面之后
+        if defaults.bool(forKey: "isAutoLogin")==true {
+            alert.addButton(withTitle: "重试")
+        }
         alert.alertStyle = NSAlert.Style.warning
+//        runModal()会阻塞程序，直到用户做出选择
         let response = alert.runModal()
-//        点按确定按钮之后进入if
+//        选择第一个按钮也就是“好”，返回登录页面不再尝试
         if response == NSApplication.ModalResponse.alertFirstButtonReturn {
-//            跳转重新登录
             let defaults = UserDefaults.standard
             defaults.set(true, forKey: "isLoadFromLogout")
             self.performSegue(withIdentifier: NSStoryboardSegue.Identifier.init("logOutSegue"), sender: self)
             self.view.window?.performClose(self)
+//        选择第二个按钮也就是“重试”，返回登录页面并立即重新尝试
         } else if response == NSApplication.ModalResponse.alertSecondButtonReturn {
             let defaults = UserDefaults.standard
             defaults.set(false, forKey: "isLoadFromLogout")
@@ -177,11 +181,9 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
             alert.alertStyle = NSAlert.Style.warning
             if errorCode == -3 {
                 alert.messageText = "错误代码(-3)：请求注销错误"
-            }
-            else if errorCode == -5 {
+            } else if errorCode == -5 {
                 alert.messageText = "错误代码(-5)：服务器错误"
-            }
-            else if errorCode == 0 {
+            } else if errorCode == 0 {
                 alert.messageText = "错误代码(0)：未知错误"
             }
             if reason != nil {

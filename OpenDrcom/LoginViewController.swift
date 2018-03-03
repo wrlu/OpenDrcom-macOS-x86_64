@@ -25,7 +25,6 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
 //        设置文本框委托对象
         self.textFieldUsername.delegate = self
         self.textFieldPassword.delegate = self
@@ -95,11 +94,9 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             alert.alertStyle = NSAlert.Style.warning
             if errorCode == -1 {
                 alert.messageText = "错误代码(-1)：请输入用户名"
-            }
-            else if errorCode == -2 {
+            } else if errorCode == -2 {
                 alert.messageText = "错误代码(-2)：请输入密码"
-            }
-            else if errorCode == 0 {
+            } else if errorCode == 0 {
                 alert.messageText = "错误代码(0)：未知错误"
             }
             if reason != nil {
@@ -116,17 +113,13 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             alert.alertStyle = NSAlert.Style.warning
             if errorCode == -3 {
                 alert.messageText = "错误代码(-3)：请求登录错误"
-            }
-            else if errorCode == -4 {
+            } else if errorCode == -4 {
                 alert.messageText = "错误代码(-4)：登录超时失败"
-            }
-            else if errorCode == -5 {
+            } else if errorCode == -5 {
                 alert.messageText = "错误代码(-5)：服务器错误"
-            }
-            else if errorCode == -6 {
+            } else if errorCode == -6 {
                 alert.messageText = "错误代码(-6)：用户名或密码错误"
-            }
-            else if errorCode == 0 {
+            } else if errorCode == 0 {
                 alert.messageText = "错误代码(0)：未知错误"
             }
             if reason != nil {
@@ -146,8 +139,7 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
             defaults.set(textFieldUsername.stringValue, forKey: "savedUser")
             defaults.set(textFieldPassword.stringValue, forKey: "savedPassword")
             buttonIsAutoLogin.isEnabled = true
-        }
-        else {
+        } else {
             defaults.set("", forKey: "savedUser")
             defaults.set("", forKey: "savedPassword")
             buttonIsAutoLogin.state = NSControl.StateValue.off

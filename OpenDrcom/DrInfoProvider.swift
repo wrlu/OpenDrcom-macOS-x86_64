@@ -38,15 +38,13 @@ class DrInfoProvider: NSObject {
             for perChar in timeSubstring! {
                 if perChar >= "0" && perChar <= "9" {
                     usageTimeString.append(perChar)
-                }
-                else {
+                } else {
                     break;
                 }
             }
             return usageTimeString
-        }
+        } catch {
 //        无法连接到网关
-        catch {
             print(error.localizedDescription)
             return ""
         }
@@ -82,8 +80,7 @@ class DrInfoProvider: NSObject {
             for perChar in flowSubstring! {
                 if perChar >= "0" && perChar <= "9" {
                     usageFlowString.append(perChar)
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -97,9 +94,8 @@ class DrInfoProvider: NSObject {
 //            获得用量字符串，单位是MB
             usageFlowString = String.init(format: "%ld.%ld", flow1 / 1024 ,flow0 / 1024)
             return usageFlowString
-        }
+        } catch {
 //        无法连接到网关
-        catch {
             print(error.localizedDescription)
             return ""
         }
@@ -129,8 +125,7 @@ class DrInfoProvider: NSObject {
             for perChar in balanceSubstring! {
                 if perChar >= "0" && perChar <= "9" {
                     usageBalanceString.append(perChar)
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -138,9 +133,8 @@ class DrInfoProvider: NSObject {
             usageBalanceDouble = usageBalanceDouble / 10000
             usageBalanceString = String.init(format: "%.2f", usageBalanceDouble);
             return usageBalanceString
-        }
+        } catch {
 //        无法连接到网关
-        catch {
             print(error.localizedDescription)
             return ""
         }
@@ -169,15 +163,13 @@ class DrInfoProvider: NSObject {
             for perChar in ipSubstring! {
                 if (perChar >= "0" && perChar <= "9") || perChar == "." {
                     usageIPString.append(perChar)
-                }
-                else {
+                } else {
                     break;
                 }
             }
             return usageIPString
-        }
-            //        无法连接到网关
-        catch {
+        } catch {
+//        无法连接到网关
             print(error.localizedDescription)
             return ""
         }

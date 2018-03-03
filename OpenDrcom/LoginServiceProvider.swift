@@ -65,9 +65,8 @@ class LoginServiceProvider: NSObject{
 //                查找登录成功标志，查找到回调返回成功状态
                 if responseHtml.contains("v46ip=") == true {
                     self.loginDelegate?.didLoginSuccess()
-                }
+                } else {
 //                登录失败，用户名或密码错误
-                else {
                     self.loginDelegate?.didLoginFailed(errorCode: -6, reason: nil)
                 }
             })

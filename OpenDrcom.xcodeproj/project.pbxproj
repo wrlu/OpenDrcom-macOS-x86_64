@@ -61,7 +61,7 @@
 		89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_32x32.png; sourceTree = "<group>"; };
 		89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_512x512.png; sourceTree = "<group>"; };
 		89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_64x64.png; sourceTree = "<group>"; };
-		EA2D07E5204919D500CEE891 /* OpenDrcom Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenDrcom Release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA2D07E5204919D500CEE891 /* OpenDrcom Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "OpenDrcom Release.app"; path = OpenDrcom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2D07E6204919D600CEE891 /* OpenDrcom copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OpenDrcom copy-Info.plist"; path = "/Users/xiaolulwr/Documents/CAUC-Tec-Project/OpenDrcom/OpenDrcom-macOS-x86_64/OpenDrcom copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
