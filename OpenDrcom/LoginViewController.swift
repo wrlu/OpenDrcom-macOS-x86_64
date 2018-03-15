@@ -85,44 +85,30 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         }
     }
     
-    func didLoginFailed(errorCode: Int, reason:String?) {
-//        回到主线程继续操作
+    func didLoginFailed(reason:String?) {
         if Thread.isMainThread == true {
             self.progress.stopAnimation(self)
             let alert:NSAlert = NSAlert.init()
             alert.addButton(withTitle: "好")
             alert.alertStyle = NSAlert.Style.warning
-            if errorCode == -1 {
-                alert.messageText = "错误代码(-1)：请输入用户名"
-            } else if errorCode == -2 {
-                alert.messageText = "错误代码(-2)：请输入密码"
-            } else if errorCode == 0 {
-                alert.messageText = "错误代码(0)：未知错误"
-            }
+            alert.messageText = "出现错误:"
             if reason != nil {
+                alert.messageText.append(" ")
                 alert.messageText.append(reason!)
             }
             alert.runModal()
             return
         }
+//        回到主线程继续操作
         DispatchQueue.main.sync {
 //          加载条动画停止
             self.progress.stopAnimation(self)
             let alert:NSAlert = NSAlert.init()
             alert.addButton(withTitle: "好")
             alert.alertStyle = NSAlert.Style.warning
-            if errorCode == -3 {
-                alert.messageText = "错误代码(-3)：请求登录错误"
-            } else if errorCode == -4 {
-                alert.messageText = "错误代码(-4)：登录超时失败"
-            } else if errorCode == -5 {
-                alert.messageText = "错误代码(-5)：服务器错误"
-            } else if errorCode == -6 {
-                alert.messageText = "错误代码(-6)：用户名或密码错误"
-            } else if errorCode == 0 {
-                alert.messageText = "错误代码(0)：未知错误"
-            }
+            alert.messageText = "出现错误:"
             if reason != nil {
+                alert.messageText.append(" ")
                 alert.messageText.append(reason!)
             }
             alert.runModal()

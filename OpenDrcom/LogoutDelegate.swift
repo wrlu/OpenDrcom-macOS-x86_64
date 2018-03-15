@@ -10,5 +10,5 @@ import Foundation
 
 protocol LogoutDelegate {
     func didLogoutSuccess() -> Void
-    func didLogoutFailed(errorCode:Int, reason:String?) -> Void
+    func didLogoutFailed(reason:String?) -> Void
 }

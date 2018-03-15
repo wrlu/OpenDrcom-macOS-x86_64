@@ -26,11 +26,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="偏好设置" hidden="YES" keyEquivalent="," id="BOF-NM-1cW">
-                                            <connections>
-                                                <segue destination="F4m-F2-AQd" kind="show" id="c0R-kH-KiI"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="偏好设置" hidden="YES" keyEquivalent="," id="BOF-NM-1cW"/>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
                                         <menuItem title="隐藏 OpenDrcom" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
@@ -50,12 +46,6 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VKG-rW-MAM"/>
-                                        <menuItem title="显示日志信息" hidden="YES" id="SEw-u8-Nka">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <segue destination="ehD-Ru-ndj" kind="show" id="mYx-ir-rR1"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="软件更新" hidden="YES" keyEquivalent="U" id="ueM-3r-9r7">
                                             <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                             <connections>
@@ -226,205 +216,7 @@
                 </viewController>
                 <customObject id="SDf-ED-LFn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="331" y="-139"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="RI0-uU-2Eo">
-            <objects>
-                <customObject id="clN-Te-CrE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <windowController id="F4m-F2-AQd" sceneMemberID="viewController">
-                    <window key="window" title="偏好设置 - 哆点工具箱" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ZqG-43-z12">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="493" y="297" width="250" height="96"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
-                        <connections>
-                            <outlet property="delegate" destination="F4m-F2-AQd" id="eGr-sU-tB9"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="Jco-lC-1h9" kind="relationship" relationship="window.shadowedContentViewController" id="tsj-Fy-wq5"/>
-                    </connections>
-                </windowController>
-            </objects>
-            <point key="canvasLocation" x="840" y="-579"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="Fyp-26-JDL">
-            <objects>
-                <windowController id="ehD-Ru-ndj" sceneMemberID="viewController">
-                    <window key="window" title="日志信息 - 哆点工具箱" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2dk-Zu-VqE">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="353" y="199" width="209" height="97"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-                        <connections>
-                            <outlet property="delegate" destination="ehD-Ru-ndj" id="Wwr-nO-dIK"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="oe5-DO-Rzx" kind="relationship" relationship="window.shadowedContentViewController" id="grU-GP-TMt"/>
-                    </connections>
-                </windowController>
-                <customObject id="uc6-MG-RYU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1134" y="-579"/>
-        </scene>
-        <!--日志信息 - 哆点工具箱-->
-        <scene sceneID="2Ie-Is-lTv">
-            <objects>
-                <viewController title="日志信息 - 哆点工具箱" id="oe5-DO-Rzx" sceneMemberID="viewController">
-                    <view key="view" id="XPK-0R-bE8">
-                        <rect key="frame" x="0.0" y="0.0" width="635" height="447"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-D2-zhc">
-                                <rect key="frame" x="20" y="39" width="595" height="370"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <clipView key="contentView" ambiguous="YES" id="3X9-DW-oGP">
-                                    <rect key="frame" x="1" y="1" width="593" height="368"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Rxj-pF-4W9">
-                                            <rect key="frame" x="0.0" y="0.0" width="593" height="368"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="593" height="368"/>
-                                            <size key="maxSize" width="595" height="10000000"/>
-                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </textView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="kps-x6-WWT">
-                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="IiF-Vb-Ads">
-                                    <rect key="frame" x="578" y="1" width="16" height="368"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PBS-6m-Cql">
-                                <rect key="frame" x="235" y="12" width="72" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundRect" title="清除日志" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mL1-hF-K82">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="12" name=".PingFangSC-Regular"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ib-Pr-tld">
-                                <rect key="frame" x="328" y="12" width="72" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundRect" title="保存日志" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uAP-er-gDn">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="12" name=".PingFangSC-Regular"/>
-                                </buttonCell>
-                            </button>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="EaU-Xp-zhe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1632.5" y="-591.5"/>
-        </scene>
-        <!--Tab View Controller-->
-        <scene sceneID="E5o-S0-6QI">
-            <objects>
-                <tabViewController id="Jco-lC-1h9" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem identifier="" id="KqQ-w7-AnT"/>
-                        <tabViewItem identifier="" id="y8W-pH-4Tt"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="moX-Pu-Z94">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="323"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
-                        <tabViewItems/>
-                        <connections>
-                            <outlet property="delegate" destination="Jco-lC-1h9" id="yoP-L2-aiD"/>
-                        </connections>
-                    </tabView>
-                    <connections>
-                        <outlet property="tabView" destination="moX-Pu-Z94" id="X8I-4N-h6K"/>
-                        <segue destination="yjE-Wj-5vS" kind="relationship" relationship="tabItems" id="sEH-LJ-tRK"/>
-                        <segue destination="cmg-gk-G4d" kind="relationship" relationship="tabItems" id="tzv-m2-NUD"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="pt0-lH-xOg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="840" y="-207"/>
-        </scene>
-        <!--常规-->
-        <scene sceneID="aqu-Kj-3c8">
-            <objects>
-                <viewController title="常规" id="yjE-Wj-5vS" sceneMemberID="viewController">
-                    <view key="view" id="k3W-70-qvA">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEW-p7-ahW">
-                                <rect key="frame" x="152" y="121" width="71" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="3" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="E7g-nH-jio" id="rZ4-t2-flM">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="rUi-Cs-Gq3">
-                                        <items>
-                                            <menuItem title="1" id="I9P-gk-qRu"/>
-                                            <menuItem title="2" id="F4Z-G0-41U"/>
-                                            <menuItem title="3" state="on" id="E7g-nH-jio"/>
-                                            <menuItem title="4" id="TPZ-v5-85x"/>
-                                            <menuItem title="5" id="BK7-c8-hFh"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcR-pb-sjw">
-                                <rect key="frame" x="113" y="128" width="31" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="连续" id="fCv-qB-i9n">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sYP-w4-Cx6">
-                                <rect key="frame" x="226" y="127" width="111" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="次失败尝试后放弃" id="sLh-Nr-Z3h">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXB-jL-htq">
-                                <rect key="frame" x="154" y="83" width="142" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="永远不保存登录密码" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="Kvk-x8-knK">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                </buttonCell>
-                            </button>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="5XH-ni-asW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1408" y="-208"/>
-        </scene>
-        <!--高级-->
-        <scene sceneID="M9I-7i-I62">
-            <objects>
-                <viewController title="高级" id="cmg-gk-G4d" sceneMemberID="viewController">
-                    <view key="view" id="evP-Z3-OpX">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="dFN-9s-kRg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1408" y="164"/>
+            <point key="canvasLocation" x="453" y="-140"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="xkc-BN-WAp">
@@ -495,7 +287,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="ZbO-a9-rRP">
-                                            <rect key="frame" x="0.0" y="0.0" width="388" height="8260"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="7798"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="388" height="123"/>
@@ -1579,7 +1371,7 @@ DQ
                 </viewController>
                 <customObject id="kyg-Ug-Uet" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668.5" y="1058.5"/>
+            <point key="canvasLocation" x="669" y="1080"/>
         </scene>
     </scenes>
     <resources>

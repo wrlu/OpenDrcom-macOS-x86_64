@@ -10,5 +10,5 @@ import Foundation
 
 protocol LoginDelegate {
     func didLoginSuccess() -> Void
-    func didLoginFailed(errorCode:Int, reason:String?) -> Void
+    func didLoginFailed(reason:String?) -> Void
 }

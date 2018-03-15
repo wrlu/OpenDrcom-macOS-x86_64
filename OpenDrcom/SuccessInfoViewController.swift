@@ -152,12 +152,14 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
         }
     }
     
-    func didLoginFailed(errorCode: Int, reason: String?) {
+    func didLoginFailed(reason: String?) {
         DispatchQueue.main.sync {
             self.view.needsDisplay = true
             retry = retry + 1
-            if retry == 5 {
+            if retry >= 5 {
                 self.didRelogin()
+            } else {
+                self.didLostConnection()
             }
         }
     }
@@ -174,19 +176,14 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
         }
     }
     
-    func didLogoutFailed(errorCode: Int, reason: String?) {
+    func didLogoutFailed(reason: String?) {
         DispatchQueue.main.sync {
             let alert:NSAlert = NSAlert.init()
             alert.addButton(withTitle: "好")
             alert.alertStyle = NSAlert.Style.warning
-            if errorCode == -3 {
-                alert.messageText = "错误代码(-3)：请求注销错误"
-            } else if errorCode == -5 {
-                alert.messageText = "错误代码(-5)：服务器错误"
-            } else if errorCode == 0 {
-                alert.messageText = "错误代码(0)：未知错误"
-            }
+            alert.messageText = "出现错误:"
             if reason != nil {
+                alert.messageText.append(" ")
                 alert.messageText.append(reason!)
             }
             alert.runModal()

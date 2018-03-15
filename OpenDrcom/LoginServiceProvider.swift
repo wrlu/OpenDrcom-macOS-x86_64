@@ -25,13 +25,14 @@ class LoginServiceProvider: NSObject{
     ///   - passwd: 密码
     func login(user:String, passwd:String) {
         if user == "" {
-            self.loginDelegate?.didLoginFailed(errorCode: -1, reason: nil)
+            self.loginDelegate?.didLoginFailed(reason: "请输入用户名")
             return
         }
         if passwd == "" {
-            self.loginDelegate?.didLoginFailed(errorCode: -2, reason: nil)
+            self.loginDelegate?.didLoginFailed(reason: "请输入密码")
             return
         }
+        checkCAUC()
 //        异步进行登录
         DispatchQueue.global().async {
             Thread.current.name = "WebLogin"
@@ -51,13 +52,15 @@ class LoginServiceProvider: NSObject{
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
 //                网络相关错误，回调返回错误代码
                 if let error = error {
-                    self.loginDelegate?.didLoginFailed(errorCode: -3, reason: error.localizedDescription)
+                    self.loginDelegate?.didLoginFailed(reason:"网络错误:"+error.localizedDescription)
                     return
                 }
 //                服务器错误，回调返回错误代码
-                let data = data!
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    self.loginDelegate?.didLoginFailed(errorCode: -5,reason: "HTTP Status:")
+                guard let data = data else { return }
+                let httpResponse = response as? HTTPURLResponse
+                guard let status = httpResponse?.statusCode else { return }
+                guard status == 200 else {
+                    self.loginDelegate?.didLoginFailed(reason: "HTTP错误,状态码:"+String.init(format: "%d", status))
                     return
                 }
 //                无HTTP错误，获得响应HTML
@@ -65,9 +68,14 @@ class LoginServiceProvider: NSObject{
 //                查找登录成功标志，查找到回调返回成功状态
                 if responseHtml.contains("v46ip=") == true {
                     self.loginDelegate?.didLoginSuccess()
-                } else {
+                } else if responseHtml.contains("Msg=01;") == true {
 //                登录失败，用户名或密码错误
-                    self.loginDelegate?.didLoginFailed(errorCode: -6, reason: nil)
+                    self.loginDelegate?.didLoginFailed(reason: "用户名或密码错误")
+                } else if responseHtml.contains("Msg=04;") == true {
+//                登录失败，网络账号超支
+                    self.loginDelegate?.didLoginFailed(reason: "本账号费用超支或时长流量超过限制")
+                } else {
+                    self.loginDelegate?.didLoginFailed(reason: "未知错误")
                 }
             })
             task.resume()
@@ -84,16 +92,51 @@ class LoginServiceProvider: NSObject{
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
 //                网络相关错误，回调返回错误代码
                 if let error = error {
-                    self.logoutDelegate?.didLogoutFailed(errorCode: -3, reason: error.localizedDescription)
+                    self.logoutDelegate?.didLogoutFailed(reason:"网络错误,"+error.localizedDescription)
                     return
                 }
 //                服务器错误，回调返回错误代码
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    self.logoutDelegate?.didLogoutFailed(errorCode: -5, reason: nil)
+                let httpResponse = response as? HTTPURLResponse
+                guard let status = httpResponse?.statusCode else { return }
+                guard status == 200 else {
+                    self.logoutDelegate?.didLogoutFailed(reason: "HTTP错误,状态码为"+String.init(format: "%d", status))
                     return
                 }
 //                注销成功
                 self.logoutDelegate?.didLogoutSuccess()
+            })
+            task.resume()
+        }
+    }
+    
+    func checkCAUC() {
+        DispatchQueue.global().async {
+            Thread.current.name = "CheckCAUC"
+            let url = URL.init(string: "http://ip.chinaz.com/getip.aspx")!
+            let request = URLRequest(url: url)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//                网络相关错误，回调返回错误代码
+                if let error = error {
+                    self.loginDelegate?.didLoginFailed(reason:"网络错误:"+error.localizedDescription)
+                    return
+                }
+//                服务器错误，回调返回错误代码
+                guard let data = data else { return }
+                let httpResponse = response as? HTTPURLResponse
+                guard let status = httpResponse?.statusCode else { return }
+                guard status == 200 else {
+                    self.loginDelegate?.didLoginFailed(reason: "HTTP错误,状态码:"+String.init(format: "%d", status))
+                    return
+                }
+//                无HTTP错误，获得响应HTML
+                let responseHtml = String (data: data, encoding: .ascii)!
+                if responseHtml.contains("v4serip='192.168.100.200'") == true {
+                    return
+                } else if responseHtml.contains("中国民航大学") == true {
+                    return
+                } else {
+                    self.loginDelegate?.didLoginFailed(reason: "未使用中国民航大学校园网")
+                }
             })
             task.resume()
         }
