@@ -32,7 +32,7 @@ class LoginServiceProvider: NSObject{
             self.loginDelegate?.didLoginFailed(reason: "请输入密码")
             return
         }
-        checkCAUC()
+//        checkCAUC()
 //        异步进行登录
         DispatchQueue.global().async {
             Thread.current.name = "WebLogin"
@@ -82,6 +82,7 @@ class LoginServiceProvider: NSObject{
         }
     }
     
+    /// 注销方法
     func logout() {
         DispatchQueue.global().async {
 //            创建注销URL
@@ -109,6 +110,8 @@ class LoginServiceProvider: NSObject{
         }
     }
     
+    /// 检查是否在校园网环境
+    /// 此方法暂停使用
     func checkCAUC() {
         DispatchQueue.global().async {
             Thread.current.name = "CheckCAUC"
