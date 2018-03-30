@@ -1,10 +1,14 @@
-//
-//  ViewController.swift
-//  OpenDrcom
-//
-//  Created by 路伟饶 on 2017/6/30.
-//  Copyright © 2017年 路伟饶. All rights reserved.
-//
+/**
+ * Copyright (c) 2017, 小路.
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms and conditions of the GNU General Public License, version 3,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ */
 
 import Cocoa
 
@@ -78,7 +82,7 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if segue.identifier?._rawValue == "logInSuccessSegue" {
+        if segue.identifier?.rawValue == "logInSuccessSegue"{
             let destWindow = segue.destinationController as! NSWindowController;
             let viewController = destWindow.contentViewController as! SuccessInfoViewController
             viewController.getLoginParameter(account: self.textFieldUsername.stringValue, password: self.textFieldPassword.stringValue)

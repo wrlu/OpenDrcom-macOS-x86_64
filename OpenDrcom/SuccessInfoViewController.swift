@@ -1,10 +1,14 @@
-//
-//  SuccessInfoViewController.swift
-//  OpenDrcom
-//
-//  Created by 路伟饶 on 2017/6/30.
-//  Copyright © 2017年 路伟饶. All rights reserved.
-//
+/**
+ * Copyright (c) 2017, 小路.
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms and conditions of the GNU General Public License, version 3,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ */
 
 import Cocoa
 
@@ -42,16 +46,12 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
 //        计时器时间
         let frequent:TimeInterval = 15
 //        每隔计时器时间，就会刷新一次用量和IP地址
-        schedule = Timer.scheduledTimer(timeInterval: frequent, target: self, selector: #selector(SuccessInfoViewController.refreshUsageAndIP), userInfo: nil, repeats: true)
+            schedule = Timer.scheduledTimer(withTimeInterval: frequent, repeats: true, block: { (schedule) in
+                self.refreshUsageAndIP()
+            })
     }
     
-    func getLoginParameter(account: String, password: String) {
-        self.labelUserAccount.stringValue = account
-        self.password = password
-    }
-    
-    /// 刷新使用时长、使用流量和IP地址的方法
-    @objc func refreshUsageAndIP() {
+    func refreshUsageAndIP() {
         let gatewayURL = URL.init(string: "http://192.168.100.200")
         let readData:Data
         do {
@@ -84,6 +84,11 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
         }
 //        强制界面刷新
         self.view.needsDisplay = true
+    }
+    
+    func getLoginParameter(account: String, password: String) {
+        self.labelUserAccount.stringValue = account
+        self.password = password
     }
     
     @IBAction func autoReconnectValueChanged(_ sender: NSButton) {
