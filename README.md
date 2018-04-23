@@ -60,6 +60,3 @@ sudo spctl --master-disable
 1. 新增关于页面；
 2. 新增开源许可；
 3. 预留检查更新通道。
-
-###  Merge pull request
-- Master已经支持网页登陆新方式，已支持断线重连，未来计划加入网络检测功能。
