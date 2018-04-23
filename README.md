@@ -1,12 +1,5 @@
 # OpenDrcom-macOS-x86_64（哆点工具箱 macOS 64位版）
 ### 简介：此程序是Drcom的第三方客户端，支持自动登录和断线重连，未来计划支持断网原因检测以及自动修复。
-
-### 许可证说明
-- This is a **Free Software** licensed under GPLv3.
-- 这是一个**自由软件**，软件源代码遵循GPLv3许可证规范。
-- 简单而言你需要注意的是：如果您希望修改本软件的源代码，那么您修改之后的版本也必须以GPLv3的方式开源，同时需要注明原作者。
-- GPLv3许可证是最严格的开源许可证，旨在推广自由软件的使用。
-- GPLv3许可证详情请见：https://opensource.org/licenses/gpl-3.0.html
   
 ### 使用说明
 - 本软件从2.4版本起仅支持 macOS Sierra (10.12.x)或更高版本，若您正在使用 OS X El Capitan (10.11.x)或者 OS X Yosemite (10.10.x)，请下载2.3.1版本。
@@ -17,19 +10,18 @@ sudo spctl --master-disable
 ~~~
 
 ### 最新版本更新日志
-
 #### 版本2.4更新：更改macOS版本要求
 1. macOS版本要求为 macOS Sierra (版本 10.12.x) 或更高版本；
 2. 增加对macOS High Sierra 版本10.13.4 的支持；
 3. 程序完全适配Swift 4；
 4. 更改编译Target。
 
-
-
-
+### 许可证
+- Copyright (c) 2017-2018, 小路.
+- This program is free software; you can redistribute it and/or modify it under the terms and conditions of the GNU General Public License, version 3, as published by the Free Software Foundation.
+- This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 ### 历史版本更新日志
-
 #### 版本2.3.1更新
 1. 撤回校园网环境检测功能
 
