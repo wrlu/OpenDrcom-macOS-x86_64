@@ -36,7 +36,6 @@ class LoginServiceProvider: NSObject{
             self.loginDelegate?.didLoginFailed(reason: "请输入密码")
             return
         }
-//        checkCAUC()
 //        异步进行登录
         DispatchQueue.global().async {
             Thread.current.name = "WebLogin"
@@ -109,41 +108,6 @@ class LoginServiceProvider: NSObject{
                 }
 //                注销成功
                 self.logoutDelegate?.didLogoutSuccess()
-            })
-            task.resume()
-        }
-    }
-    
-    /// 检查是否在校园网环境
-    /// 此方法暂停使用
-    func checkCAUC() {
-        DispatchQueue.global().async {
-            Thread.current.name = "CheckCAUC"
-            let url = URL.init(string: "http://ip.chinaz.com/getip.aspx")!
-            let request = URLRequest(url: url)
-            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-//                网络相关错误，回调返回错误代码
-                if let error = error {
-                    self.loginDelegate?.didLoginFailed(reason:"网络错误:"+error.localizedDescription)
-                    return
-                }
-//                服务器错误，回调返回错误代码
-                guard let data = data else { return }
-                let httpResponse = response as? HTTPURLResponse
-                guard let status = httpResponse?.statusCode else { return }
-                guard status == 200 else {
-                    self.loginDelegate?.didLoginFailed(reason: "HTTP错误,状态码:"+String.init(format: "%d", status))
-                    return
-                }
-//                无HTTP错误，获得响应HTML
-                let responseHtml = String (data: data, encoding: .ascii)!
-                if responseHtml.contains("v4serip='192.168.100.200'") == true {
-                    return
-                } else if responseHtml.contains("中国民航大学") == true {
-                    return
-                } else {
-                    self.loginDelegate?.didLoginFailed(reason: "未使用中国民航大学校园网")
-                }
             })
             task.resume()
         }

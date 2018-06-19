@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>CAUC</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.4</string>
+	<string>2.5</string>
 	<key>CFBundleVersion</key>
-	<string>1804</string>
+	<string>1806</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>

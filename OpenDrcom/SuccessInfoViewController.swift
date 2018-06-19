@@ -21,6 +21,8 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
     @IBOutlet weak var labelUserAccount: NSTextField!
     /// 用户IP文本
     @IBOutlet weak var labelUserIP: NSTextField!
+    /// 公网IP文本
+    @IBOutlet weak var labelWANIP: NSTextField!
     /// 用户余额文本
     @IBOutlet weak var labelBalance: NSTextField!
     /// 用户使用时长文本
@@ -32,6 +34,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
     /// 计时器任务对象
     var schedule:Timer? = nil
     var password:String? = nil
+    let drProvider = DrInfoProvider.init()
     var retry = 0
     
     override func viewDidLoad() {
@@ -43,8 +46,8 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
         }
 //        首先获取用量和IP地址
         self.refreshUsageAndIP()
-//        计时器时间
-        let frequent:TimeInterval = 15
+//        计时器时间，设定为1分钟一刷新
+        let frequent:TimeInterval = 60
 //        每隔计时器时间，就会刷新一次用量和IP地址
             schedule = Timer.scheduledTimer(withTimeInterval: frequent, repeats: true, block: { (schedule) in
                 self.refreshUsageAndIP()
@@ -52,34 +55,24 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
     }
     
     func refreshUsageAndIP() {
-        let gatewayURL = URL.init(string: "http://192.168.100.200")
-        let readData:Data
-        do {
-//            尝试连接网关
-            try readData = Data.init(contentsOf: gatewayURL!)
-            print(readData.count)
-        } catch {
-//            网关连接失败，证明已经断网
-            print(error.localizedDescription)
-            self.didRelogin()
-            return
-        }
+        drProvider.searchGateway()
 //        获取用量
-        let timeUsage = DrInfoProvider.timeUsage()
-        let flowUsage = DrInfoProvider.flowUsage()
-        let balanceUsage = DrInfoProvider.balanceUsage()
-        let ipUsage = DrInfoProvider.inetAddress()
+        let timeUsage = drProvider.timeUsage()
+        let flowUsage = drProvider.flowUsage()
+        let balanceUsage = drProvider.balanceUsage()
+        let ipv4Private = drProvider.ipv4Private()
+        let ipv4Public = drProvider.ipv4Public()
 //        获取成功后设置界面文本
-        if timeUsage != "" && flowUsage != "" && balanceUsage != "" && ipUsage != "" {
-            self.labelUsageTime.stringValue = timeUsage + " 分钟"
-            self.labelUsageFlow.stringValue = flowUsage + " MB"
-            self.labelBalance.stringValue = balanceUsage + " 元"
-            self.labelUserIP.stringValue = ipUsage
+        if timeUsage != nil && flowUsage != nil && balanceUsage != nil && ipv4Private != nil && ipv4Public != nil {
+            self.labelUsageTime.stringValue = timeUsage! + " 分钟"
+            self.labelUsageFlow.stringValue = flowUsage! + " MB"
+            self.labelBalance.stringValue = balanceUsage! + " 元"
+            self.labelUserIP.stringValue = "校园网：" + ipv4Private!
+            self.labelWANIP.stringValue = "互联网：" + ipv4Public!
         } else {
             self.labelUsageTime.stringValue = "您还未登录"
             self.labelUsageFlow.stringValue = "您还未登录"
             self.labelBalance.stringValue = "您还未登录"
-            self.labelUserIP.stringValue = "您还未登录"
             self.didLostConnection()
         }
 //        强制界面刷新

@@ -1,27 +1,36 @@
 # OpenDrcom-macOS-x86_64（哆点工具箱 macOS 64位版）
 ### 简介：此程序是Drcom的第三方客户端，支持自动登录和断线重连，未来计划支持断网原因检测以及自动修复。
   
-### 使用说明
-- 本软件从2.4版本起仅支持 macOS Sierra (10.12.x)或更高版本，若您正在使用 OS X El Capitan (10.11.x)或者 OS X Yosemite (10.10.x)，请下载2.3.1版本。
-- macOS Sierra (10.12.x)或更高版本开启“任何来源”后才可以运行本程序（因为我没注册苹果付费帐号，一年688大洋，穷）
-- 在“终端”中执行以下指令，执行后输入管理员密码即可。
+### 一、使用说明
+- 如果您在使用 macOS Mojave（10.14.x）时遇到问题，请下载最新的2.5版本；
+- 本软件从2.4版本起仅支持 macOS Sierra (10.12.x)或更高版本，若您正在使用 OS X El Capitan (10.11.x)或者 OS X Yosemite (10.10.x)，请下载2.3.1版本；
+- macOS Sierra (10.12.x)或更高版本开启“任何来源”后才可以运行本程序（因为我没注册苹果付费帐号，一年688大洋，穷）；
+- 在“终端”中执行以下指令，执行后输入管理员密码即可：
+
 ~~~
 sudo spctl --master-disable
 ~~~
 
-### 最新版本更新日志
+### 二、最新版本更新日志
+
+#### 版本2.5更新：显示公网IP、Mojave暗黑模式
+1. 新增登录成功后显示公网IP功能；
+2. 在macOS Mojave（10.14）中支持暗黑模式自动切换；
+3. 使用Xcode 10 Beta构建，增加对macOS Mojave（10.14）的支持。
+
+### 三、软件许可证
+- Copyright (c) 2017-2018, 小路.
+- This program is free software; you can redistribute it and/or modify it under the terms and conditions of the GNU General Public License, version 3, as published by the Free Software Foundation.
+- This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+### 四、历史版本更新日志
+
 #### 版本2.4更新：更改macOS版本要求
 1. macOS版本要求为 macOS Sierra (版本 10.12.x) 或更高版本；
 2. 增加对macOS High Sierra 版本10.13.4 的支持；
 3. 程序完全适配Swift 4；
 4. 更改编译Target。
 
-### 许可证
-- Copyright (c) 2017-2018, 小路.
-- This program is free software; you can redistribute it and/or modify it under the terms and conditions of the GNU General Public License, version 3, as published by the Free Software Foundation.
-- This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-### 历史版本更新日志
 #### 版本2.3.1更新
 1. 撤回校园网环境检测功能
 
