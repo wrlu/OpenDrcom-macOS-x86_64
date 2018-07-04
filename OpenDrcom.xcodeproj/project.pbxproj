@@ -22,6 +22,7 @@
 		89EFFD541F0CB52A00B76820 /* DrcomIcon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */; };
 		89EFFD551F0CB52A00B76820 /* DrcomIcon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */; };
 		89EFFD561F0CB52A00B76820 /* DrcomIcon_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */; };
+		EA44621B20D92D1F00E88AC8 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44621A20D92D1F00E88AC8 /* PreferenceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		89EFFD4E1F0CB52A00B76820 /* DrcomIcon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_32x32.png; sourceTree = "<group>"; };
 		89EFFD4F1F0CB52A00B76820 /* DrcomIcon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_512x512.png; sourceTree = "<group>"; };
 		89EFFD501F0CB52A00B76820 /* DrcomIcon_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DrcomIcon_64x64.png; sourceTree = "<group>"; };
+		EA44621A20D92D1F00E88AC8 /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				89B0FB121FE6351F000C2E88 /* LogoutDelegate.swift */,
 				894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */,
 				8968294D1F076E810073D535 /* DrInfoProvider.swift */,
+				EA44621A20D92D1F00E88AC8 /* PreferenceViewController.swift */,
 				89145EE11F0608C400800255 /* Assets.xcassets */,
 				89145EE31F0608C400800255 /* Main.storyboard */,
 				89145EE61F0608C400800255 /* Info.plist */,
@@ -189,6 +192,7 @@
 				896829501F076E810073D535 /* DrInfoProvider.swift in Sources */,
 				89B0FB131FE6351F000C2E88 /* LogoutDelegate.swift in Sources */,
 				890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */,
+				EA44621B20D92D1F00E88AC8 /* PreferenceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,11 +46,17 @@ class LoginServiceProvider: NSObject{
 //            更改为POST请求方式
             request.httpMethod = "POST"
 //            构造参数
-            let parameter = "DDDDD=\(user)&upass=\(passwd)&R1=0&R3=0&R6=0&MKKey=123456"
+//            let parameter = "DDDDD=\(user)&upass=\(passwd)&R1=0&R3=0&R6=0&MKKey=123456"
+            let parameter = "0MKKey=%B5%C7+++++%C2%BC&DDDDD=\(user)&upass=\(passwd)&C1=on"
 //            对参数进行编码
             let encodePara = parameter.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
 //            将参数写入HTTP主体
             request.httpBody = encodePara.data(using: .ascii)
+//            添加请求头
+            request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
+            request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
+            request.addValue("zh-cn", forHTTPHeaderField: "Accept-Language")
+            request.addValue("http://192.168.100.200/a70.htm", forHTTPHeaderField: "Referer")
 //            创建任务
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
 //                网络相关错误，回调返回错误代码
@@ -91,7 +97,11 @@ class LoginServiceProvider: NSObject{
 //            创建注销URL
             let url = URL.init(string: "http://192.168.100.200/F.htm")!
 //            创建URL请求
-            let request = URLRequest(url: url)
+            var request = URLRequest(url: url)
+            request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
+            request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
+            request.addValue("zh-cn", forHTTPHeaderField: "Accept-Language")
+            request.addValue("http://192.168.100.200", forHTTPHeaderField: "Referer")
 //            创建任务
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
 //                网络相关错误，回调返回错误代码

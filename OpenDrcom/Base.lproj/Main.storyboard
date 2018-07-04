@@ -26,7 +26,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="偏好设置" hidden="YES" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="偏好设置" enabled="NO" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="yCN-Je-gdr" kind="show" id="yZC-ce-Vuv"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
                                         <menuItem title="隐藏 OpenDrcom" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
@@ -104,10 +108,79 @@
             <point key="canvasLocation" x="544" y="-935"/>
         </scene>
         <!--Window Controller-->
+        <scene sceneID="Qig-ZK-nch">
+            <objects>
+                <windowController id="yCN-Je-gdr" sceneMemberID="viewController">
+                    <window key="window" title="偏好设置" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="lXu-A7-s9T">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="199" width="240" height="131"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                        <connections>
+                            <outlet property="delegate" destination="yCN-Je-gdr" id="XNL-XU-q77"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="glp-qI-PEf" kind="relationship" relationship="window.shadowedContentViewController" id="24w-Fd-QYk"/>
+                    </connections>
+                </windowController>
+                <customObject id="iOV-6B-faI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="-601.5"/>
+        </scene>
+        <!--偏好设置-->
+        <scene sceneID="RZv-Cp-KbY">
+            <objects>
+                <viewController title="偏好设置" id="glp-qI-PEf" customClass="PreferenceViewController" customModule="OpenDrcom" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" autoresizesSubviews="NO" id="OJ9-yR-6mK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="114"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPQ-k0-pzE">
+                                <rect key="frame" x="215" y="43" width="104" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="跟随系统" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="6j3-ii-eTN" id="MRF-XX-qyX">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Pq8-rb-QXQ">
+                                        <items>
+                                            <menuItem title="跟随系统" state="on" id="6j3-ii-eTN">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="亮色模式" id="cuc-3B-Jot">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="暗色模式" id="fCy-LO-XhU">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-2D-I02">
+                                <rect key="frame" x="63" y="50" width="149" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="界面风格（10.14+支持）" id="Wy0-6Z-Sz9">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="StylePopUpButton" destination="xPQ-k0-pzE" id="l8D-r8-573"/>
+                    </connections>
+                </viewController>
+                <customObject id="Pra-T0-rDB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313.5" y="-325"/>
+        </scene>
+        <!--Window Controller-->
         <scene sceneID="xkc-BN-WAp">
             <objects>
                 <windowController id="i0Y-o6-wMD" sceneMemberID="viewController">
-                    <window key="window" title="关于 - 哆点工具箱" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UM6-9t-gNT">
+                    <window key="window" title="关于本软件" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UM6-9t-gNT">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="163" y="199" width="239" height="81"/>
@@ -124,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="-54" y="-587"/>
         </scene>
-        <!--关于 - 哆点工具箱-->
+        <!--关于本软件-->
         <scene sceneID="Z5b-td-c4G">
             <objects>
-                <viewController title="关于 - 哆点工具箱" id="eAv-Ut-ERl" sceneMemberID="viewController">
+                <viewController title="关于本软件" id="eAv-Ut-ERl" sceneMemberID="viewController">
                     <view key="view" id="cJs-jm-ex6">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="369"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -147,10 +220,10 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pjj-gt-2KV">
-                                <rect key="frame" x="156" y="210" width="124" height="17"/>
+                                <rect key="frame" x="157" y="210" width="123" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="版本：2.5（1806）" id="qn2-Qu-KpB">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="版本：2.6（1807）" id="qn2-Qu-KpB">
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -319,11 +392,11 @@ See the GNU General Public License for more details.</string>
                                         </textView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="xjY-oF-AvJ">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="xjY-oF-AvJ">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="7MZ-uh-sBs">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="7MZ-uh-sBs">
                                     <rect key="frame" x="373" y="1" width="16" height="174"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -339,7 +412,7 @@ See the GNU General Public License for more details.</string>
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="登录 - 哆点工具箱" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="登录页面" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -356,10 +429,10 @@ See the GNU General Public License for more details.</string>
             </objects>
             <point key="canvasLocation" x="135" y="377"/>
         </scene>
-        <!--登录 - 哆点工具箱-->
+        <!--登录页面-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="登录 - 哆点工具箱" id="XfG-lQ-9wD" customClass="LoginViewController" customModule="OpenDrcom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="登录页面" id="XfG-lQ-9wD" customClass="LoginViewController" customModule="OpenDrcom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="427" height="297"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -380,7 +453,7 @@ See the GNU General Public License for more details.</string>
                                 <rect key="frame" x="72" y="222" width="31" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="帐号" id="Wc6-dd-O6b">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -389,7 +462,7 @@ See the GNU General Public License for more details.</string>
                                 <rect key="frame" x="72" y="158" width="31" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="密码" id="Dim-P3-dPQ">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -429,7 +502,7 @@ DQ
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="自动登录" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="lbu-TH-tj8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="autoLoginValueChanged:" target="XfG-lQ-9wD" id="5U0-2V-qbT"/>
@@ -440,7 +513,7 @@ DQ
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="保存密码" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9De-bM-D7o">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="savePasswordValueChanged:" target="XfG-lQ-9wD" id="QcS-Ez-8pL"/>
@@ -448,42 +521,26 @@ DQ
                             </button>
                         </subviews>
                     </view>
-                    <touchBar key="touchBar" id="Yb9-9F-GhA">
+                    <touchBar key="touchBar" id="nHs-cB-fiN">
                         <touchBarItems>
-                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="qJR-03-h5e"/>
-                            <touchBarItem id="rL5-Uq-bPP">
-                                <viewController key="viewController" id="kJT-6n-JZO">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zik-nh-bj2">
-                                        <rect key="frame" x="6" y="-4" width="150" height="41"/>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="wCY-be-SeG"/>
+                            <touchBarItem id="ztT-Po-KfU">
+                                <viewController key="viewController" id="lr5-Z5-FfY">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Tm-Fu-osR">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Acm-WQ-8vT">
+                                        <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fey-ay-mQE">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="clickLoginButton:" target="XfG-lQ-9wD" id="qcb-ST-P6C"/>
+                                            <action selector="clickLoginButton:" target="XfG-lQ-9wD" id="ifD-Um-Lbv"/>
                                         </connections>
                                     </button>
                                 </viewController>
                                 <size key="designTimeSize" width="150" height="30"/>
                             </touchBarItem>
-                            <touchBarItem id="1a4-tt-dX1">
-                                <viewController key="viewController" id="Qka-3f-bPf">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sHE-bp-OR7">
-                                        <rect key="frame" x="6" y="-4" width="138" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="退出" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aJM-sH-ICb">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="exitApplication:" target="XfG-lQ-9wD" id="kdh-zl-2Yk"/>
-                                        </connections>
-                                    </button>
-                                </viewController>
-                                <size key="designTimeSize" width="138" height="30"/>
-                            </touchBarItem>
-                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="JNv-VZ-AWJ"/>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="xef-xc-2Tx"/>
                         </touchBarItems>
                     </touchBar>
                     <connections>
@@ -503,7 +560,7 @@ DQ
         <scene sceneID="wGg-iu-VSD">
             <objects>
                 <windowController id="wzS-eD-jjf" sceneMemberID="viewController">
-                    <window key="window" title="成功- 哆点工具箱" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="uYh-ME-PWM">
+                    <window key="window" title="信息页面" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="uYh-ME-PWM">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="316" y="179" width="266" height="409"/>
@@ -520,10 +577,10 @@ DQ
             </objects>
             <point key="canvasLocation" x="667" y="394"/>
         </scene>
-        <!--成功- 哆点工具箱-->
+        <!--信息页面-->
         <scene sceneID="Wox-kP-H1F">
             <objects>
-                <viewController title="成功- 哆点工具箱" id="icQ-mI-ctr" customClass="SuccessInfoViewController" customModule="OpenDrcom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="信息页面" id="icQ-mI-ctr" customClass="SuccessInfoViewController" customModule="OpenDrcom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Qbc-OU-y15">
                         <rect key="frame" x="0.0" y="0.0" width="269" height="421"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -532,7 +589,7 @@ DQ
                                 <rect key="frame" x="26" y="171" width="111" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="帐号已使用时间：" id="sWJ-cF-S1r">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -541,7 +598,7 @@ DQ
                                 <rect key="frame" x="26" y="128" width="111" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="帐号已使用流量：" id="V9E-rl-tQC">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -550,7 +607,7 @@ DQ
                                 <rect key="frame" x="26" y="211" width="71" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="帐号余额：" id="pYk-ZN-nqD">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -586,7 +643,7 @@ DQ
                                 <rect key="frame" x="26" y="254" width="71" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="登入帐号：" id="zjb-9C-uvR">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -605,7 +662,7 @@ DQ
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="注销登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="up7-Q9-3H7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clickLogoutButton:" target="icQ-mI-ctr" id="LUZ-xO-49e"/>
@@ -616,7 +673,7 @@ DQ
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="启用自动重拨" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zAW-fc-Nfz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="autoReconnectValueChanged:" target="icQ-mI-ctr" id="X1s-uo-Vtk"/>
@@ -626,7 +683,7 @@ DQ
                                 <rect key="frame" x="62" y="355" width="169" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="校园网：255.255.255.255" id="SS9-o0-FLP">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -635,7 +692,7 @@ DQ
                                 <rect key="frame" x="63" y="315" width="165" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="互联网：255.255.255.255" id="H7f-1f-AAw">
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -652,26 +709,26 @@ DQ
                             </imageView>
                         </subviews>
                     </view>
-                    <touchBar key="touchBar" id="hmJ-BT-IQm">
+                    <touchBar key="touchBar" id="UaO-wa-naQ">
                         <touchBarItems>
-                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="mWF-FP-w6d"/>
-                            <touchBarItem id="vEX-Xl-vpV">
-                                <viewController key="viewController" id="gge-RT-tBx">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LNq-oY-PWg">
-                                        <rect key="frame" x="6" y="-4" width="138" height="41"/>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="jqf-kN-3Hh"/>
+                            <touchBarItem id="MmQ-Gt-ri8">
+                                <viewController key="viewController" id="PbD-nc-7l5">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0QY-En-8bL">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="注销登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r4b-1S-gu9">
+                                        <buttonCell key="cell" type="push" title="注销登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="POJ-aD-5ob">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="clickLogoutButton:" target="icQ-mI-ctr" id="bd8-nV-sgt"/>
+                                            <action selector="clickLogoutButton:" target="icQ-mI-ctr" id="zC2-Hq-F6y"/>
                                         </connections>
                                     </button>
                                 </viewController>
-                                <size key="designTimeSize" width="138" height="30"/>
+                                <size key="designTimeSize" width="150" height="30"/>
                             </touchBarItem>
-                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="IV2-8k-uIB"/>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="Kai-Wp-WDK"/>
                         </touchBarItems>
                     </touchBar>
                     <connections>
@@ -687,7 +744,7 @@ DQ
                 </viewController>
                 <customObject id="kyg-Ug-Uet" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668.5" y="1079.5"/>
+            <point key="canvasLocation" x="856" y="1060"/>
         </scene>
     </scenes>
     <resources>
