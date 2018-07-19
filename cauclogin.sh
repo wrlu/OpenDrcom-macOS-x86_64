@@ -3,38 +3,45 @@ echo "Drcom CAUC Login Client, developed by XiaoLu."
 echo
 if [ $# -eq 2 ]
 then
-    echo "Username: $1"
-    echo "Password: $2"
+    echo "Your Username: $1"
+    echo "Your Password: $2"
     wget
     if [ $? -eq 127 ]
     then
-        echo "wget: command not found, try to use curl instead."
+        echo "[*] wget: command not found, try to use curl instead."
         curl
-        if [ $? -eq 127]
+        if [ $? -eq 127 ]
         then
-            echo "curl: command not found, you must install wget or curl to run this script."
+            echo "[-] curl: command not found"
+            echo
+            echo "You must install wget or curl package to run this script."
+            echo "Try to use yum or apt-get to install them."
         else
-            curl --data-urlencode "DDDDD=$1" --data-urlencode "upass=$2" --data-urlencode "R1=0" --data-urlencode "R3=0" --data-urlencode "R6=0" --data-urlencode "MKKey=123456" "http://192.168.100.200/a70.htm"
+            echo "[*] Warning: Your password will be sent to the server without encrypt for the weak authorization method of our school network."
+            curl --data-urlencode "0MKKey=%B5%C7+++++%C2%BC" --data-urlencode "DDDDD=$1" --data-urlencode "upass=$2" --data-urlencode "C1=on" "http://192.168.100.200/a70.htm" | grep errorMsg
+            curl http://ip.chinaz.com/getip.aspx
+            echo
         fi
     else
-        wget --post-data "DDDDD=$1&upass=$2&R1=0&R3=0&R6=0&MKKey=123456" http://192.168.100.200/a70.htm
-        cat a70.htm
+        echo "[*] Warning: Your password will be sent to the server without encrypt for the weak authorization method of our school network."
+        wget --post-data "0MKKey=%B5%C7+++++%C2%BC&DDDDD=$1&upass=$2&C1=on" http://192.168.100.200/a70.htm
+        cat a70.htm | grep errorMsg
         rm a70.htm
     fi
 elif [ $# -eq 1 ]
 then
-    if [ $1 = "-h" -o $1 = "-help"]
+    if [ $1 = "-h" -o $1 = "--help"]
     then
         echo "Usage: cauclogin.sh [Username] [Password]"
     else 
-        echo "Require 2 parameters, but $# parameter(s) are given."
+        echo "[-] cauclogin.sh: require 2 parameters, but $# parameter(s) are given."
     fi
 elif [ $# -eq 0 ]
 then
-    echo "cauclogin.sh: missing username and password"
+    echo "[-] cauclogin.sh: missing username and password"
     echo "Usage: cauclogin.sh [Username] [Password]"
     echo
-    echo "Try cauclogin.sh -h or cauclogin.sh -help for more options."
+    echo "Try cauclogin.sh -h or cauclogin.sh --help for more options."
 else 
-    echo "Require 2 parameters, but $# parameter(s) are given."
+    echo "[-] cauclogin.sh: require 2 parameters, but $# parameter(s) are given."
 fi
