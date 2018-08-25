@@ -21,6 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+//        退出时清除从注销返回状态
+//        从注销返回为true的时候，返回到登录页面时会忽略自动登录选项，不自动登录。
         let defaults = UserDefaults.standard
         defaults.set(false, forKey: "isLoadFromLogout")
     }

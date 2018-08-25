@@ -32,18 +32,22 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
 //        设置文本框委托对象
         self.textFieldUsername.delegate = self
         self.textFieldPassword.delegate = self
+//        初始化登录服务提供者
         provider = LoginServiceProvider.init(loginDelegate: self, logoutDelegate: nil)
 //        获得本地存储对象
         let defaults = UserDefaults.standard
-//        还原保存的用户名和密码
+//        检查保存密码状态
         if defaults.bool(forKey: "isSavePassword")==true {
             buttonIsSavedPassword.state = NSControl.StateValue.on
             textFieldUsername.stringValue = defaults.object(forKey: "savedUser") as! String
             textFieldPassword.stringValue = defaults.object(forKey: "savedPassword") as! String
+//            在保存密码的前提下才允许自动登录
             buttonIsAutoLogin.isEnabled = true
         }
+//        检查自动登录状态
         if defaults.bool(forKey: "isAutoLogin")==true {
             buttonIsAutoLogin.state = NSControl.StateValue.on
+//            如果不是刚刚从注销返回，则执行自动登录操作
             if defaults.bool(forKey: "isLoadFromLogout")==false {
                 clickLoginButton(self)
             }
@@ -63,6 +67,7 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         self.controlTextDidEndEditing(Notification.init(name: Notification.Name.init(rawValue: "Login")))
 //        开始登录操作
         self.progress.startAnimation(self)
+//        开始登录
         provider?.login(user: username, passwd: password)
     }
     
@@ -81,14 +86,24 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         }
     }
     
+    /// Segue跳转前调用的方法
+    ///
+    /// - Parameters:
+    ///   - segue: Segue对象
+    ///   - sender: 消息发送者
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+//        登录成功跳转Segue
         if segue.identifier?.rawValue == "logInSuccessSegue"{
             let destWindow = segue.destinationController as! NSWindowController;
             let viewController = destWindow.contentViewController as! SuccessInfoViewController
+//            向登录成功页面传入账号和密码
             viewController.getLoginParameter(account: self.textFieldUsername.stringValue, password: self.textFieldPassword.stringValue)
         }
     }
     
+    /// 登录失败的回调方法
+    ///
+    /// - Parameter reason: 失败原因
     func didLoginFailed(reason:String?) {
         if Thread.isMainThread == true {
             self.progress.stopAnimation(self)
@@ -162,6 +177,7 @@ class LoginViewController: NSViewController,NSTextFieldDelegate,LoginDelegate {
         }
     }
     
+    /// 获得注销状态参数，忽略自动登录参数，实现注销返回后不立即自动登录
     func getLogoutParameter() {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "isLoadFromLogout")

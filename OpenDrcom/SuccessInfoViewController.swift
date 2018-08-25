@@ -54,6 +54,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
             })
     }
     
+    /// 刷新用量和IP信息
     func refreshUsageAndIP() {
         drProvider.searchGateway()
 //        获取用量
@@ -79,16 +80,25 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
         self.view.needsDisplay = true
     }
     
+    /// 获得登录参数
+    ///
+    /// - Parameters:
+    ///   - account: 用户名
+    ///   - password: 密码
     func getLoginParameter(account: String, password: String) {
         self.labelUserAccount.stringValue = account
         self.password = password
     }
     
+    /// 自动重拨值改变回调方法
+    ///
+    /// - Parameter sender: 消息发送者
     @IBAction func autoReconnectValueChanged(_ sender: NSButton) {
         let defaults = UserDefaults.standard
         defaults.set(sender.state, forKey: "isAutoReconnect")
     }
     
+    /// 丢失连接调用的方法
     func didLostConnection() {
         if buttonIsAutoReconnect.state == NSControl.StateValue.on {
             provider?.login(user: labelUserAccount.stringValue, passwd: password!)
@@ -130,6 +140,9 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
         }
     }
     
+    /// 点击注销按钮调用的方法
+    ///
+    /// - Parameter sender: 消息发送者
     @IBAction func clickLogoutButton(_ sender: NSButton) {
         let alert:NSAlert = NSAlert.init()
         alert.messageText = "是否注销登录？注销后将无法访问互联网。"
@@ -141,7 +154,6 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
             provider?.logout()
         }
     }
-    
     
     func didLoginSuccess() {
         DispatchQueue.main.sync {
