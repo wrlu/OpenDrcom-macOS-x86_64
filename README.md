@@ -18,6 +18,7 @@ sudo spctl --master-disable
 2. 为带有 Touch Bar 的机型提供了 Touch Bar 快捷操作支持。
 
 ### 三、软件许可证
+- 本软件是自由软件，遵循GPLv3许可协议分发：
 - Copyright (c) 2017-2018, 小路.
 - This program is free software; you can redistribute it and/or modify it under the terms and conditions of the GNU General Public License, version 3, as published by the Free Software Foundation.
 - This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
