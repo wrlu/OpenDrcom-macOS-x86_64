@@ -46,8 +46,10 @@ class LoginServiceProvider: NSObject{
 //            更改为POST请求方式
             request.httpMethod = "POST"
 //            构造参数
-//            let parameter = "DDDDD=\(user)&upass=\(passwd)&R1=0&R3=0&R6=0&MKKey=123456"
-            let parameter = "0MKKey=%B5%C7+++++%C2%BC&DDDDD=\(user)&upass=\(passwd)&C1=on"
+//            2018年9月最新登录算法
+            let parameter = "DDDDD=\(user)&upass=\(passwd)&R1=0&R3=0&R6=0&para=00&MKKey=123456"
+//            2018年7月旧算法
+//            let parameter = "0MKKey=%B5%C7+++++%C2%BC&DDDDD=\(user)&upass=\(passwd)&C1=on"
 //            对参数进行编码
             let encodePara = parameter.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
 //            将参数写入HTTP主体

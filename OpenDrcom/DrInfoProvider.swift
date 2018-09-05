@@ -16,7 +16,7 @@ import Cocoa
 class DrInfoProvider: NSObject {
     
     let gatewayURLString = "http://192.168.100.200"
-    let publicIPURLString = "http://ip.chinaz.com/getip.aspx"
+    let publicIPURLString = "https://ip.cn"
     var htmlCode:String?
     var remoteHtmlCode:String?
     
@@ -164,7 +164,7 @@ class DrInfoProvider: NSObject {
         guard remoteHtmlCode != nil else {
             return nil
         }
-        let ipRange = remoteHtmlCode?.range(of: "{ip:'")
+        let ipRange = remoteHtmlCode?.range(of: "<p>您现在的 IP：<code>")
         guard ipRange != nil else {
             return nil
         }
