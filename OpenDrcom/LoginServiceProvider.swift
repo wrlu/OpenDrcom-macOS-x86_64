@@ -36,9 +36,6 @@ class LoginServiceProvider: NSObject{
             self.loginDelegate?.didLoginFailed(reason: "请输入密码")
             return
         }
-//        异步进行登录
-        DispatchQueue.global().async {
-            Thread.current.name = "WebLogin"
 //            创建登录URL
             let url = URL.init(string: "http://192.168.100.200/a70.htm")!
 //            创建URL请求
@@ -90,7 +87,6 @@ class LoginServiceProvider: NSObject{
                 }
             })
             task.resume()
-        }
     }
     
     /// 注销方法

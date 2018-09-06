@@ -13,16 +13,22 @@
 import Cocoa
 
 /// 登录成功之后的界面
-class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
-    
+class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate,DrInfoProviderDelegate {
+    var drProvider:DrInfoProvider? = nil
     var provider:LoginServiceProvider? = nil
     
     /// 登入用户名文本
     @IBOutlet weak var labelUserAccount: NSTextField!
-    /// 用户IP文本
+    /// 本地IP文本
     @IBOutlet weak var labelUserIP: NSTextField!
+    /// 本地IP加载符号
+    @IBOutlet weak var userIPLoader: NSProgressIndicator!
+    
     /// 公网IP文本
     @IBOutlet weak var labelWANIP: NSTextField!
+    /// 公网IP加载符号
+    @IBOutlet weak var publicIPLoader: NSProgressIndicator!
+    
     /// 用户余额文本
     @IBOutlet weak var labelBalance: NSTextField!
     /// 用户使用时长文本
@@ -34,18 +40,20 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
     /// 计时器任务对象
     var schedule:Timer? = nil
     var password:String? = nil
-    let drProvider = DrInfoProvider.init()
+    
     var retry = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userIPLoader.startAnimation(self)
+        publicIPLoader.startAnimation(self)
+        drProvider = DrInfoProvider.init(delegate: self)
         provider = LoginServiceProvider.init(loginDelegate: self, logoutDelegate: self)
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "isAutoReconnect")==true {
             buttonIsAutoReconnect.state = NSControl.StateValue.on
         }
-//        首先获取用量和IP地址
-        self.refreshUsageAndIP()
 //        计时器时间，设定为1分钟一刷新
         let frequent:TimeInterval = 60
 //        每隔计时器时间，就会刷新一次用量和IP地址
@@ -56,28 +64,46 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate {
     
     /// 刷新用量和IP信息
     func refreshUsageAndIP() {
-        drProvider.searchGateway()
-//        获取用量
-        let timeUsage = drProvider.timeUsage()
-        let flowUsage = drProvider.flowUsage()
-        let balanceUsage = drProvider.balanceUsage()
-        let ipv4Private = drProvider.ipv4Private()
-        let ipv4Public = drProvider.ipv4Public()
-//        获取成功后设置界面文本
-        if timeUsage != nil && flowUsage != nil && balanceUsage != nil && ipv4Private != nil && ipv4Public != nil {
-            self.labelUsageTime.stringValue = timeUsage! + " 分钟"
-            self.labelUsageFlow.stringValue = flowUsage! + " MB"
-            self.labelBalance.stringValue = balanceUsage! + " 元"
-            self.labelUserIP.stringValue = "校园网：" + ipv4Private!
-            self.labelWANIP.stringValue = "互联网：" + ipv4Public!
-        } else {
-            self.labelUsageTime.stringValue = "您还未登录"
-            self.labelUsageFlow.stringValue = "您还未登录"
-            self.labelBalance.stringValue = "您还未登录"
-            self.didLostConnection()
+        userIPLoader.startAnimation(self)
+        publicIPLoader.startAnimation(self)
+        drProvider?.searchGateway()
+        drProvider?.searchPublicIPProvider()
+    }
+    
+    func finishRefreshUsageAndIP() {
+        //        获取用量
+        let timeUsage = drProvider?.timeUsage()
+        let flowUsage = drProvider?.flowUsage()
+        let balanceUsage = drProvider?.balanceUsage()
+        let ipv4Private = drProvider?.ipv4Private()
+        DispatchQueue.main.sync {
+//          获取成功后设置界面文本
+            if timeUsage != nil && flowUsage != nil && balanceUsage != nil && ipv4Private != nil {
+                self.labelUsageTime.stringValue = timeUsage! + " 分钟"
+                self.labelUsageFlow.stringValue = flowUsage! + " MB"
+                self.labelBalance.stringValue = balanceUsage! + " 元"
+                self.labelUserIP.stringValue = "校园网：" + ipv4Private!
+            } else {
+                self.labelUsageTime.stringValue = "您还未登录"
+                self.labelUsageFlow.stringValue = "您还未登录"
+                self.labelBalance.stringValue = "您还未登录"
+                self.didLostConnection()
+            }
+//          强制界面刷新
+            self.view.needsDisplay = true
+            userIPLoader.stopAnimation(self)
         }
-//        强制界面刷新
-        self.view.needsDisplay = true
+    }
+    
+    func finishRefreshPublicIP() {
+        let ipv4Public = drProvider?.ipv4Public()
+        DispatchQueue.main.sync {
+            if ipv4Public != nil {
+                self.labelWANIP.stringValue = "互联网：" + ipv4Public!
+            }
+            self.view.needsDisplay = true
+            publicIPLoader.stopAnimation(self)
+        }
     }
     
     /// 获得登录参数

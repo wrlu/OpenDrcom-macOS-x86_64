@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12B9C77E2140CF61009355B0 /* DrInfoProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9C77D2140CF61009355B0 /* DrInfoProviderDelegate.swift */; };
 		890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */; };
 		89145EDB1F0608C400800255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDA1F0608C400800255 /* AppDelegate.swift */; };
 		89145EDD1F0608C400800255 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89145EDC1F0608C400800255 /* LoginViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12B9C77D2140CF61009355B0 /* DrInfoProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrInfoProviderDelegate.swift; sourceTree = "<group>"; };
 		890F8A871F063A30002BEA9F /* OpenDrcom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenDrcom-Bridging-Header.h"; sourceTree = "<group>"; };
 		890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessInfoViewController.swift; sourceTree = "<group>"; };
 		89145ED71F0608C400800255 /* OpenDrcom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenDrcom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,7 @@
 				890F8A8E1F065FFB002BEA9F /* SuccessInfoViewController.swift */,
 				894B7A4F1F7BD99E001A390E /* LoginDelegate.swift */,
 				89B0FB121FE6351F000C2E88 /* LogoutDelegate.swift */,
+				12B9C77D2140CF61009355B0 /* DrInfoProviderDelegate.swift */,
 				894B7A4D1F7BD88F001A390E /* LoginServiceProvider.swift */,
 				8968294D1F076E810073D535 /* DrInfoProvider.swift */,
 				EA44621A20D92D1F00E88AC8 /* PreferenceViewController.swift */,
@@ -192,6 +195,7 @@
 				896829501F076E810073D535 /* DrInfoProvider.swift in Sources */,
 				89B0FB131FE6351F000C2E88 /* LogoutDelegate.swift in Sources */,
 				890F8A8F1F065FFB002BEA9F /* SuccessInfoViewController.swift in Sources */,
+				12B9C77E2140CF61009355B0 /* DrInfoProviderDelegate.swift in Sources */,
 				EA44621B20D92D1F00E88AC8 /* PreferenceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

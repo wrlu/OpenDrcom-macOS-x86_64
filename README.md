@@ -2,7 +2,6 @@
 ### 简介：此程序是Drcom的第三方客户端，支持自动登录和断线重连，未来计划支持断网原因检测以及自动修复。
   
 ### 一、使用说明
-- 如果您在使用 macOS Mojave（10.14.x）时遇到问题，请下载2.5或更高版本；
 - 本软件从2.4版本起仅支持 macOS Sierra (10.12.x)或更高版本，若您正在使用 OS X El Capitan (10.11.x)或者 OS X Yosemite (10.10.x)，请下载2.3.1版本；
 - macOS Sierra (10.12.x)或更高版本开启“任何来源”后才可以运行本程序（因为我没注册苹果付费帐号，一年688大洋，穷）；
 - 在“终端”中执行以下指令，执行后输入管理员密码即可：
@@ -13,9 +12,12 @@ sudo spctl --master-disable
 
 ### 二、最新版本更新日志
 
-#### 版本2.6更新：更新校园网认证协议
+#### 版本2.7更新：修复崩溃问题和公网IP接口
 1. 更新校园网认证协议的方法，兼容最新网页登录；
-2. 为带有 Touch Bar 的机型提供了 Touch Bar 快捷操作支持。
+2. 修复认证登录成功后崩溃的问题；
+3. 修复公网IP显示；
+4. 优化登录流程，提高登录速度；
+5. 撤回macOS Mojave（10.14）中暗黑模式自动切换的功能，此功能将等待系统正式推送后上线。
 
 ### 三、软件许可证
 - 本软件是自由软件，遵循GPLv3许可协议分发：
@@ -24,6 +26,10 @@ sudo spctl --master-disable
 - This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 ### 四、历史版本更新日志
+
+#### 版本2.6更新：更新校园网认证协议
+1. 更新校园网认证协议的方法，兼容最新网页登录；
+2. 为带有 Touch Bar 的机型提供了 Touch Bar 快捷操作支持。
 
 #### 版本2.5更新：显示公网IP、Mojave暗黑模式
 1. 新增登录成功后显示公网IP功能；

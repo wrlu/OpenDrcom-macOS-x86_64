@@ -14,43 +14,73 @@ import Cocoa
 
 /// 获得使用量的类
 class DrInfoProvider: NSObject {
-    
-    let gatewayURLString = "http://192.168.100.200"
-    let publicIPURLString = "https://ip.cn"
+    let delegate:DrInfoProviderDelegate
+    let gatewayURLString = "http://192.168.100.200/"
+    let publicIPURLString = "https://ip.cn/"
     var htmlCode:String?
     var remoteHtmlCode:String?
     
-    override init() {
+    init(delegate: DrInfoProviderDelegate) {
+        self.delegate = delegate
         super.init()
         self.searchGateway()
         self.searchPublicIPProvider()
     }
     
+    /// 连接到校园网网关
     func searchGateway() {
-        let gatewayURL = URL.init(string: gatewayURLString)
-        let readData:Data
-        do {
-//            尝试连接网关
-            try readData = Data.init(contentsOf: gatewayURL!)
-//            获取页面HTML代码，居然都不是UTF-8的，还得用ASCII，差评
-            self.htmlCode = String.init(data: readData, encoding: String.Encoding.ascii)
-        } catch {
-//        无法连接到网关
-            print(error.localizedDescription)
-            self.htmlCode = nil
-        }
+        let gatewayURL = URL.init(string: gatewayURLString)!
+        var request = URLRequest(url: gatewayURL)
+        request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
+        request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
+        request.addValue("zh-cn", forHTTPHeaderField: "Accept-Language")
+        request.addValue(gatewayURLString, forHTTPHeaderField: "Referer")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//           网络相关错误
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+//           服务器错误
+            guard let data = data else { return }
+            let httpResponse = response as? HTTPURLResponse
+            guard let status = httpResponse?.statusCode else { return }
+            guard status == 200 else {
+                print(status)
+                return
+            }
+            self.htmlCode = String (data: data, encoding: .ascii)
+            self.delegate.finishRefreshUsageAndIP()
+        })
+        task.resume()
     }
     
+    /// 连接到公网IP提供商
     func searchPublicIPProvider() {
-        let publicIPURL = URL.init(string: publicIPURLString)
-        let readData:Data
-        do {
-            try readData = Data.init(contentsOf: publicIPURL!)
-            self.remoteHtmlCode = String.init(data: readData, encoding: String.Encoding.ascii)
-        } catch {
-            print(error.localizedDescription)
-            self.remoteHtmlCode = nil
-        }
+        let publicIPURL = URL.init(string: publicIPURLString)!
+        var request = URLRequest(url: publicIPURL)
+        request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
+        request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
+        request.addValue("zh-cn", forHTTPHeaderField: "Accept-Language")
+        request.addValue(publicIPURLString, forHTTPHeaderField: "Referer")
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+//           网络相关错误
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+//           服务器错误
+            guard let data = data else { return }
+            let httpResponse = response as? HTTPURLResponse
+            guard let status = httpResponse?.statusCode else { return }
+            guard status == 200 else {
+                print(status)
+                return
+            }
+            self.remoteHtmlCode = String (data: data, encoding: .utf8)
+            self.delegate.finishRefreshPublicIP()
+        })
+        task.resume()
     }
     
     

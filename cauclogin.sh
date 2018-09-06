@@ -18,13 +18,13 @@ then
             echo "Try to use yum or apt-get to install them."
         else
             echo "[*] Warning: Your password will be sent to the server without encrypt for the weak authorization method of our school network."
-            curl --data-urlencode "0MKKey=%B5%C7+++++%C2%BC" --data-urlencode "DDDDD=$1" --data-urlencode "upass=$2" --data-urlencode "C1=on" "http://192.168.100.200/a70.htm" | grep errorMsg
+            curl --data-urlencode "R1=0&R3=0&R6=0&para=00&MKKey=123456" --data-urlencode "DDDDD=$1" --data-urlencode "upass=$2" --data-urlencode "C1=on" "http://192.168.100.200/a70.htm" | grep errorMsg
             curl http://ip.chinaz.com/getip.aspx
             echo
         fi
     else
         echo "[*] Warning: Your password will be sent to the server without encrypt for the weak authorization method of our school network."
-        wget --post-data "0MKKey=%B5%C7+++++%C2%BC&DDDDD=$1&upass=$2&C1=on" http://192.168.100.200/a70.htm
+        wget --post-data "DDDDD=$1&upass=$2&R1=0&R3=0&R6=0&para=00&MKKey=123456" http://192.168.100.200/a70.htm
         cat a70.htm | grep errorMsg
         rm a70.htm
     fi
