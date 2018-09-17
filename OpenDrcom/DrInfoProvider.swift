@@ -15,8 +15,7 @@ import Cocoa
 /// 获得使用量的类
 class DrInfoProvider: NSObject {
     let delegate:DrInfoProviderDelegate
-    let gatewayURLString = "http://192.168.100.200/"
-    let publicIPURLString = "https://ip.cn/"
+    let gatewayURLString = "http://192.168.100.200"
     var htmlCode:String?
     var remoteHtmlCode:String?
     
@@ -24,17 +23,16 @@ class DrInfoProvider: NSObject {
         self.delegate = delegate
         super.init()
         self.searchGateway()
-        self.searchPublicIPProvider()
     }
     
     /// 连接到校园网网关
     func searchGateway() {
         let gatewayURL = URL.init(string: gatewayURLString)!
         var request = URLRequest(url: gatewayURL)
-        request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
-        request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
-        request.addValue("zh-cn", forHTTPHeaderField: "Accept-Language")
-        request.addValue(gatewayURLString, forHTTPHeaderField: "Referer")
+        request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
+        request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", forHTTPHeaderField: "Accept")
+        request.addValue("zh-CN,zh;q=0.9", forHTTPHeaderField: "accept-language")
+        request.addValue("gzip, deflate, br", forHTTPHeaderField: "accept-encoding")
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
 //           网络相关错误
             if let error = error {
@@ -54,35 +52,6 @@ class DrInfoProvider: NSObject {
         })
         task.resume()
     }
-    
-    /// 连接到公网IP提供商
-    func searchPublicIPProvider() {
-        let publicIPURL = URL.init(string: publicIPURLString)!
-        var request = URLRequest(url: publicIPURL)
-        request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15", forHTTPHeaderField: "User-Agent")
-        request.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", forHTTPHeaderField: "Accept")
-        request.addValue("zh-cn", forHTTPHeaderField: "Accept-Language")
-        request.addValue(publicIPURLString, forHTTPHeaderField: "Referer")
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-//           网络相关错误
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-//           服务器错误
-            guard let data = data else { return }
-            let httpResponse = response as? HTTPURLResponse
-            guard let status = httpResponse?.statusCode else { return }
-            guard status == 200 else {
-                print(status)
-                return
-            }
-            self.remoteHtmlCode = String (data: data, encoding: .utf8)
-            self.delegate.finishRefreshPublicIP()
-        })
-        task.resume()
-    }
-    
     
     /// 从网关获取使用时长
     ///
@@ -176,29 +145,6 @@ class DrInfoProvider: NSObject {
             return nil
         }
         let ipSubstring = htmlCode?[(ipRange?.upperBound)!...]
-        var iPString:String=""
-        for perChar in ipSubstring! {
-            if (perChar >= "0" && perChar <= "9") || perChar == "." {
-                iPString.append(perChar)
-            } else {
-                break;
-            }
-        }
-        return iPString
-    }
-    
-    /// 获得公网IPv4地址
-    ///
-    /// - Returns: 公网IPv4地址
-    func ipv4Public() -> String? {
-        guard remoteHtmlCode != nil else {
-            return nil
-        }
-        let ipRange = remoteHtmlCode?.range(of: "<p>您现在的 IP：<code>")
-        guard ipRange != nil else {
-            return nil
-        }
-        let ipSubstring = remoteHtmlCode?[(ipRange?.upperBound)!...]
         var iPString:String=""
         for perChar in ipSubstring! {
             if (perChar >= "0" && perChar <= "9") || perChar == "." {

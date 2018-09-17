@@ -23,12 +23,8 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate,D
     @IBOutlet weak var labelUserIP: NSTextField!
     /// 本地IP加载符号
     @IBOutlet weak var userIPLoader: NSProgressIndicator!
-    
-    /// 公网IP文本
-    @IBOutlet weak var labelWANIP: NSTextField!
-    /// 公网IP加载符号
-    @IBOutlet weak var publicIPLoader: NSProgressIndicator!
-    
+    /// 本地IP状态指示器（图片）
+    @IBOutlet weak var userIPLoadImage: NSImageView!
     /// 用户余额文本
     @IBOutlet weak var labelBalance: NSTextField!
     /// 用户使用时长文本
@@ -47,7 +43,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate,D
     override func viewDidLoad() {
         super.viewDidLoad()
         userIPLoader.startAnimation(self)
-        publicIPLoader.startAnimation(self)
+        userIPLoadImage.image = NSImage.init(named: NSImage.Name.statusUnavailable)
         drProvider = DrInfoProvider.init(delegate: self)
         provider = LoginServiceProvider.init(loginDelegate: self, logoutDelegate: self)
         let defaults = UserDefaults.standard
@@ -65,9 +61,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate,D
     /// 刷新用量和IP信息
     func refreshUsageAndIP() {
         userIPLoader.startAnimation(self)
-        publicIPLoader.startAnimation(self)
         drProvider?.searchGateway()
-        drProvider?.searchPublicIPProvider()
     }
     
     func finishRefreshUsageAndIP() {
@@ -79,8 +73,20 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate,D
         DispatchQueue.main.sync {
 //          获取成功后设置界面文本
             if timeUsage != nil && flowUsage != nil && balanceUsage != nil && ipv4Private != nil {
-                self.labelUsageTime.stringValue = timeUsage! + " 分钟"
-                self.labelUsageFlow.stringValue = flowUsage! + " MB"
+                if Int(timeUsage!)! < 60 {
+                    self.labelUsageTime.stringValue = timeUsage! + " 分"
+                }
+                else if Int(timeUsage!)! >= 60 && Int(timeUsage!)! < 1440 {
+                    self.labelUsageTime.stringValue = String(Int(timeUsage!)!/60) + " 时 " + String(Int(timeUsage!)!%60) + " 分"
+                } else if Int(timeUsage!)! >= 1440 {
+                    self.labelUsageTime.stringValue = String(Int(timeUsage!)!/1440) + " 天 " + String((Int(timeUsage!)!%1440)/60) + " 时 " + String((Int(timeUsage!)!%1440)%60) + " 分"
+                }
+                if Float(flowUsage!)! < 1024 {
+                    self.labelUsageFlow.stringValue = flowUsage! + " MB"
+                }
+                else if Float(flowUsage!)! >= 1024 {
+                    self.labelUsageFlow.stringValue = String(Float(flowUsage!)!/1024) + "GB"
+                }
                 self.labelBalance.stringValue = balanceUsage! + " 元"
                 self.labelUserIP.stringValue = "校园网：" + ipv4Private!
             } else {
@@ -92,17 +98,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate,D
 //          强制界面刷新
             self.view.needsDisplay = true
             userIPLoader.stopAnimation(self)
-        }
-    }
-    
-    func finishRefreshPublicIP() {
-        let ipv4Public = drProvider?.ipv4Public()
-        DispatchQueue.main.sync {
-            if ipv4Public != nil {
-                self.labelWANIP.stringValue = "互联网：" + ipv4Public!
-            }
-            self.view.needsDisplay = true
-            publicIPLoader.stopAnimation(self)
+            userIPLoadImage.image = NSImage.init(named: NSImage.Name.statusAvailable)
         }
     }
     
@@ -140,6 +136,7 @@ class SuccessInfoViewController: NSViewController,LoginDelegate,LogoutDelegate,D
 //        取消计时器
         schedule?.invalidate()
 //        弹窗提示用户断网
+        userIPLoadImage.image = NSImage.init(named: NSImage.Name.statusUnavailable)
         let alert:NSAlert = NSAlert.init()
         alert.messageText = "错误：网络连接失败"
         alert.addButton(withTitle: "好")

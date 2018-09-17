@@ -14,5 +14,4 @@ import Foundation
 
 protocol DrInfoProviderDelegate {
     func finishRefreshUsageAndIP()
-    func finishRefreshPublicIP()
 }
