@@ -12,12 +12,10 @@ sudo spctl --master-disable
 
 ### 二、最新版本更新日志
 
-#### 版本2.7更新：修复崩溃问题和公网IP接口
-1. 更新校园网认证协议的方法，兼容最新网页登录；
-2. 修复认证登录成功后崩溃的问题；
-3. 修复公网IP显示；
-4. 优化登录流程，提高登录速度；
-5. 撤回macOS Mojave（10.14）中暗黑模式自动切换的功能，此功能将等待系统正式推送后上线。
+#### 版本2.7.1更新：支持macOS Mojave
+1. 增加对macOS Mojave的支持，同时在macOS Mojave中支持跟随系统黑暗模式设置；
+2. 优化已用时长和流量显示
+3. 移除公网IP显示功能
 
 ### 三、软件许可证
 - 本软件是自由软件，遵循GPLv3许可协议分发：
@@ -26,6 +24,13 @@ sudo spctl --master-disable
 - This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 ### 四、历史版本更新日志
+
+#### 版本2.7更新：修复崩溃问题和公网IP接口
+1. 更新校园网认证协议的方法，兼容最新网页登录；
+2. 修复认证登录成功后崩溃的问题；
+3. 修复公网IP显示；
+4. 优化登录流程，提高登录速度；
+5. 撤回macOS Mojave（10.14）中暗黑模式自动切换的功能，此功能将等待系统正式推送后上线。
 
 #### 版本2.6更新：更新校园网认证协议
 1. 更新校园网认证协议的方法，兼容最新网页登录；
