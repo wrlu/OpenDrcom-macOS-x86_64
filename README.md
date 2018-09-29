@@ -1,7 +1,10 @@
-# OpenDrcom-macOS-x86_64（哆点工具箱 macOS 64位版）
-### 简介：此程序是Drcom的第三方客户端，支持自动登录和断线重连，未来计划支持断网原因检测以及自动修复。
+# OpenDrcom-macOS-x86_64（哆点Drcom macOS 64位版）
+### 简介：此程序是Drcom的第三方客户端，支持自动登录和断线重连。
+
+### 一、重要提示
+- 因个人原因不再使用Mac电脑，所以本项目停止更新，最新版本为2.7.1，如果其他同学想在此基础上继续开发，需按照GPLv3许可证的要求进行分发。
   
-### 一、使用说明
+### 二、使用说明
 - 本软件从2.4版本起仅支持 macOS Sierra (10.12.x)或更高版本，若您正在使用 OS X El Capitan (10.11.x)或者 OS X Yosemite (10.10.x)，请下载2.3.1版本；
 - macOS Sierra (10.12.x)或更高版本开启“任何来源”后才可以运行本程序（因为我没注册苹果付费帐号，一年688大洋，穷）；
 - 在“终端”中执行以下指令，执行后输入管理员密码即可：
@@ -10,20 +13,20 @@
 sudo spctl --master-disable
 ~~~
 
-### 二、最新版本更新日志
+### 三、最新版本更新日志
 
 #### 版本2.7.1更新：支持macOS Mojave
 1. 增加对macOS Mojave的支持，同时在macOS Mojave中支持跟随系统黑暗模式设置；
 2. 优化已用时长和流量显示
 3. 移除公网IP显示功能
 
-### 三、软件许可证
+### 四、软件许可证
 - 本软件是自由软件，遵循GPLv3许可协议分发：
-- Copyright (c) 2017-2018, 小路.
+- Copyright (c) 2018, 小路.
 - This program is free software; you can redistribute it and/or modify it under the terms and conditions of the GNU General Public License, version 3, as published by the Free Software Foundation.
 - This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-### 四、历史版本更新日志
+### 五、历史版本更新日志
 
 #### 版本2.7更新：修复崩溃问题和公网IP接口
 1. 更新校园网认证协议的方法，兼容最新网页登录；
